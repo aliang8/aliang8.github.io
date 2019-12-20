@@ -42,7 +42,7 @@ body, html {
   float: right;
   color: #89bef0;
   text-align: center;
-  padding: 14px 40px;
+  padding: 14px 30px;
   font-size: 25px;
   font-family: 'Courier Prime', sans-serif;
 }
@@ -68,4 +68,10 @@ body, html {
 .research .pic {
   max-width: 100%;
   height: auto;
+}
+
+hr {
+width: 96%;
+color: #808080;
+height: 1px;
 }
