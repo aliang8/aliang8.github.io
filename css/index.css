@@ -1,0 +1,71 @@
+body, html {
+  text-align: center;
+}
+
+.text {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.small-text {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  font-size: 30px;
+  color: #89bef0;
+  font-family: 'Courier Prime', sans-serif;
+}
+
+.year {
+  font-size: 25px;
+  color: #89bef0;
+  font-family: 'Courier Prime', sans-serif;
+  text-align: left; !important
+}
+
+.circular {
+  border-radius: 50%;
+  max-width: 35%;
+  height: auto;
+}
+
+.navbar {
+  border-bottom: 2px solid black;
+  overflow: hidden;
+  width: 100%;
+  background-color: white;
+}
+
+.navbar a {
+  float: right;
+  color: #89bef0;
+  text-align: center;
+  padding: 14px 40px;
+  font-size: 25px;
+  font-family: 'Courier Prime', sans-serif;
+}
+
+#anthony {
+  float: left; !important;
+  padding-left: 23%; !important;
+}
+
+.research {
+  text-align: left; !important
+}
+
+.research .paper-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.research .authors {
+  font-size: 16px;
+}
+
+.research .pic {
+  max-width: 100%;
+  height: auto;
+}
