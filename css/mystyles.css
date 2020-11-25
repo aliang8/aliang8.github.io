@@ -33,6 +33,13 @@
   padding-top: 2em;
   padding-left: 1em;}
 
+.project-image-socratic img {
+  display: block;
+  width: 220px;
+  padding-top: 1em;
+  padding-left: 2em;}
+
+
 .fling-minislide {width:100%; height:100%; overflow:hidden; position:relative; }
 .fling-minislide img{ position:absolute; animation:fling-minislide 6s infinite; opacity:0; width: 100%; height: auto;}
 
