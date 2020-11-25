@@ -10,13 +10,28 @@
   height: 128px;
   width: 192px; }
 
-.project-image img {
+.project-image-rob img {
   display: block;
-  width: 100%; }
+  width: 100%;
+  padding-top: 2.5em; }
 
-.project-image-2 img {
+.project-image-ekf img {
   display: block;
-  width: 1000px; }
+  width: 100%;
+  padding-top: 2em;
+  padding-left: 1em; }
+
+.project-image-rec img {
+  display: block;
+  width: 100%;
+  padding-top: 2em;
+  padding-left: 1em; }
+
+.project-image-barcode img {
+  display: block;
+  width: 1000px;
+  padding-top: 2em;
+  padding-left: 1em;}
 
 .fling-minislide {width:100%; height:100%; overflow:hidden; position:relative; }
 .fling-minislide img{ position:absolute; animation:fling-minislide 6s infinite; opacity:0; width: 100%; height: auto;}
