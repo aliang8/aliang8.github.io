@@ -14,6 +14,7 @@
     <base target="_blank">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
+    <script type="text/javascript" src="js/slideshow.js"></script>
   </head>
   <body>
 
@@ -92,10 +93,10 @@
                 <div class="tile is-7 is-parent">
                   <div class="tile is-child">
                     <p class="block">
-                        I am a first-year Robotics Masters student at the University of Michigan (UM) advised by <a href="https://web.eecs.umich.edu/~honglak/" class="text-link">Prof. Honglak Lee</a>. My research focuses on developing data-driven algorithms to enable efficient and generalizable robot learning for long-horizon compositional tasks. I aim to deploy these algorithms onto real-world robotic systems such as personal assistants and medical robots.
+                        I am a first-year Robotics Masters student at the University of Michigan (UM) advised by <a href="https://web.eecs.umich.edu/~honglak/" class="text-link">Prof. Honglak Lee</a>. My research focuses on developing data-driven algorithms to enable efficient and generalizable robot learning for long-horizon compositional tasks. I am interested in Deep Learning and its applications towards robotic perception, control, and decision-making. I aim to deploy these algorithms onto real-world robotic systems such as personal assistants and medical robots.
                     </p>
                     <p class="block">
-                        I completed my Bachelors in Computer Science with a minor in Mathematics also at UM. This past summer, I had the wonderful opportunity to work with <a href="http://www.cs.cmu.edu/~cliu6/" class="text-link">Prof. Changliu Liu</a> at Carnegie Mellon University's Robotics Institute to develop a safe control architecture for self-driving in dynamic environments. In previous summers, I've completed industry internships at Invisible.ai, Google Ads, Luminar and Socratic.
+                        I completed my Bachelors in Computer Science with a minor in Mathematics at UM. This past summer, I had the wonderful opportunity to work with <a href="http://www.cs.cmu.edu/~cliu6/" class="text-link">Prof. Changliu Liu</a> at Carnegie Mellon University's Robotics Institute to develop a safe control architecture for self-driving in dynamic environments. In previous summers, I've completed industry internships at Invisible.ai, Google Ads, Luminar and Socratic.
                     </p>
 
                     <p class="block has-text-weight-semibold has-text-danger-dark">
@@ -255,6 +256,61 @@
               </tr>
             </tbody>
           </table>
+        </div>
+    </section>
+
+    <!-- <hr class="hr container is-max-desktop" style="margin-bottom: 0;"> -->
+    <section class="section has-background-light" id="projects">
+        <div class="container is-max-desktop">
+            <h1 class="title is-size-4">
+                Past Projects
+            </h1>
+            <br>
+
+            <div class="tile is-ancestor">
+              <div class="tile is-parent">
+                <div class="card">
+                  <div class="columns">
+                    <figure class="column is-one-quarter project-image p-0">
+                      <!-- <div class="fling-minislide"> -->
+                      <img src="img/mrover.png" alt="mrover">
+                        <!-- <img src="img/anthony.jpg" alt="anthony"> -->
+                      <!-- </div> -->
+                    </figure>
+
+                    <div class="card-content m-3">
+                        <p class="title is-5">MRover Robotic Arm</p>
+                        <p>
+                          Full stack library for operating an autonomous robotic arm on a space rover. Includes modules for perception, kinematics, motion control, planning, self/world obstacle collision, etc. Developed a web interface using <a href="https://gitlab.eecs.umich.edu/lzhh/autolab">KinEval</a> to visual robot arm and instruct arm to navigate to waypoints.
+                        </p>
+                        <br>
+                        <a class="button is-light is-link" href="files/mrover_arm_poster.pdf">project poster</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tile is-ancestor">
+              <div class="tile is-parent">
+                <div class="card">
+                  <div class="columns">
+                    <figure class="column is-one-quarter project-image-2 p-0">
+                      <img src="img/barcode.png" alt="barcode">
+                    </figure>
+
+                    <div class="card-content m-3">
+                        <p class="title is-5">Barcode Detection</p>
+                        <p>
+                          Implemented a real-time barcode detection system based on RBox, a variant of the object bounding boxes that accounts for rotation of objects. Model is used in industrial settings for scanning barcodes that are often in different orientations.
+                        </p>
+                        <br>
+                        <a class="button is-light is-link" href="https://medium.com/invisible-insights/barcode-detection-using-deep-learning-techniques-1abde201df08">blog post</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
     </section>
 
