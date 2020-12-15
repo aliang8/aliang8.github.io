@@ -1,4 +1,0 @@
-\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Reinforcement Learning for Sparse-Reward Object-Interaction Tasks in First-person Simulated 3D Environments}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Fellowship Project Proposal}{2}{chapter.2}%
