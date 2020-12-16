@@ -49,4 +49,6 @@
 \BOOKMARK [1][-]{section.10.1}{Bayes Filter}{chapter.10}% 49
 \BOOKMARK [1][-]{section.10.2}{Kalman Filter}{chapter.10}% 50
 \BOOKMARK [1][-]{section.10.3}{Extended Kalman Filter \(EKF\)}{chapter.10}% 51
-\BOOKMARK [0][-]{chapter.11}{MDP and POMDPs}{}% 52
+\BOOKMARK [1][-]{section.10.4}{Unscented Kalman Filter}{chapter.10}% 52
+\BOOKMARK [1][-]{section.10.5}{Particle Filter}{chapter.10}% 53
+\BOOKMARK [0][-]{chapter.11}{MDP and POMDPs}{}% 54
