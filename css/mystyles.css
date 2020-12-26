@@ -3988,7 +3988,7 @@ button.dropdown-item {
   .navbar.is-fixed-bottom, .navbar.is-fixed-top {
     left: 0;
     position: fixed;
-    right: 0;
+    right: 1.5em;
     z-index: 30; }
   .navbar.is-fixed-bottom {
     bottom: 0; }
