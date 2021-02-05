@@ -1,0 +1,107 @@
+\documentclass[a4paper, 12pt]{report}
+
+%%%%%%%%%%%%
+% Packages %
+%%%%%%%%%%%%
+
+\usepackage[english]{babel}
+\usepackage[noheader]{packages/sleek}
+\usepackage{packages/sleek-title}
+\usepackage{packages/sleek-theorems}
+\usepackage{packages/sleek-listings}
+
+%%%%%%%%%%%%%%
+% Title-page %
+%%%%%%%%%%%%%%
+
+% \logo{./resources/pdf/logo.pdf}
+% \institute{Random University}
+% \faculty{Faculty of Whatever Sciences}
+%\department{Department of Anything but Psychology}
+\title{Algorithmic Robotics Guide}
+\subtitle{Material taken from EECS 498}
+\author{\textit{Author}\\Anthony \textsc{Liang}}
+%\supervisor{Linus \textsc{Torvalds}}
+%\context{Well, I was bored...}
+\date{\today}
+
+%%%%%%%%%%%%%%%%
+% Bibliography %
+%%%%%%%%%%%%%%%%
+
+\addbibresource{./resources/bib/references.bib}
+
+%%%%%%%%%%
+% Others %
+%%%%%%%%%%
+
+\lstdefinestyle{latex}{
+    language=TeX,
+    style=default,
+    %%%%%
+    commentstyle=\ForestGreen,
+    keywordstyle=\TrueBlue,
+    stringstyle=\VeronicaPurple,
+    emphstyle=\TrueBlue,
+    %%%%%
+    emph={LaTeX, usepackage, textit, textbf, textsc}
+}
+
+\FrameTBStyle{latex}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{subfiles}
+\def\tbs{\textbackslash}
+
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+    \romantableofcontents
+
+    \chapter{Introduction}
+
+    This is a guide I put together during my time as a TA for the Algorithmic Robotics class taught at the University of Michigan by Professor Dmitry Berenson. Most of the content is directly taken from his slides, but I also appended some information from my own past knowledge and online resources. This guide will cover topics ranging from a review of mathematical concepts in linear algebra and statistics to foundations of robot planning, state estimation, and control.
+
+    \chapter{Linear Algebra Review}
+
+    \subfile{chapters/lin_alg}
+
+    \chapter{Transformations}
+
+    \subfile{chapters/transformations}
+
+    \chapter{Convexity and Optimization}
+
+    \subfile{chapters/convexity_optimization}
+
+    \chapter{Motion Planning}
+
+    \subfile{chapters/motion_planning}
+
+    \chapter{Kinematics}
+
+    \subfile{chapters/kinematics}
+
+    \chapter{Grasping}
+
+    \subfile{chapters/grasping}
+
+    \chapter{SVD and PCA}
+
+    \subfile{chapters/svd_and_pca}
+
+    \chapter{Probabilistic Models}
+
+    \subfile{chapters/probabilistic_models}
+
+    \chapter{Filters}
+
+    \subfile{chapters/filters}
+
+    \chapter{MDP and POMDPs}
+
+    \subfile{chapters/mdp}
+
+\end{document}

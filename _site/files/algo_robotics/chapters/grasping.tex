@@ -1,0 +1,78 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    \begin{itemize}
+        \item Grasping studies how to stably make contact with objects and move them
+        \item Definitions
+    \end{itemize}
+
+    \section{Definitions}
+    \begin{itemize}
+        \item A point contact is sometimes called a finger
+        \item A \textbf{wrench} is a combination of force and torque applied to an object
+        \item \textbf{Wrench space} is the space of wrenches applied to an object
+        \begin{itemize}
+            \item 2D object: 3 dimensional wrench space (2 force, 1 torque)
+            \item 3D object: 6 dimensional wrench space (3 force, 3 torque)
+        \end{itemize}
+        \item A grasp \textbf{immobilizes} an object if it can counter any wrench applied to the object. This guarantees the stability of the grasp.
+        \item A \textbf{friction cone} is the set of forces that can be applied at a contact force without sliding on the object. Assume Coulomb friction.
+        \begin{itemize}
+            \item Depends on the coefficient of friction between hand and object ($\mu$)
+            \item Bigger $\mu$ implies a wider friction cone.
+        \end{itemize}
+    \end{itemize}
+    \section{Form Closure}
+    \begin{itemize}
+        \item A form closure grasp is when the object cannot move \textbf{regardless of surface friction}
+        \item You need at least N+1 contacts to achieve first-order form closure, where N is the number of DOF of the object
+    \end{itemize}
+    \section{Force Closure}
+    \begin{itemize}
+        \item Frictional properties of the object can be used to immobilize it
+        \item If a grasp achieves form closure, it also achieves force closure
+        \item Intuition, need a contact force to cancel out external disturbance force. Convex hull must contain origin for there to exist such a contact force.
+        \item For a 3D object, you only need 3 contacts to achieve force closure (as opposed to 7 for form closure)
+        \item Force Closure Metrics
+        \begin{itemize}
+            \item Popular metric: radius of largest hyper-sphere you can fit in convex hull
+            \item Task specific metric: using an ellipsoid instead of a hyper-sphere
+        \end{itemize}
+    \end{itemize}
+
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        Input: Contact locations\;
+        Output: Is the grasp in force-closure?\;
+        1. Approximate friction cone at each contact with a set of wrenches.\;
+        2. Combine wrenches from all cones to a set of points $S$ in wrench space.\;
+        3. Compute the convex hull of S (smallest convex set that contains all points)\;
+        4. If the origin is inside the convex hull, return YES. Else return NO.\;
+        \caption{Testing for force closure}
+    \end{algorithm}
+    \section{Searching for Force Closure Grasps}
+    \begin{itemize}
+        \item Peter Allen et al. 2000s
+        \begin{itemize}
+            \item Sample pose of hand relative to object with fingers in a pre-determined shape
+            \item Approach object until contact and close fingers
+            \item Get contact points between hand and object
+            \item Test these contact points for force closure
+        \end{itemize}
+        \item Pre-compute grasp sets: searching for grasps is slow!
+        \item Columbia Grasp Database
+    \end{itemize}
+    \section{Integrating Grasping and Motion Planning}
+    \begin{itemize}
+        \item Pre-compute grasp set offline, get force-closure scores
+        \item Online: compute 2 scores for each grasp: Environment Clearance Score and Reachability Score
+        \item Test grasps in order of ranking
+        \item Recent work in grasping uses deep learning methods
+        \item General idea
+        \begin{itemize}
+            \item Generate many grasp candidates
+            \item Learn a quality metric that uses the point cloud data directly
+            \item Output highest quality grasp
+        \end{itemize}
+    \end{itemize}
+\end{document}

@@ -1,0 +1,11 @@
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'rl.blg'
+[130] biber-darwin:322> INFO - === Tue Jan 12, 2021, 13:26:46
+[148] Biber.pm:415> INFO - Reading 'rl.bcf'
+[253] Biber.pm:943> INFO - Found 1 citekeys in bib section 0
+[269] Biber.pm:4256> INFO - Processing section 0
+[270] Utils.pm:75> INFO - Globbing data source './resources/bib/references.bib'
+[270] Utils.pm:91> INFO - Globbed data source './resources/bib/references.bib' to ./resources/bib/references.bib
+[281] Biber.pm:4455> INFO - Looking for bibtex format file './resources/bib/references.bib' for section 0
+[460] Utils.pm:320> ERROR - Cannot find './resources/bib/references.bib'!
+[460] Biber.pm:132> INFO - ERRORS: 1

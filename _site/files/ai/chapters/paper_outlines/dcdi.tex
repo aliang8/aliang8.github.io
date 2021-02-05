@@ -1,0 +1,47 @@
+\begin{itemize}
+  \item learning a causal directed acyclic graph from data
+  \item reformulates as continuous constrained optimization problem, solved using the augmented Lagrangian method
+  \item this work proposes a NN model that can leverage interventional data
+  \item using only observational data is challenging because the \textit{faithfulness assumption} states that the true DAG is only identifiable up to a \textit{Markov equivalence class}
+  \item this can be improved by considering interventional data
+  \item when observing enough interventions, the DAG is exactly identifiable
+  \item there are score-based and constraint-based optimization methods, but they are computationally expensive and rely on parametric assumption
+  \item perfect interventions remove the dependencies of a node on its parents, e.g. gene knockout in biology
+  \item two classes of methods in causal structure learning
+  \begin{itemize}
+    \item constraint-based methods
+    \begin{itemize}
+      \item PC algorithm works with observational data
+      \item rely on conditional independence
+      \item COmbINE and HEJ support interventional data
+      \item JCI supports latent cofounders and can deal with interventions with unknown targets
+    \end{itemize}
+    \item score-based methods
+    \begin{itemize}
+      \item formulate problem of estimating DAG $G^{*}$ by optimizing a score function $\mcal{S}$ over the space of DAGs
+      \begin{equation*}
+        \mcal{G} \in \underset{\mcal{G}\in \text{DAG}}{\text{argmax}} \mcal{S}(\mcal{G})
+      \end{equation*}
+      \item common choice in the purely observational setting is the regularized ML
+      \begin{equation*}
+        \mcal{S}(\mcal{G}) := \underset{\theta}{\text{max}} \mbb{E}_{X \sim P_{X}}[log f_{\theta}(X) - \lambda |\mcal{G}|]
+      \end{equation*}
+      \item the space of DAGs is super-exponential in the number of nodes
+      \item these methods rely on greedy combinatorial search algorithms
+      \item e.g. GIES (adaptation of GES), assumes a \textit{linear} gaussian model
+      \item CAM uses greedy search, nonlinear, additive noise model
+    \end{itemize}
+    \item hybrid-methods
+    \begin{itemize}
+      \item combines both score-based and constraint, e.g. IGSP
+    \end{itemize}
+  \end{itemize}
+
+  \item \textit{weighted adjacency matrix} and acyclicity constraint: $\text{Tr}e^{A_{\theta}} - d = 0$
+  \item shown that graph is acyclic iff the above constraint is satisfied
+  \item problem is solved approximately using an augmented Lagrangian procedure
+  \item performance is assessed by two metrics comparing estimated graph to the ground-truth graph
+  \item \textit{structural Hamming Distance} (SHD) = number of edges that are different between the two DAGs
+  \item \textit{structural interventional distance} (SID) how the two DAGs differ wrt to their causal inference statements
+  \item DCDI relies on stochastic gradient descent and thus is scalable to graphs with hundreds of nodes even though the augmented Lagrangian procedure requires computing marix exponential which is $O(d^{3})$
+  \item\end{itemize}

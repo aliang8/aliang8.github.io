@@ -1,0 +1,116 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{rcnn}{article}{}
+      \name{author}{4}{}{%
+        {{hash=c2c60ceb4a241891e128295a5ae80aef}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=913090a0d65c7a300c602f5a5a5a61e3}{%
+           family={Donahue},
+           familyi={D\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+        {{hash=90180e1a30742e0d15328bfe637c2ef4}{%
+           family={Darrell},
+           familyi={D\bibinitperiod},
+           given={Trevor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c75a5377b6dc5213831576e88ffe553c}{%
+           family={Malik},
+           familyi={M\bibinitperiod},
+           given={Jitendra},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{94a485c4f93f679032c7726e84b53013}
+      \strng{fullhash}{c1acf9ed802d7aed0044c9e95309dea0}
+      \strng{bibnamehash}{c1acf9ed802d7aed0044c9e95309dea0}
+      \strng{authorbibnamehash}{c1acf9ed802d7aed0044c9e95309dea0}
+      \strng{authornamehash}{94a485c4f93f679032c7726e84b53013}
+      \strng{authorfullhash}{c1acf9ed802d7aed0044c9e95309dea0}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{Rich feature hierarchies for accurate object detection and semantic segmentation}
+      \field{volume}{abs/1311.2524}
+      \field{year}{2013}
+      \verb{eprint}
+      \verb 1311.2524
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1311.2524
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1311.2524
+      \endverb
+    \endentry
+    \entry{bcq}{article}{}
+      \name{author}{3}{}{%
+        {{hash=064fb8795fb3fe6537e4d29fc8578ec4}{%
+           family={Fujimoto},
+           familyi={F\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a5137015bf373eff6cd1b6a96b145c3c}{%
+           family={Meger},
+           familyi={M\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=4428b76e1301b2db58587fb18bb59a38}{%
+           family={Precup},
+           familyi={P\bibinitperiod},
+           given={Doina},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{04b40842280a3beaadf77bdf09453160}
+      \strng{fullhash}{04b40842280a3beaadf77bdf09453160}
+      \strng{bibnamehash}{04b40842280a3beaadf77bdf09453160}
+      \strng{authorbibnamehash}{04b40842280a3beaadf77bdf09453160}
+      \strng{authornamehash}{04b40842280a3beaadf77bdf09453160}
+      \strng{authorfullhash}{04b40842280a3beaadf77bdf09453160}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{Off-Policy Deep Reinforcement Learning without Exploration}
+      \field{volume}{abs/1812.02900}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1812.02900
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1812.02900
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1812.02900
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

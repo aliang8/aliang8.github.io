@@ -1,0 +1,118 @@
+\documentclass[a4paper, 12pt]{report}
+
+%%%%%%%%%%%%
+% Packages %
+%%%%%%%%%%%%
+
+\usepackage[english]{babel}
+\usepackage[noheader]{packages/sleek}
+\usepackage{packages/sleek-title}
+\usepackage{packages/sleek-theorems}
+\usepackage{packages/sleek-listings}
+
+%%%%%%%%%%%%%%
+% Title-page %
+%%%%%%%%%%%%%%
+
+% \logo{./resources/pdf/logo.pdf}
+% \institute{Random University}
+% \faculty{Faculty of Whatever Sciences}
+%\department{Department of Anything but Psychology}
+\title{Random Guide}
+\subtitle{Temp subtitle}
+\author{\textit{Author}\\Anthony \textsc{Liang}}
+\date{\today}
+
+%%%%%%%%%%%%%%%%
+% Bibliography %
+%%%%%%%%%%%%%%%%
+
+\addbibresource{./resources/bib/references.bib}
+
+%%%%%%%%%%
+% Others %
+%%%%%%%%%%
+
+\lstdefinestyle{latex}{
+    language=TeX,
+    style=default,
+    %%%%%
+    commentstyle=\ForestGreen,
+    keywordstyle=\TrueBlue,
+    stringstyle=\VeronicaPurple,
+    emphstyle=\TrueBlue,
+    %%%%%
+    emph={LaTeX, usepackage, textit, textbf, textsc}
+}
+
+\FrameTBStyle{latex}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{subfiles}
+\def\tbs{\textbackslash}
+
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+
+% Some aliases
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\g}{\gamma}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\ind}{\perp\!\!\!\perp}
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
+\begin{document}
+    \maketitle
+    \romantableofcontents
+
+    \chapter{Introduction}
+
+    This is a random collection of interesting concepts and ideas that I came across.
+
+    \chapter{Learning from demonstration}
+
+    \chapter{Self-supervised Learning}
+
+    \chapter{Meta-learning}
+
+    \chapter{Embodied learning}
+
+    \chapter{Statistics}
+
+    \chapter{Robotics}
+
+    \chapter{Vision}
+
+    \subfile{chapters/vision}
+
+    \chapter{Generative Models}
+
+    \chapter{Reinforcement Learning}
+
+    \subfile{chapters/rl}
+
+    \chapter{Natural Language Processing}
+
+    \subfile{chapters/nlp}
+
+    \chapter{Clustering}
+
+    \subfile{chapters/clustering}
+
+    \chapter{10-708 PGM}
+
+    \subfile{chapters/pgm&}
+
+    \chapter{Paper Outlines}
+
+    \subfile{chapters/paper_outlines}
+
+    \chapter{Glossary}
+
+    \subfile{chapters/glossary}
+
+    \printbibliography
+\end{document}

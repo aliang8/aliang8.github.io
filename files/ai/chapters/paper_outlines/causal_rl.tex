@@ -1,0 +1,10 @@
+\begin{itemize}
+  \item Propose to use RL to search for a DAG with the best scoring
+  \item Encoder-decoder takes observable data and generates a graph adjacency matrix
+  \item Reward = predefined score function + two penalty terms to enforce acyclicity
+  \item GES checks acyclicity one edge at a time
+  \item Problem is to use observed data $X$ to infer the underlying causal DAG $\mcal{G}$
+  \item Modified BIC for score function, used same acyclicity constraint as in NOTEARS
+  \item Overall reward function is $-[\mcal{C}(\mcal{G}) + \lambda_{1} I(\mcal{G} \notin \text{DAGs} + \lambda_{2}h(A)]$
+  \item Used actor-critic algorithm
+\end{itemize}

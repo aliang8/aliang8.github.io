@@ -1,0 +1,41 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{What is Self-Supervised Learning}
+  \begin{itemize}
+    \item Exploit labels that come with the data for free
+    \item Make use of unlabeled data to get supervision from the data itself
+    \item Self-supervised task (also called pretext task), expect that the learned representations has good semantic or structural meaning that can benefit downstream tasks
+    \item Commonly used in language modeling (e.g. BERT predicts the next word given past sequence)
+    \item Different self-supervised pretext tasks:
+      \begin{itemize}
+        \item Distortion: create surrogate training datasets
+        \item Rotation: predict which rotation is applied
+        \item Patches: predict relationship between patches
+        \item Colorizaton: color a grayscale input image
+        \item Generative modeling: reconstruct original input while learning meaningful latent representation
+      \end{itemize}
+    \item \href{https://lilianweng.github.io/lil-log/2019/11/10/self-supervised-learning.html}{Good resource}
+  \end{itemize}
+
+\section{Contrastive Predictive Coding (CPC)}
+  \begin{itemize}
+    \item Translate generative modeling problem into a classificaton problem
+    \item Contrastive loss or InfoNCE loss uses CE to measure how well model classifies "future" representations
+    \item Use encoder to compress data and autoregressive decoder to learn high-level context
+  \end{itemize}
+
+\section{Momentum Contrast (MoCo)}
+
+\section{Contrasting Cluster Assignments}
+
+\section{SimCLR}
+
+\section{CURL}
+
+\section{Grasp2Vec}
+
+\section{Time-Contrastive Networks}
+
+\end{document}

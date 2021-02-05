@@ -1,0 +1,107 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    \section{Convex Optimization}
+    \begin{itemize}
+        \item Mature field with deep mathematical foundations
+        \item Scales well with dimensionality, solves problems with 1000s of variables
+        \item Convex optimizers are usually really fast
+        \item Functions are defined as $f: A \rightarrow B$, "f maps elements in the set A to elements in set B"
+        \item Derivatives: a linear approximation to a function at a certain point
+        \begin{itemize}
+            \item $Df(x) = \underset{h \rightarrow 0}{lim} \frac{f(x + h) - f(x)}{h}$ for $f$ from $\mathbb{R} \rightarrow \mathbb{R}$
+            \item Suppose $f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$
+            \begin{itemize}
+                \item $f$ is differentiable at x if there exists a matrix $Df(x) \in \mathbb{R}^{m x n}$
+                \item $Df(x)$ is called the derivative (or \textbf{Jacobian}) of the function
+                \item $Df(x)_{ij} = \partial \frac{f_{i}(x)}{\partial x_{j}}$ for $i = 1 ... m, j = 1, ..., n$
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+    \section{Search for Optimization}
+    \begin{itemize}
+        \item Consider non-convex continuous problems and problems where variables are discrete
+        \item A graph is a set of vertices $V$ and edges $E$
+        \item Graphs capture the idea of adjacency and we can use adjacent relationships to search the graph for a certain node or path between nodes
+        \item In optimization, adjacency between nodes can be used to determine what solutions to explore next
+        \item e.g. n-queens
+        \item Local search algorithms: used to search graph for best solution
+        \begin{itemize}
+            \item To solve optimization problems using search:
+            \begin{itemize}
+                \item Define set of possible solutions (nodes)
+                \item Define adjacency between solutions (edges)
+                \item Define cost/value/fitness function for nodes
+            \end{itemize}
+            \item Descent methods are a form of local search algorithms
+            \item Hill climbing: consider next possible moves and pick one that improves the cost function the most
+            \begin{itemize}
+                \item Drawbacks: depending on initial state, can get stuck in local optima
+                \item Can try running algorithm some number of times with random start state. If you run enough times, you will get the answer (in the limit). Takes a lot of time, no guarantees on when to terminate.
+            \end{itemize}
+            \item Simulated Annealing
+            \begin{itemize}
+                \item Explicitly inject variability into search process
+                \item More variability at beginning of search and decrease this over time (don't want to move away from good solution)
+                \item Using a temperature schedule
+            \end{itemize}
+        \end{itemize}
+        \item Evolutionary Algorithms
+        \begin{itemize}
+            \item Genetic algorithms: inspired by process of evolution in nature
+            \item Operators:
+            \begin{itemize}
+                \item Crossover: new state generated from two parent states
+                \item Mutations: Randomly change component of state
+            \end{itemize}
+        \end{itemize}
+        \begin{algorithm}[H]
+            \SetAlgoLined
+            1. Initialize population (k random states)\;
+            2. Select a set of parents from population for mating (based on fitness)\;
+            3. Generate children via crossover of parents\;
+            4. Mutation (add randomness to children)\;
+            5. Evaluate fitness of children\;
+            6. Replace worst parent with children\;
+            7. Repeat from step 2
+            \caption{Genetic algorithms}
+        \end{algorithm}
+    \end{itemize}
+
+    \section{Search for a Path (used in motion planning)}
+    \begin{itemize}
+        \item Formulating a path search problem
+        \begin{itemize}
+            \item State space
+            \item Successor Function:
+            \item Actions
+            \item Action Cost
+            \item Goal Test
+        \end{itemize}
+        \item Tree Search Algorithms
+        \begin{itemize}
+            \item Completeness: does it always find a solution if one exists?
+            \item Optimality: does it always find the least-cost solution?
+            \item two types of complexity:
+            \begin{itemize}
+                \item Time complexity
+                \item Space complexity
+            \end{itemize}
+            \item Measured in terms of
+            \begin{itemize}
+                \item $b$: maximum branching factor of search tree
+                \item $d$: depth of least-cost solution
+                \item $m$: maximum depth of state space
+            \end{itemize}
+            \item Breadth-first search
+            \item Depth-first search
+            \item Best-first search
+            \item A* Search
+            \item Variants of A*
+            \begin{itemize}
+                \item Dynamic A* (D*), Lifelong Planning A*, Anytime Repairing A*
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{document}

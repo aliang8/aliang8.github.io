@@ -1,0 +1,66 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{K-means}
+
+\section{Hierarchical clustering}
+
+\section{Nonparametric clustering}
+
+  \subsection{Dirichlet processes}
+  \begin{itemize}
+    \item DD is a distribution of distributions, each sample from DD is a categorial distribution over K categories
+    \item DD is parameterized by $G_{0}$ and $\alpha$ a scale factor
+    \item When $\alpha$ is large, samples from $DD(\alpha \cdot G_{0})$ will be close to $G_{0}$
+    \item Dirichlet process is used to cluster data \textit{without specifying the number of clusters in advance}
+    \item nonparametric because its dimensionality is infinite
+    \item exhibits a rich-gets-richer property
+    \item observations are probabilitistically assigned to clusters based on the $\#$ of observations in that cluster
+    \begin{equation*}
+      P(cluster=k) = \frac{n_{k}}{\alpha + n - 1}
+    \end{equation*}
+    \begin{equation*}
+      P(cluster=new) = \frac{\alpha}{\alpha + n - 1}
+    \end{equation*}
+    \item \href{http://phyletica.org/dirichlet-process/}{DP tutorial}
+    \item \href{http://blog.echen.me/2012/03/20/infinite-mixture-models-with-nonparametric-bayes-and-the-dirichlet-process/}{Another DP tutorial}
+  \end{itemize}
+  \subsection{Chinese restaurant process}
+  \begin{itemize}
+    \item Restaurant starts off empty
+    \item First person selects a group
+    \item Second person sits at a new table with probability $\frac{\alpha}{\alpha + 1}$ and sits with the first person with probability $\frac{1}{\alpha + 1}$
+  \end{itemize}
+  \subsection{Polya Urn Model}
+  \begin{itemize}
+    \item Same model as CRP
+    \item urn contains $\alpha G_{0}$ balls of color x for each x
+    \item at each timestep, draw a ball from the urn and drop it back into the urn plus another ball of the same color
+    \item CRP specifies only a distribution over partitions, but does not assign parameters to each group whereas the Polya Urn Model does both
+  \end{itemize}
+  \subsection{Stick-breaking construction}
+  \begin{itemize}
+    \item Figure out the proportion of points that fall into a particular group
+    \item Start with a stick of length 1
+    \item Generate a random variable $\beta_{1} \sim Beta(1, \alpha)$ and break off the stick at $\beta_{1}$
+    \item Take the stick to the right and repeat
+    \item Stick-breaking is CRP or Polya Urn from a different perspective
+  \end{itemize}
+
+
+
+  \subsection{Gibbs sampling}
+  \begin{itemize}
+    \item
+  \end{itemize}
+
+  \subsection{Metropolis Hastings}
+
+  \begin{itemize}
+    \item CRP, Stick-breaking, and Polya Urn are all \textit{sequential} models for generating groups, there are also \textit{parallel} models for generating groups
+    \item Bayesian clustering algorithms often rely on the Dirichlet Distribution (DD) to encode prior information about cluster assignments
+    \item Streaming data
+  \end{itemize}
+
+\end{document}

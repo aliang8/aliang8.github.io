@@ -1,0 +1,83 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+    How do we transform the data to get rid of "unimportant" dimensions/rotations?
+    \section{Definitions}
+    \begin{itemize}
+        \item \textbf{Variance} is the measure of deviation from the mean for points in one dimension
+        \item \textbf{Covariance} is the measure of how much each dimensions vary from the mean with respect to each other
+        \item Covariance is measured between pairs of dimensions to see their correlation
+        \item Magnitude of covariance is not as important as sign
+        \item + covariance means both dimensions increase or decrease together
+        \item - covariance means one increases while the other decreases
+        \item covariance = 0 means the dimensions are independent of one another
+        \item Estimate covariance matrix:
+        \begin{enumerate}
+            \item Subtract the mean of the datapoints from every column of X
+            \item $Q = \frac{XX^{T}}{n - 1}$
+        \end{enumerate}
+        \item Eigenvalue problem
+        \begin{itemize}
+            \item A: $n \times n$ matrix
+            \item v: $n \times 1$ non-zero vector
+            \item $\lambda$: scalar
+            \item $Av = \lambda v$
+        \end{itemize}
+        \item A value of $\lambda$ for which this equation has a solution is called an \textbf{eigenvalue} of A
+        \item A $v$ corresponding to this value of $\lambda$ is called an \textbf{eigenvector} of A
+        \item All eigenvectors of a matrix are \textit{orthgonal} to each other
+        \item Eigenvectors of a covariance matrix
+        \begin{itemize}
+            \item Eigenvectors of Q with the largest eigenvalues correspond to dimensions that have the strongest correlation in the dataset
+            \item Eigenvectors of Q are \textbf{principle components}
+        \end{itemize}
+    \end{itemize}
+
+    \section{Singular Value Decomposition (SVD)}
+    \begin{itemize}
+        \item SVD decomposes any matrix M into $M = U \Sigma V^{T}$
+        \item The columns of U are the eigenvectors of $MM^{T}$
+        \item $\Sigma$ is a diagonal matrix where the elements of the diagonal are the $\sqrt{eigenvalues}$ of $M^{T}M$ and $MM^{T}$ in decreasing order of magnitude
+        \item Columns of V are the eigenvectors of $M^{T}M$
+        \item Columns of U and V are \textbf{orthonormal} meaning each column vector has unit magnitude and orthogonal to all other column vectors.
+    \end{itemize}
+
+    \section{Principle Component Analysis (PCA)}
+    \begin{itemize}
+        \item We care about the variance of the data
+        \item High variance = high importance
+        \item PCA is a technique used
+        \begin{itemize}
+            \item Remove rotation in a dataset
+            \item Reduce dimensionality of a dataset
+        \end{itemize}
+        \item PCA computes linear transformation that chooses a new coordinate system for the data set such that the greatest variance by any projection of the data set comes to lie on the first axis (called the \textbf{first principal component})
+    \end{itemize}
+
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        1. Given dataset X\;
+        2. Compute mean of X\;
+        3. X = X - $\mu$ (subtract mean from every point in X)\;
+        4. Compute covariance Q of X\;
+        5. Take the SVD of $Q = U\Sigma V^{T}$\;
+        6. $X_{new} = V^{T}X$\;
+        \caption{PCA}
+    \end{algorithm}
+    \subsection{Limitations of PCA}
+    \begin{itemize}
+        \item PCA is sensitive to the scaling of the variables
+        \item ** need to review this part
+    \end{itemize}
+    \subsection{Applications of PCA}
+    \begin{itemize}
+        \item Eigenfaces: analysis of database of face images
+        \item Instead of using all the pixel values, we can represent a face as a weighted combination of eigenfaces
+        \item SVD takes a long time to run for high-dimensional data
+        \item Can be used for video compression
+        \item Many high-dimensional datasets have hidden low-dimensional structure
+    \end{itemize}
+
+
+\end{document}

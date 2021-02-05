@@ -1,0 +1,37 @@
+\begin{itemize}
+  \item Autonomous manipulation has manyyy applications: hospitals, elder and child care, factories, outer space, restaurants, service, and home
+  \item robots perceive latent object properties by observing outcome of manipulation - interactive perception
+  \item interactive perception is the basis for self-supervised learning
+  \item manipulation tasks exhibits highly hierarchical structure!!
+  \item this structure enables modularity for skills to be mixed and matched together
+  \item tasks that are similar enough to not be considered unique skills is known as a task family
+  \item exploit similarity between tasks to perform them more efficiently
+  \item object-centric representations
+  \item ability to handle novel concepts and unforeseen situations, robot must generalize knowledge
+  \item robot learning can be formulated as an MDP
+  \item common to model environment as a collection of object states
+  \item skills are modelled after the options framework (HRL framework)
+  \item option, $o = I_{o}, \beta_{o}, \pi_{o}$
+  \begin{conditions}
+    I_{o} & initiation set, indicator function describing when the option may be executed \\
+    \beta_{o} & termination condition, describes the probability that an option finishes when reaching state $s$ \\
+    \pi_{o} & option policy, maps states to actions, motor skill controller
+  \end{conditions}
+  \item discovering reusable skills
+  \item robot needs to learn policies as a function of a context vector $\tau$ which encodes extra task-specific information (possibly factored into object)
+  \item representations should capture within- and across task variations
+  \item types of object variations: pose, shape, material properties, interactions / relative properties
+  \item object models can be hierarchical, geometric and non-geometric properties
+  \item point-level representations: point cloud, pixel, voxels
+  \item they are flexible, each element can be associated with additional info
+  \item part-level representations: can lead to better generalization, objects have similar parts that afford similar interactions
+  \item object-level representations: define relative poses, forces, and constraints between objects
+  \item can also be used to define different types of interactions or relations between objects
+  \item passive perception (perceiving environment without exploiting physical interactions), useful for estimating position, shape, and material properties
+  \item interactive perception (robot physically interacts with surroundings), e.g. push object to estimate its constraints or weight, estimate dynamic properties
+  \item allows robot to reduce uncertainty
+  \item robots combine multiple sensor modalities (vision + touch and haptics) and incorporate task information (e.g. instructions)
+  \item transition models can be reused between different tasks, but the new task needs to share the same state, action, and context spaces
+  \item transfer depends on overlap between data distributions
+  \item covariate shift (input varies) and dataset shift (input and output varies)
+\end{itemize}

@@ -1,0 +1,17 @@
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'main.blg'
+[98] biber-darwin:322> INFO - === Tue Dec 29, 2020, 00:31:32
+[119] Biber.pm:415> INFO - Reading 'main.bcf'
+[225] Biber.pm:943> INFO - Found 2 citekeys in bib section 0
+[247] Biber.pm:4256> INFO - Processing section 0
+[247] Utils.pm:75> INFO - Globbing data source './resources/bib/references.bib'
+[248] Utils.pm:91> INFO - Globbed data source './resources/bib/references.bib' to ./resources/bib/references.bib
+[267] Biber.pm:4455> INFO - Looking for bibtex format file './resources/bib/references.bib' for section 0
+[279] bibtex.pm:1653> INFO - LaTeX decoding ...
+[287] bibtex.pm:1471> INFO - Found BibTeX data source './resources/bib/references.bib'
+[328] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[328] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[328] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[328] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[337] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[339] bbl.pm:755> INFO - Output to main.bbl

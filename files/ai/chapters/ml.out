@@ -1,0 +1,27 @@
+\BOOKMARK [1][-]{section.0.1}{Supervised Learning}{}% 1
+\BOOKMARK [1][-]{section.0.2}{Weighted Least Squares}{}% 2
+\BOOKMARK [1][-]{section.0.3}{Regression}{}% 3
+\BOOKMARK [1][-]{section.0.4}{Perception}{}% 4
+\BOOKMARK [1][-]{section.0.5}{Naive Bayes}{}% 5
+\BOOKMARK [1][-]{section.0.6}{Neural Networks}{}% 6
+\BOOKMARK [1][-]{section.0.7}{Backpropagation}{}% 7
+\BOOKMARK [1][-]{section.0.8}{Bias-variance}{}% 8
+\BOOKMARK [1][-]{section.0.9}{Regularization}{}% 9
+\BOOKMARK [1][-]{section.0.10}{Expectation Maximization}{}% 10
+\BOOKMARK [1][-]{section.0.11}{PCA}{}% 11
+\BOOKMARK [1][-]{section.0.12}{Support Vector Machines}{}% 12
+\BOOKMARK [1][-]{section.0.13}{Precision v.s. Recall}{}% 13
+\BOOKMARK [1][-]{section.0.14}{Information Theory}{}% 14
+\BOOKMARK [2][-]{subsection.0.14.1}{Entropy}{section.0.14}% 15
+\BOOKMARK [2][-]{subsection.0.14.2}{Cross Entropy}{section.0.14}% 16
+\BOOKMARK [2][-]{subsection.0.14.3}{KL Divergence}{section.0.14}% 17
+\BOOKMARK [2][-]{subsection.0.14.4}{Mutual Information}{section.0.14}% 18
+\BOOKMARK [1][-]{section.0.15}{Decision Trees}{}% 19
+\BOOKMARK [1][-]{section.0.16}{K Nearest Neighbors}{}% 20
+\BOOKMARK [1][-]{section.0.17}{Logistic Regression}{}% 21
+\BOOKMARK [1][-]{section.0.18}{Gradient Descent}{}% 22
+\BOOKMARK [1][-]{section.0.19}{Optimizers}{}% 23
+\BOOKMARK [1][-]{section.0.20}{Weak supervision}{}% 24
+\BOOKMARK [1][-]{section.0.21}{Transfer Learning}{}% 25
+\BOOKMARK [1][-]{section.0.22}{Graph of various useful functions}{}% 26
+\BOOKMARK [1][-]{section.0.23}{ML Tips and Advice}{}% 27
