@@ -7,16 +7,187 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anthony Liang</title>
   <meta name="author" content="Anthony Liang">
-  <meta name="description" content="Robotics Masters Student, University of Michigan">
+  <meta name="description" content="Ph.D. Student at University of Southern California, specializing in meta-reinforcement learning and generalist agents">
   <link rel="icon" type="image/png" href="img/prof_pic.jpg">
   <link rel="stylesheet" href="stylesheets/timeline.css" />
   <link rel="stylesheet" href="css/mystyles.css">
   <link rel="stylesheet" href="css/helpers.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <base target="_blank">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script type="text/javascript" src="js/nav.js"></script>
   <script type="text/javascript" src="js/slideshow.js"></script>
+  <style>
+    :root {
+      --primary-color: #4a4a4a;
+      --secondary-color: #3273dc;
+      --background-light: #f5f5f5;
+      --text-color: #363636;
+      --link-color: #3273dc;
+      --hover-color: #2366d1;
+    }
+
+    body {
+      font-family: 'Inconsolata', monospace;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: white;
+      box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    }
+
+    .navbar-item {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-item:hover {
+      color: var(--hover-color) !important;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+      padding: 1rem 0;
+    }
+
+    .section {
+      padding: 2rem 1.5rem;
+    }
+
+    .section.has-background-light {
+      padding: 1rem 1.5rem;
+    }
+
+    .section.has-background-light .content {
+      margin-bottom: 0;
+    }
+
+    .section.has-background-light p {
+      margin-bottom: 0.75rem;
+    }
+
+    .section.has-background-light p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section.has-background-light .block {
+      margin-bottom: 0.75rem;
+    }
+
+    .image.is-square {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    .image.is-square img {
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .image.is-square img:hover {
+      transform: scale(1.02);
+    }
+
+    .text-link {
+      color: var(--link-color);
+      transition: color 0.3s ease;
+    }
+
+    .text-link:hover {
+      color: var(--hover-color);
+    }
+
+    .table {
+      background-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .table td {
+      padding: 0.75rem 0.5rem;
+      vertical-align: middle;
+    }
+
+    .button.is-light.is-link {
+      background-color: #f5f5f5;
+      color: var(--link-color);
+      border: 1px solid #dbdbdb;
+      transition: all 0.3s ease;
+    }
+
+    .button.is-light.is-link:hover {
+      background-color: var(--link-color);
+      color: white;
+      border-color: var(--link-color);
+    }
+
+    .columns {
+      margin-bottom: 2rem;
+    }
+
+    .columns img {
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .columns img:hover {
+      transform: scale(1.02);
+    }
+
+    .hr {
+      background-color: #dbdbdb;
+      height: 1px;
+      margin: 2rem auto;
+    }
+
+    .social-icons a {
+      margin: 0 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons i {
+      font-size: 1.25rem;
+      color: var(--primary-color);
+    }
+
+    .social-icons a:hover i {
+      color: var(--hover-color);
+    }
+
+    .publication-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .publication-authors {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .publication-venue {
+      color: var(--secondary-color);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .hero-body {
+      padding: 1rem 1.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .section {
+        padding: 2rem 1rem;
+      }
+      
+      .hero {
+        padding: 2rem 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -53,91 +224,81 @@
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
-        <h1 class="title is-2">
-          Anthony Liang
-        </h1>
-        <h2 class="subtitle">
-          Ph.D. Student, University of Southern California
-        </h2>
-      </div>
-    </div>
-    </a>
-  </section>
-
-  <section class="section has-background-light">
-    <div class="container is-max-desktop">
-      <div class="tile is-ancestor">
-        <div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child">
-            <figure class="image is-square block">
-              <img src="img/prof_pic.jpg">
+        <div class="columns is-vcentered">
+          <div class="column is-3">
+            <figure class="image block" style="max-width: 150px; margin: 0 auto;">
+              <img src="img/prof_pic.jpg" alt="Anthony Liang's profile picture">
             </figure>
-            <div class="has-text-centered">
-              <a class="p-2 text-decoration-none" href="https://github.com/aliang8/">
-                <img width="30" height="30" src="img/github.png">
+          </div>
+          <div class="column is-9">
+            <h1 class="title is-2">Anthony Liang</h1>
+            <h2 class="subtitle">Ph.D. Student, University of Southern California</h2>
+            <div class="social-icons mt-3">
+              <a class="p-2 text-decoration-none" href="https://github.com/aliang8/" aria-label="GitHub Profile">
+                <i class="fab fa-github"></i>
               </a>
-              <a class="p-2 text-decoration-none" href="https://twitter.com/@Anthony66108836/">
-                <img width="30" height="30" src="img/twitter.png">
+              <a class="p-2 text-decoration-none" href="https://twitter.com/@Anthony66108836/" aria-label="Twitter Profile">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a class="p-2 text-decoration-none" href="mailto:anthony.liang@usc.edu" aria-label="Email">
+                <i class="fas fa-envelope"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="tile is-1 is-parent">
-        </div>
-        <div class="tile is-7 is-parent">
-          <div class="tile is-child">
-            <p class="block">
-              I am a rising fourth year Ph.D. student at the University of Southern California coadvised by
-              and <a href="https://ebiyik.github.io/" class="text-link">Erdem Bıyık</a>
-              (<a href="https://liralab.usc.edu/" class="text-link">LiRA Lab</a>) and <a href="https://stephentu.github.io/" class="text-link">Stephen Tu</a>. 
-              I am interested in meta-reinforcement learning (RL) and building generalist agents capable of quickly adapting to new, unseen scenarios. 
-              I was a Student Researcher at Google working with 
-              <a href="https://research.google/people/107258/" class="text-link">Chih-wei Hsu</a>,
-              <a href="https://scholar.google.com/citations?user=BFlpS-8AAAAJ&hl=en" class="text-link">Yinlam Chow</a> and 
-              <a href="https://scholar.google.co.il/citations?user=pldrn8IAAAAJ&hl=en" class="text-link">Guy Tennenholtz</a>
-              on sequential-decision making with dynamic latent contexts. 
-              I previously interned at Meta Reality Lab with <a href="https://scholar.google.com/citations?user=_diIX2kAAAAJ&hl=en" class="text-link">Paul Crook</a> 
-              and <a href="https://andreamad8.github.io/" class="text-link">Andrea Matto</a> working on task-oriented dialogue systems using LLMs.
-            </p>
-            <p class="block">
-              Prior to joining USC, I spent a summer (during the pandemic) as a visiting scholar at CMU working with
-              <a href=http://www.cs.cmu.edu/~cliu6/ class="text-link">Changliu Liu</a>.
-              I graduated from the University of Michigan with a Masters in Robotics and Bachelors in Computer
-              Science where I worked with Wilka Carvalho and <a href="https://web.eecs.umich.edu/~honglak/"
-                class="text-link">Honglak Lee</a>.
-              I had the pleasure to intern at Amazon, Invisible.ai, Google Ads, Luminar and Socratic.
-            </p>
+      </div>
+    </div>
+  </section>
 
-            <p>
-              Feel free to say hi: <b>anthony dot liang at usc dot edu</b>
-            </p>
-          </div>
-        </div>
+  <section class="section has-background-light">
+    <div class="container is-max-desktop">
+      <div class="content">
+        <p class="block">
+          I am a fourth year Ph.D. student at the University of Southern California coadvised by
+          <a href="https://ebiyik.github.io/" class="text-link">Erdem Bıyık</a>
+          (<a href="https://liralab.usc.edu/" class="text-link">LiRA Lab</a>) and <a href="https://stephentu.github.io/" class="text-link">Stephen Tu</a>. 
+          I am interested in meta-reinforcement learning (RL) and building generalist agents capable of quickly adapting to new, unseen scenarios. 
+          I was previously a Student Researcher at Google working with 
+          <a href="https://research.google/people/107258/" class="text-link">Chih-wei Hsu</a>,
+          <a href="https://scholar.google.com/citations?user=BFlpS-8AAAAJ&hl=en" class="text-link">Yinlam Chow</a> and 
+          <a href="https://scholar.google.co.il/citations?user=pldrn8IAAAAJ&hl=en" class="text-link">Guy Tennenholtz</a>
+          on sequential-decision making with dynamic latent contexts. 
+          I also interned at Meta Reality Lab working on task-oriented dialogue systems using LLMs.
+        </p>
+        <p class="block">
+          Prior to joining USC, I spent a summer (during the pandemic) as a visiting scholar at CMU working with
+          <a href="http://www.cs.cmu.edu/~cliu6/" class="text-link">Changliu Liu</a>.
+          I graduated from the University of Michigan with a Masters in Robotics and Bachelors in Computer
+          Science where I worked with <a href="https://cogscikid.com/" class="text-link">Wilka Carvalho</a> and <a href="https://web.eecs.umich.edu/~honglak/" class="text-link">Honglak Lee</a>.
+          I had the pleasure to intern at Amazon, Invisible.ai, Google Ads, Luminar and Socratic.
+        </p>
+        <p>Feel free to say hi: <b>anthony dot liang at usc dot edu</b></p>
       </div>
     </div>
   </section>
 
   <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
 
-  <section class="section">
+  <section class="section" id="news">
     <div class="container is-max-desktop">
-      <h1 class="title is-size-4">
-        News
-      </h1>
+      <h2 class="title is-size-4">News</h2>
       <table class="table is-narrow is-hoverable is-fullwidth is-completely-borderless">
-        <!-- table content -->
         <tbody>
-          <tr></tr>
+          <tr>
+            <td class="has-text-grey">May 2025</td>
+            <td>Starting Research Intern with the Google Gemini team in New York!</td>
+          </tr>
+          <tr>
             <td class="has-text-grey">Sept 2024</td>
             <td><a href="https://arxiv.org/abs/2402.15957">DynaMITE-RL</a> accepted to NeurIPS 2024 as a poster.</td>
           </tr>
           <tr>
             <td class="has-text-grey">June 2024</td>
-            <td><a href="https://openreview.net/pdf?id=M1v4y0rbFS">PromptDTLA</a> accepted to ICML 2024 ICL Workshop and <a href="https://arxiv.org/abs/2402.15957">DynaMITE-RL</a> accepted to AutoRL Workshop  </td>
+            <td><a href="https://openreview.net/pdf?id=M1v4y0rbFS">PromptDTLA</a> accepted to ICML 2024 ICL Workshop and <a href="https://arxiv.org/abs/2402.15957">DynaMITE-RL</a> accepted to AutoRL Workshop</td>
           </tr>
           <tr>
             <td class="has-text-grey">June 2024</td>
-            <td><a href="https://arxiv.org/abs/2403.10940">ViSaRL</a> accepted to International Conference on Intelligent Robots and Systems (IROS 2024) </td>
+            <td><a href="https://arxiv.org/abs/2403.10940">ViSaRL</a> accepted to International Conference on Intelligent Robots and Systems (IROS 2024)</td>
           </tr>
           <tr>
             <td class="has-text-grey">May 2023</td>
@@ -157,8 +318,7 @@
           </tr>
           <tr>
             <td class="has-text-grey">Oct 2020</td>
-            <td>Preprint out on arXiv: <a class="text-link" href="https://arxiv.org/abs/2010.15195">Reinforcement
-                Learning for Sparse-Reward Object-Interaction Tasks</a></td>
+            <td>Preprint out on arXiv: <a class="text-link" href="https://arxiv.org/abs/2010.15195">Reinforcement Learning for Sparse-Reward Object-Interaction Tasks</a></td>
           </tr>
         </tbody>
       </table>
@@ -169,23 +329,42 @@
 
   <section class="section" id="publications">
     <div class="container is-max-desktop">
-      <h1 class="title is-size-4">
-        Publications
-      </h1>
+      <h2 class="title is-size-4 has-text-centered mb-6">Publications</h2>
       <div class="block"></div>
+
+      <h3 class="title is-size-5 mb-4">Conference Papers</h3>
       
       <div class="columns py-4">
         <div class="column is-one-third">
-          <img src="img/clam.png" alt="clam">
+          <img src="img/hands.png" alt="">
         </div>
         <div class="column">
-          <p class="has-text-weight-bold">CLAM: Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations<br>
+          <p class="publication-title has-text-weight-bold">
+            <img src="img/hand_logo_emoji.png" alt="hand emoji" style="height: 1.2em; vertical-align: middle; margin-right: 0.3em;">
+            HAND Me the Data: Fast Robot Adaptation via Hand Path Retrieval
           </p>
-          <p><b style='color:purple'>Anthony Liang*</b>, Pavel Czempin*, Matthew Hong, Yutai Zhou, Erdem Bıyık, Stephen Tu</p>
-          <p><em>In Submission to ICML 2025</em></p>
-          <br>
+          <p class="publication-authors">
+            Matthew Hong*, <b style='color:purple'>Anthony Liang*</b>, Kevin Kim, Harshitha Rajaprakash,<br>
+            Jesse Thomason†, Erdem Bıyık†, Jesse Zhang†
+          </p>
+          <p class="publication-venue"><em>In Submission to CoRL 2025</em></p>
           <div class="buttons are-small has-text-weight-medium">
             <a class="button is-light is-link" href="">coming soon</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns py-4">
+        <div class="column is-one-third">
+          <img src="img/clam.png" alt="CLAM paper thumbnail">
+        </div>
+        <div class="column">
+          <p class="publication-title has-text-weight-bold">CLAM: Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations</p>
+          <p class="publication-authors"><b style='color:purple'>Anthony Liang*</b>, Pavel Czempin*, Matthew Hong, Yutai Zhou, Erdem Bıyık, Stephen Tu</p>
+          <p class="publication-venue"><em>In Submission to CoRL 2025</em></p>
+          <div class="buttons are-small has-text-weight-medium">
+            <a class="button is-light is-link" href="https://arxiv.org/abs/2505.04999">arxiv</a>
+            <a class="button is-light is-link" href="https://clamrobot.github.io/">website</a>
           </div>
         </div>
       </div>
@@ -195,11 +374,9 @@
           <img src="img/rhodes.png" alt="rhodes">
         </div>
         <div class="column">
-          <p class="has-text-weight-bold">RHODES: Reducing Human Oversight via Disagreement and Exploration for Safe Reinforcement Learning <br>
-          </p>
-          <p>Jaiv Doshi*, <b style='color:purple'>Anthony Liang*</b>, Yigit Korkmaz, Erdem Bıyık</p>
-          <p><em>In Submission to ICML 2025</em></p>
-          <br>
+          <p class="publication-title has-text-weight-bold">RHODES: Reducing Human Oversight via Disagreement and Exploration for Safe Reinforcement Learning</p>
+          <p class="publication-authors">Jaiv Doshi*, <b style='color:purple'>Anthony Liang*</b>, Yigit Korkmaz, Erdem Bıyık</p>
+          <p class="publication-venue"><em>In Submission to ICML 2025</em></p>
           <div class="buttons are-small has-text-weight-medium">
             <a class="button is-light is-link" href="">coming soon</a>
           </div>
@@ -211,12 +388,9 @@
           <img src="img/dynamite-rl.png" alt="dynamite-rl">
         </div>
         <div class="column">
-          <p class="has-text-weight-bold">DynaMITE-RL: A Dynamic Model for Improved Temporal Meta-Reinforcement Learning<br>
-          </p>
-          <p><b style='color:purple'>Anthony Liang</b>, Guy Tennenholtz, Chih-wei Hsu, Yinlam Chow, Erdem Bıyık, Craig Boutilier</p>
-          <p><em>AutoRL Workshop at ICML 2024</em></p>
-          <p><em>Accepted to NeurIPS 2024 (25.8% Acceptance Rate)</em></p>
-          <br>
+          <p class="publication-title has-text-weight-bold">DynaMITE-RL: A Dynamic Model for Improved Temporal Meta-Reinforcement Learning</p>
+          <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Guy Tennenholtz, Chih-wei Hsu, Yinlam Chow, Erdem Bıyık, Craig Boutilier</p>
+          <p class="publication-venue"><em>NeurIPS 2024 (25.8% Acceptance Rate)</em></p>
           <div class="buttons are-small has-text-weight-medium">
             <a class="button is-light is-link" href="https://docs.google.com/presentation/d/1B0tSChHa6WKbnf5wCT1bVQ1nDCh2LB4jSM9ajX2T4KY/edit?usp=sharing">slides</a>
             <a class="button is-light is-link" href="https://arxiv.org/abs/2402.15957">arxiv</a>
@@ -226,32 +400,12 @@
 
       <div class="columns py-4">
         <div class="column is-one-third">
-          <img src="img/prompt-dtla.png" alt="prompt-dtla">
-        </div>
-        <div class="column">
-          <p class="has-text-weight-bold">In-Context Generalization to New Tasks From Unlabeled Observation Data<br>
-          </p>
-          <p><b style='color:purple'>Anthony Liang</b>, Pavel Czempin, Yutai Zhou, Stephen Tu, Erdem Bıyık</p>
-          <p><em>1st ICL Workshop at ICML 2024</em></p>
-          <br>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://openreview.net/pdf?id=M1v4y0rbFS">paper</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="columns py-4">
-        <div class="column is-one-third">
           <img src="img/visarl.png" alt="visarl">
         </div>
         <div class="column">
-          <p class="has-text-weight-bold">ViSaRL: Visual Reinforcement Learning Guided by Human Saliency<br>
-          </p>
-          <p><b style='color:purple'>Anthony Liang</b>, Jesse Thomason, Erdem Bıyık</p>
-          <p><em>Accepted to International Conference on Intelligent Robots and Systems (IROS 2024)</em></p>
-          <p><em>ICRA 2023 Pretraining for Robotics Workshop (PT4R)</em></p>
-          <p><em>Spotlight Talk (Top 15% of submissions)</em></p>
-          <br>
+          <p class="publication-title has-text-weight-bold">ViSaRL: Visual Reinforcement Learning Guided by Human Saliency</p>
+          <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Jesse Thomason, Erdem Bıyık</p>
+          <p class="publication-venue"><em>International Conference on Intelligent Robots and Systems (IROS 2024)</em></p>
           <div class="buttons are-small has-text-weight-medium">
             <a class="button is-light is-link" href="https://arxiv.org/abs/2403.10940">arxiv</a>
             <a class="button is-light is-link" href="https://aliang8.github.io/visarl_site/">website</a>
@@ -261,39 +415,49 @@
 
       <div class="columns py-4">
         <div class="column is-one-third">
-          <img src="img/transformer_adapters.png" alt="transformer_adapters">
+          <img src="img/load.png" alt="load">
         </div>
         <div class="column">
-          <p class="has-text-weight-bold">Transformer Adapters for Robot Learning<br>
-          </p>
-          <p><b style='color:purple'>Anthony Liang</b>, Ishika Singh, Karl Pertsch, Jesse Thomason</p>
-          <p><em>CoRL 2022 Workshop on Pretraining for Robot Learning</em></p>
-          <p><em>Spotlight Talk</em></p>
-          <br>
+          <p class="publication-title has-text-weight-bold">Reinforcement Learning for Sparse-Reward Object-Interaction Tasks in First-person Simulated 3D Environments</p>
+          <p class="publication-authors">Wilka Carvalho, <b style='color:purple'>Anthony Liang</b>, Kimin Lee, Sungryull Sohn, Honglak Lee, Richard L. Lewis, Satinder Singh</p>
+          <p class="publication-venue"><em>International Joint Conference on Artificial Intelligence 2021</em></p>
           <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://openreview.net/pdf?id=H--wvRYBmF">paper</a>
+            <a class="button is-light is-link" href="https://arxiv.org/abs/2010.15195">arxiv</a>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="title is-size-5 mb-4 mt-6">Workshop Papers</h3>
+
+      <div class="columns py-4">
+        <div class="column is-one-third">
+          <img src="img/prompt-dtla.png" alt="prompt-dtla">
+        </div>
+        <div class="column">
+          <p class="publication-title has-text-weight-bold">In-Context Generalization to New Tasks From Unlabeled Observation Data</p>
+          <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Pavel Czempin, Yutai Zhou, Stephen Tu, Erdem Bıyık</p>
+          <p class="publication-venue"><em>1st ICL Workshop at ICML 2024</em></p>
+          <div class="buttons are-small has-text-weight-medium">
+            <a class="button is-light is-link" href="https://openreview.net/pdf?id=M1v4y0rbFS">paper</a>
           </div>
         </div>
       </div>
 
       <div class="columns py-4">
         <div class="column is-one-third">
-          <img src="img/load.png" alt="load">
+          <img src="img/transformer_adapters.png" alt="transformer_adapters">
         </div>
         <div class="column">
-          <p class="has-text-weight-bold">Reinforcement Learning for Sparse-Reward Object-Interaction Tasks in
-            First-person Simulated 3D Environments<br>
-          </p>
-          <p>Wilka Carvalho, <b style='color:purple'>Anthony Liang</b>, Kimin Lee, Sungryull Sohn, Honglak Lee, Richard
-            L. Lewis, Satinder Singh</p>
-          <p><em>International Joint Conference on Artificial Intelligence 2021</em></p>
-          <p><em>NeurIPS Deep Reinforcement Learning 2020 Workshop</em></p>
-          <br>
+          <p class="publication-title has-text-weight-bold">Transformer Adapters for Robot Learning</p>
+          <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Ishika Singh, Karl Pertsch, Jesse Thomason</p>
+          <p class="publication-venue"><em>CoRL 2022 Workshop on Pretraining for Robot Learning</em></p>
+          <p class="publication-venue"><em>Spotlight Talk</em></p>
           <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://arxiv.org/abs/2010.15195">arxiv</a>
+            <a class="button is-light is-link" href="https://openreview.net/pdf?id=H--wvRYBmF">paper</a>
           </div>
         </div>
       </div>
+    </div>
   </section>
 
   <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
@@ -305,30 +469,23 @@
 
   <section class="section" id="teaching">
     <div class="container is-max-desktop">
-      <h1 class="title is-size-4">
-        Teaching
-      </h1>
+      <h2 class="title is-size-4">Teaching</h2>
       <table class="table is-narrow is-hoverable is-fullwidth is-completely-borderless">
-        <!-- table content -->
         <tbody>
           <tr>
-            <td><a href="https://liralab.usc.edu/csci699/">CSCI 699: Robot Learning</a>
-            </td>
+            <td><a href="https://liralab.usc.edu/csci699/">CSCI 699: Robot Learning</a></td>
             <td class="has-text-grey" style="float: right;">Fall 2024</td>
           </tr>
           <tr>
-            <td><a href="https://jessethomason.com/class_material/csci_499_nlp_for_interactive_ai_fall_2022.pdf">CSCI 499: Interactive Natural Language Processing</a>
-            </td>
+            <td><a href="https://jessethomason.com/class_material/csci_499_nlp_for_interactive_ai_fall_2022.pdf">CSCI 499: Interactive Natural Language Processing</a></td>
             <td class="has-text-grey" style="float: right;">Fall 2023</td>
           </tr>
           <tr>
-            <td><a href="https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2021/">EECS 442: Computer Vision</a>
-            </td>
+            <td><a href="https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2021/">EECS 442: Computer Vision</a></td>
             <td class="has-text-grey" style="float: right;">Winter 2021</td>
           </tr>
           <tr>
-            <td><a href="https://web.eecs.umich.edu/~dmitryb/courses/fall2020iar/index.html">EECS 498: Algorithmic
-                Robotics</a></td>
+            <td><a href="https://web.eecs.umich.edu/~dmitryb/courses/fall2020iar/index.html">EECS 498: Algorithmic Robotics</a></td>
             <td class="has-text-grey" style="float: right;">Winter 2020</td>
           </tr>
           <tr>
@@ -336,8 +493,7 @@
             <td class="has-text-grey" style="float: right;">Fall 2020</td>
           </tr>
           <tr>
-            <td><a href="https://eecs280staff.github.io/eecs280.org/">EECS 280: Introduction to Programming and Data
-                Structures</a></td>
+            <td><a href="https://eecs280staff.github.io/eecs280.org/">EECS 280: Introduction to Programming and Data Structures</a></td>
             <td class="has-text-grey" style="float: right;">Fall 2018, Winter 2018, Fall 2019</td>
           </tr>
         </tbody>
