@@ -111,6 +111,11 @@
       vertical-align: middle;
     }
 
+    .table.news-table td:first-child {
+      white-space: nowrap;
+      width: 1%;
+    }
+
     .button.is-light.is-link {
       background-color: #f5f5f5;
       color: var(--link-color);
@@ -285,7 +290,7 @@
   <section class="section" id="news">
     <div class="container is-max-desktop">
       <h2 class="title is-size-4">News</h2>
-      <table class="table is-narrow is-hoverable is-fullwidth is-completely-borderless">
+      <table class="table news-table is-narrow is-hoverable is-fullwidth is-completely-borderless">
         <tbody>
           <tr>
             <td class="has-text-grey">Mar 2026</td>
@@ -293,7 +298,7 @@
           </tr>
           <tr>
             <td class="has-text-grey">Mar 2026</td>
-            <td><a href="https://arxiv.org/abs/2505.20455">HAND Me the Data</a> has been accepted to the IEEE International Conference on Robotics and Automation (ICRA) 2026!</td>
+            <td><a href="https://arxiv.org/abs/2505.20455">HAND Me the Data</a> accepted to ICRA 2026 — see you in Vienna!</td>
           </tr>
           <tr>
             <td class="has-text-grey">May 2025</td>
@@ -364,27 +369,8 @@
         </div>
       </div>
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
-          <img src="img/spur.png" alt="">
-        </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">
-            SPUR: Scaling Reward Learning from Human Demonstrations
-          </p>
-          <p class="publication-authors">
-            <b style='color:purple'>Anthony Liang*</b>, Yigit Korkmaz*, Jiahui Zhang*, Jesse Zhang*, Abrar Anwar, Sidhant Kaushik, Yufei Wang, Yu Xiang, David Held, Dieter Fox, Abhishek Gupta, Stephen Tu, Erdem Bıyık
-          </p>
-          <p class="publication-venue"><em>CoRL 2025 Workshop Eval Deploy / NeurIPS 2025 Workshop on Embodied World Models </em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://openreview.net/pdf/d62114782d2f1b87ee1c1908a3050b577278d04e.pdf">paper</a>
-          </div>
-        </div>
-      </div>
-
       <h3 class="title is-size-5 mb-4">Conference Papers</h3>
 
-<<<<<<< HEAD
       <div class="columns py-4">
         <div class="column is-one-third">
           <img src="img/robometer.jpg" alt="Robometer paper thumbnail">
@@ -402,8 +388,6 @@
         </div>
       </div>
       
-=======
->>>>>>> 15eca497a5820790982cc5f9a1d1b54f11b4d74d
       <div class="columns py-4">
         <div class="column is-one-third">
           <img src="img/hands.png" alt="">
