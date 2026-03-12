@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="stylesheets/timeline.css" />
   <link rel="stylesheet" href="css/mystyles.css">
   <link rel="stylesheet" href="css/helpers.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <base target="_blank">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -28,10 +30,25 @@
       --hover-color: #2366d1;
     }
 
+    /* Mohit's site (mohitsharma0690.github.io): html,body use EB Garamond 18px/1.5; .content p uses Crimson Text */
+    body,
+    .title, .subtitle, .navbar, .section,
+    .publication-title, .publication-authors, .publication-venue,
+    .table, .button {
+      font-family: "EB Garamond", Georgia, "Times New Roman", Times, serif !important;
+    }
+
+    .content, .content p {
+      font-family: "Crimson Text", "EB Garamond", Georgia, serif !important;
+    }
+
     body {
-      font-family: 'Inconsolata', monospace;
-      color: var(--text-color);
-      line-height: 1.6;
+      color: #202020;
+      font-size: 18px;
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .navbar {
@@ -133,6 +150,33 @@
       margin-bottom: 2rem;
     }
 
+    .section#publications .columns {
+      margin-bottom: 0.75rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .section#publications .columns .column.is-3 img,
+    .section#publications .columns .column.is-one-third img {
+      max-height: 140px;
+      max-width: 88%;
+      width: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      object-fit: contain;
+      object-position: top;
+    }
+
+    .publication-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .publication-title a:hover {
+      color: var(--link-color);
+    }
+
     .columns img {
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -165,18 +209,22 @@
 
     .publication-title {
       font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.15rem;
     }
 
     .publication-authors {
       color: var(--primary-color);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.1rem;
     }
 
     .publication-venue {
       color: var(--secondary-color);
       font-style: italic;
-      margin-bottom: 1rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .section#publications .column .publication-venue:last-of-type {
+      margin-bottom: 0.25rem;
     }
 
     .hero-body {
@@ -350,13 +398,13 @@
 
       <h3 class="title is-size-5 mb-4">Preprints</h3>
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/rewind_repeat.png" alt="">
         </div>
-        <div class="column">
+        <div class="column is-9">
           <p class="publication-title has-text-weight-bold">
-            🍌 Plantain: Plan-Answer Interleaved Reasoning 
+            <a href="https://arxiv.org/pdf/2512.03176v1">🍌 Plantain: Plan-Answer Interleaved Reasoning</a>
           </p>
           <p class="publication-authors">
             <b style='color:purple'>Anthony Liang</b>, Jonathan Berant, Adam Fisch, Abhimanyu Goyal, Kalpesh Krishna†, Jacob Eisenstein†
@@ -369,12 +417,12 @@
         </div>
       </div>
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/clam.png" alt="CLAM paper thumbnail">
         </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">CLAM: Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations</p>
+        <div class="column is-9">
+          <p class="publication-title has-text-weight-bold"><a href="https://clamrobot.github.io/">CLAM: Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang*</b>, Pavel Czempin*, Matthew Hong, Yutai Zhou, Erdem Bıyık, Stephen Tu</p>
           <p class="publication-venue"><em>In Submission to CoRL 2025</em></p>
           <div class="buttons are-small has-text-weight-medium">
@@ -387,12 +435,12 @@
 
       <h3 class="title is-size-5 mb-4">Conference Papers</h3>
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/robometer.jpg" alt="Robometer paper thumbnail">
         </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons</p>
+        <div class="column is-9">
+          <p class="publication-title has-text-weight-bold"><a href="https://robometer.github.io/">Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang*</b>, Yigit Korkmaz*, Jiahui Zhang, Minyoung Hwang, Abrar Anwar, Sidhant Kaushik, Aditya Shah, Alex S. Huang, Luke Zettlemoyer, Dieter Fox, Yu Xiang, Anqi Li, Andreea Bobu, Abhishek Gupta, Stephen Tu†, Erdem Bıyık†, Jesse Zhang†</p>
           <p class="publication-venue"><em>In Submission to RSS 2026</em></p>
           <p class="publication-venue"><em>CoRL 2025 Workshop on Learning for Robot Manipulation</em></p>
@@ -404,14 +452,13 @@
         </div>
       </div>
       
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/hands.png" alt="">
         </div>
-        <div class="column">
+        <div class="column is-9">
           <p class="publication-title has-text-weight-bold">
-            <img src="img/hand_logo_emoji.png" alt="hand emoji" style="height: 1.2em; vertical-align: middle; margin-right: 0.3em;">
-            HAND Me the Data: Fast Robot Adaptation via Hand Path Retrieval
+            <a href="https://liralab.usc.edu/handretrieval/"><img src="img/hand_logo_emoji.png" alt="hand emoji" style="height: 1.2em; vertical-align: middle; margin-right: 0.3em;">HAND Me the Data: Fast Robot Adaptation via Hand Path Retrieval</a>
           </p>
           <p class="publication-authors">
             Matthew Hong*, <b style='color:purple'>Anthony Liang*</b>, Kevin Kim, Harshitha Rajaprakash,<br>
@@ -440,12 +487,12 @@
         </div>
       </div> -->
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/dynamite-rl.png" alt="dynamite-rl">
         </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">DynaMITE-RL: A Dynamic Model for Improved Temporal Meta-Reinforcement Learning</p>
+        <div class="column is-9">
+          <p class="publication-title has-text-weight-bold"><a href="https://arxiv.org/abs/2402.15957">DynaMITE-RL: A Dynamic Model for Improved Temporal Meta-Reinforcement Learning</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Guy Tennenholtz, Chih-wei Hsu, Yinlam Chow, Erdem Bıyık, Craig Boutilier</p>
           <p class="publication-venue"><em>NeurIPS 2024 (25.8% Acceptance Rate)</em></p>
           <p class="publication-authors">Work done during Google internship</p>
@@ -456,12 +503,12 @@
         </div>
       </div>
  
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/visarl.png" alt="visarl">
         </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">ViSaRL: Visual Reinforcement Learning Guided by Human Saliency</p>
+        <div class="column is-9">
+          <p class="publication-title has-text-weight-bold"><a href="https://aliang8.github.io/visarl_site/">ViSaRL: Visual Reinforcement Learning Guided by Human Saliency</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Jesse Thomason, Erdem Bıyık</p>
           <p class="publication-venue"><em>International Conference on Intelligent Robots and Systems (IROS 2024)</em></p>
           <div class="buttons are-small has-text-weight-medium">
@@ -472,12 +519,12 @@
         </div>
       </div>
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/load.png" alt="load">
         </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">Reinforcement Learning for Sparse-Reward Object-Interaction Tasks in First-person Simulated 3D Environments</p>
+        <div class="column is-9">
+          <p class="publication-title has-text-weight-bold"><a href="https://arxiv.org/abs/2010.15195">Reinforcement Learning for Sparse-Reward Object-Interaction Tasks in First-person Simulated 3D Environments</a></p>
           <p class="publication-authors">Wilka Carvalho, <b style='color:purple'>Anthony Liang</b>, Kimin Lee, Sungryull Sohn, Honglak Lee, Richard L. Lewis, Satinder Singh</p>
           <p class="publication-venue"><em>International Joint Conference on Artificial Intelligence 2021</em></p>
           <div class="buttons are-small has-text-weight-medium">
@@ -488,12 +535,12 @@
 
       <h3 class="title is-size-5 mb-4 mt-6">Workshop Papers</h3>
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/prompt-dtla.png" alt="prompt-dtla">
         </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">In-Context Generalization to New Tasks From Unlabeled Observation Data</p>
+        <div class="column is-9">
+          <p class="publication-title has-text-weight-bold"><a href="https://openreview.net/pdf?id=M1v4y0rbFS">In-Context Generalization to New Tasks From Unlabeled Observation Data</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Pavel Czempin, Yutai Zhou, Stephen Tu, Erdem Bıyık</p>
           <p class="publication-venue"><em>1st ICL Workshop at ICML 2024</em></p>
           <div class="buttons are-small has-text-weight-medium">
@@ -502,12 +549,12 @@
         </div>
       </div>
 
-      <div class="columns py-4">
-        <div class="column is-one-third">
+      <div class="columns">
+        <div class="column is-3">
           <img src="img/transformer_adapters.png" alt="transformer_adapters">
         </div>
-        <div class="column">
-          <p class="publication-title has-text-weight-bold">Transformer Adapters for Robot Learning</p>
+        <div class="column is-9">
+          <p class="publication-title has-text-weight-bold"><a href="https://openreview.net/pdf?id=H--wvRYBmF">Transformer Adapters for Robot Learning</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Ishika Singh, Karl Pertsch, Jesse Thomason</p>
           <p class="publication-venue"><em>CoRL 2022 Workshop on Pretraining for Robot Learning</em></p>
           <p class="publication-venue"><em>Spotlight Talk</em></p>
