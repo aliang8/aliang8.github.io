@@ -133,6 +133,38 @@
       width: 1%;
     }
 
+    .news-scroll-wrapper {
+      max-height: 18rem;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 0.5rem;
+    }
+
+    .news-scroll-wrapper::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .news-scroll-wrapper::-webkit-scrollbar-track {
+      background: var(--background-light);
+      border-radius: 4px;
+    }
+
+    .news-scroll-wrapper::-webkit-scrollbar-thumb {
+      background: #c4c4c4;
+      border-radius: 4px;
+    }
+
+    .news-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+      background: #a0a0a0;
+    }
+
+    @supports (scrollbar-width: thin) {
+      .news-scroll-wrapper {
+        scrollbar-width: thin;
+        scrollbar-color: #c4c4c4 var(--background-light);
+      }
+    }
+
     .button.is-light.is-link {
       background-color: #f5f5f5;
       color: var(--link-color);
@@ -151,9 +183,9 @@
     }
 
     .section#publications .columns {
-      margin-bottom: 0.75rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
     }
 
     .section#publications .columns .column.is-3 img,
@@ -194,7 +226,8 @@
     }
 
     .social-icons a {
-      margin: 0 0.5rem;
+      margin: 0 0.25rem;
+      padding: 0.25rem !important;
       transition: transform 0.3s ease;
     }
 
@@ -227,8 +260,39 @@
       margin-bottom: 0.25rem;
     }
 
+    .publication-links {
+      font-style: normal;
+      font-size: 0.95rem;
+    }
+
+    .publication-links a {
+      margin-right: 0.6rem;
+      white-space: nowrap;
+    }
+
+    .publication-links a:hover {
+      text-decoration: underline;
+    }
+
+    .publication-links .link-sep {
+      color: #999;
+      margin-right: 0.4rem;
+      user-select: none;
+    }
+
+    .publication-links i.fas,
+    .publication-links i.fab {
+      margin-right: 0.25rem;
+      font-size: 0.85em;
+      opacity: 0.9;
+    }
+
     .hero-body {
       padding: 1rem 1.5rem;
+    }
+
+    .container.is-publications-width {
+      max-width: 1056px;
     }
 
     @media screen and (max-width: 768px) {
@@ -338,6 +402,7 @@
   <section class="section" id="news">
     <div class="container is-max-desktop">
       <h2 class="title is-size-4">News</h2>
+      <div class="news-scroll-wrapper">
       <table class="table news-table is-narrow is-hoverable is-fullwidth is-completely-borderless">
         <tbody>
           <tr>
@@ -347,6 +412,10 @@
           <tr>
             <td class="has-text-grey">Mar 2026</td>
             <td><a href="https://arxiv.org/abs/2505.20455">HAND Me the Data</a> accepted to ICRA 2026 — see you in Vienna!</td>
+          </tr>
+          <tr>
+            <td class="has-text-grey">June 2025</td>
+            <td>Co-organizing the <a href="https://hitl-robot-learning.github.io/">RSS 2025 Workshop on Human-in-the-Loop Robot Learning</a>.</td>
           </tr>
           <tr>
             <td class="has-text-grey">May 2025</td>
@@ -386,13 +455,14 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </section>
 
   <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
 
   <section class="section" id="publications">
-    <div class="container is-max-desktop">
+    <div class="container is-max-desktop is-publications-width">
       <h2 class="title is-size-4 has-text-centered mb-6">Publications</h2>
       <div class="block"></div>
 
@@ -410,10 +480,7 @@
             <b style='color:purple'>Anthony Liang</b>, Jonathan Berant, Adam Fisch, Abhimanyu Goyal, Kalpesh Krishna†, Jacob Eisenstein†
           </p>
           <p class="publication-authors">Work done during Google internship</p>
-          <!-- <p class="publication-venue"><em></em></p> -->
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://arxiv.org/pdf/2512.03176v1">arxiv</a>
-          </div>
+          <p class="publication-venue publication-links"><a href="https://arxiv.org/pdf/2512.03176v1" class="text-link"><i class="fas fa-file-pdf"></i> arXiv</a></p>
         </div>
       </div>
 
@@ -422,14 +489,9 @@
           <img src="img/clam.png" alt="CLAM paper thumbnail">
         </div>
         <div class="column is-9">
-          <p class="publication-title has-text-weight-bold"><a href="https://clamrobot.github.io/">CLAM: Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations</a></p>
+          <p class="publication-title has-text-weight-bold"><a href="https://clamrobot.github.io/">🐚 CLAM: Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang*</b>, Pavel Czempin*, Matthew Hong, Yutai Zhou, Erdem Bıyık, Stephen Tu</p>
-          <p class="publication-venue"><em>In Submission to CoRL 2025</em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://arxiv.org/abs/2505.04999">arxiv</a>
-            <a class="button is-light is-link" href="https://clamrobot.github.io/">website</a>
-            <a class="button is-light is-link" href="https://github.com/clamrobot/clam">code</a>
-          </div>
+          <p class="publication-venue publication-links"><a href="https://arxiv.org/abs/2505.04999" class="text-link"><i class="fas fa-file-pdf"></i> arXiv</a><span class="link-sep">·</span> <a href="https://clamrobot.github.io/" class="text-link"><i class="fas fa-globe"></i> website</a><span class="link-sep">·</span> <a href="https://github.com/clamrobot/clam" class="text-link"><i class="fab fa-github"></i> code</a></p>
         </div>
       </div>
 
@@ -440,15 +502,9 @@
           <img src="img/robometer.jpg" alt="Robometer paper thumbnail">
         </div>
         <div class="column is-9">
-          <p class="publication-title has-text-weight-bold"><a href="https://robometer.github.io/">Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons</a></p>
+          <p class="publication-title has-text-weight-bold"><a href="https://robometer.github.io/"><img src="img/robometer_logo.png" alt="Robometer" style="height: 1.2em; vertical-align: middle; margin-right: 0.3em;">Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang*</b>, Yigit Korkmaz*, Jiahui Zhang, Minyoung Hwang, Abrar Anwar, Sidhant Kaushik, Aditya Shah, Alex S. Huang, Luke Zettlemoyer, Dieter Fox, Yu Xiang, Anqi Li, Andreea Bobu, Abhishek Gupta, Stephen Tu†, Erdem Bıyık†, Jesse Zhang†</p>
-          <p class="publication-venue"><em>In Submission to RSS 2026</em></p>
-          <p class="publication-venue"><em>CoRL 2025 Workshop on Learning for Robot Manipulation</em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://arxiv.org/abs/2603.02115">arxiv</a>
-            <a class="button is-light is-link" href="https://robometer.github.io/">website</a>
-            <a class="button is-light is-link" href="https://github.com/robometer/robometer">code</a>
-          </div>
+          <p class="publication-venue publication-links">In submission <span class="link-sep">|</span> CoRL 2025 Workshop <span class="link-sep">|</span> <a href="https://arxiv.org/abs/2603.02115" class="text-link"><i class="fas fa-file-pdf"></i> arXiv</a><span class="link-sep">·</span> <a href="https://robometer.github.io/" class="text-link"><i class="fas fa-globe"></i> website</a><span class="link-sep">·</span> <a href="https://github.com/robometer/robometer" class="text-link"><i class="fab fa-github"></i> code</a><span class="link-sep">·</span> <a href="https://huggingface.co/robometer/Robometer-4B" class="text-link"><i class="fas fa-cube"></i> model</a><span class="link-sep">·</span> <a href="https://huggingface.co/datasets/robometer/rbm-1m-ood" class="text-link"><i class="fas fa-database"></i> dataset</a></p>
         </div>
       </div>
       
@@ -464,12 +520,7 @@
             Matthew Hong*, <b style='color:purple'>Anthony Liang*</b>, Kevin Kim, Harshitha Rajaprakash,<br>
             Jesse Thomason†, Erdem Bıyık†, Jesse Zhang†
           </p>
-          <p class="publication-venue"><em>IEEE International Conference on Robotics and Automation (ICRA) 2026</em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://arxiv.org/abs/2505.20455">arxiv</a>
-            <a class="button is-light is-link" href="https://liralab.usc.edu/handretrieval/">website</a>
-            <a class="button is-light is-link" href="https://github.com/jesbu1/p-llm-hf">code</a>
-          </div>
+          <p class="publication-venue publication-links">ICRA 2026 <span class="link-sep">|</span> <a href="https://arxiv.org/abs/2505.20455" class="text-link"><i class="fas fa-file-pdf"></i> arXiv</a><span class="link-sep">·</span> <a href="https://liralab.usc.edu/handretrieval/" class="text-link"><i class="fas fa-globe"></i> website</a><span class="link-sep">·</span> <a href="https://github.com/jesbu1/p-llm-hf" class="text-link"><i class="fab fa-github"></i> code</a></p>
         </div>
       </div>
 
@@ -492,14 +543,10 @@
           <img src="img/dynamite-rl.png" alt="dynamite-rl">
         </div>
         <div class="column is-9">
-          <p class="publication-title has-text-weight-bold"><a href="https://arxiv.org/abs/2402.15957">DynaMITE-RL: A Dynamic Model for Improved Temporal Meta-Reinforcement Learning</a></p>
+          <p class="publication-title has-text-weight-bold"><a href="https://arxiv.org/abs/2402.15957">🧨 DynaMITE-RL: A Dynamic Model for Improved Temporal Meta-Reinforcement Learning</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Guy Tennenholtz, Chih-wei Hsu, Yinlam Chow, Erdem Bıyık, Craig Boutilier</p>
-          <p class="publication-venue"><em>NeurIPS 2024 (25.8% Acceptance Rate)</em></p>
           <p class="publication-authors">Work done during Google internship</p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://docs.google.com/presentation/d/1B0tSChHa6WKbnf5wCT1bVQ1nDCh2LB4jSM9ajX2T4KY/edit?usp=sharing">slides</a>
-            <a class="button is-light is-link" href="https://arxiv.org/abs/2402.15957">arxiv</a>
-          </div>
+          <p class="publication-venue publication-links">NeurIPS 2024 <span class="link-sep">|</span> <a href="https://arxiv.org/abs/2402.15957" class="text-link"><i class="fas fa-file-pdf"></i> arXiv</a><span class="link-sep">·</span> <a href="https://docs.google.com/presentation/d/1B0tSChHa6WKbnf5wCT1bVQ1nDCh2LB4jSM9ajX2T4KY/edit?usp=sharing" class="text-link"><i class="fas fa-external-link"></i> slides</a></p>
         </div>
       </div>
  
@@ -510,12 +557,7 @@
         <div class="column is-9">
           <p class="publication-title has-text-weight-bold"><a href="https://aliang8.github.io/visarl_site/">ViSaRL: Visual Reinforcement Learning Guided by Human Saliency</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Jesse Thomason, Erdem Bıyık</p>
-          <p class="publication-venue"><em>International Conference on Intelligent Robots and Systems (IROS 2024)</em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://arxiv.org/abs/2403.10940">arxiv</a>
-            <a class="button is-light is-link" href="https://aliang8.github.io/visarl_site/">website</a>
-            <a class="button is-light is-link" href="https://github.com/aliang8/visarl">code</a>
-          </div>
+          <p class="publication-venue publication-links">IROS 2024 <span class="link-sep">|</span> <a href="https://arxiv.org/abs/2403.10940" class="text-link"><i class="fas fa-file-pdf"></i> arXiv</a><span class="link-sep">·</span> <a href="https://aliang8.github.io/visarl_site/" class="text-link"><i class="fas fa-globe"></i> website</a><span class="link-sep">·</span> <a href="https://github.com/aliang8/visarl" class="text-link"><i class="fab fa-github"></i> code</a></p>
         </div>
       </div>
 
@@ -526,10 +568,7 @@
         <div class="column is-9">
           <p class="publication-title has-text-weight-bold"><a href="https://arxiv.org/abs/2010.15195">Reinforcement Learning for Sparse-Reward Object-Interaction Tasks in First-person Simulated 3D Environments</a></p>
           <p class="publication-authors">Wilka Carvalho, <b style='color:purple'>Anthony Liang</b>, Kimin Lee, Sungryull Sohn, Honglak Lee, Richard L. Lewis, Satinder Singh</p>
-          <p class="publication-venue"><em>International Joint Conference on Artificial Intelligence 2021</em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://arxiv.org/abs/2010.15195">arxiv</a>
-          </div>
+          <p class="publication-venue publication-links">IJCAI 2021 <span class="link-sep">|</span> <a href="https://arxiv.org/abs/2010.15195" class="text-link"><i class="fas fa-file-pdf"></i> arXiv</a></p>
         </div>
       </div>
 
@@ -542,10 +581,7 @@
         <div class="column is-9">
           <p class="publication-title has-text-weight-bold"><a href="https://openreview.net/pdf?id=M1v4y0rbFS">In-Context Generalization to New Tasks From Unlabeled Observation Data</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Pavel Czempin, Yutai Zhou, Stephen Tu, Erdem Bıyık</p>
-          <p class="publication-venue"><em>1st ICL Workshop at ICML 2024</em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://openreview.net/pdf?id=M1v4y0rbFS">paper</a>
-          </div>
+          <p class="publication-venue publication-links">ICML 2024 ICL Workshop <span class="link-sep">|</span> <a href="https://openreview.net/pdf?id=M1v4y0rbFS" class="text-link"><i class="fas fa-file-pdf"></i> paper</a></p>
         </div>
       </div>
 
@@ -556,11 +592,7 @@
         <div class="column is-9">
           <p class="publication-title has-text-weight-bold"><a href="https://openreview.net/pdf?id=H--wvRYBmF">Transformer Adapters for Robot Learning</a></p>
           <p class="publication-authors"><b style='color:purple'>Anthony Liang</b>, Ishika Singh, Karl Pertsch, Jesse Thomason</p>
-          <p class="publication-venue"><em>CoRL 2022 Workshop on Pretraining for Robot Learning</em></p>
-          <p class="publication-venue"><em>Spotlight Talk</em></p>
-          <div class="buttons are-small has-text-weight-medium">
-            <a class="button is-light is-link" href="https://openreview.net/pdf?id=H--wvRYBmF">paper</a>
-          </div>
+          <p class="publication-venue publication-links">CoRL 2022 Workshop <span class="link-sep">|</span> <a href="https://openreview.net/pdf?id=H--wvRYBmF" class="text-link"><i class="fas fa-file-pdf"></i> paper</a></p>
         </div>
       </div>
     </div>
@@ -610,6 +642,46 @@
       </table>
     </div>
   </section>
+
+  <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
+
+  <section class="section" id="service">
+    <div class="container is-max-desktop">
+      <h2 class="title is-size-4">Service</h2>
+      <table class="table is-narrow is-hoverable is-fullwidth is-completely-borderless">
+        <tbody>
+          <tr>
+            <td><a href="https://hitl-robot-learning.github.io/">RSS 2025 Workshop: Human-in-the-Loop Robot Learning — Teaching, Correcting, and Adapting</a></td>
+            <td class="has-text-grey" style="float: right;">Co-organizer</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
+
+  <section class="section" id="invited-talks">
+    <div class="container is-max-desktop">
+      <h2 class="title is-size-4">Invited Talks</h2>
+      <table class="table is-narrow is-hoverable is-fullwidth is-completely-borderless">
+        <tbody>
+          <tr>
+            <td><a href="https://robometer.github.io/" class="text-link">Scaling Reward Models via Preference Comparisons</a></td>
+            <td class="has-text-grey" style="float: right;">2026</td>
+          </tr>
+          <tr>
+            <td class="has-text-grey" style="font-size: 0.95em;">Apple Robotics Reading Group (Host: Soheil Habibian)</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
+
+  <p class="has-text-centered has-text-grey" style="font-size: 0.9rem; padding: 1.5rem 1rem;">Updated Mar 2026</p>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92381077-1"></script>
