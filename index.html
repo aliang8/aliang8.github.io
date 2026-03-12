@@ -363,6 +363,7 @@
     .page-nav-link {
       font-family: "EB Garamond", Georgia, serif;
       font-size: 1.05rem;
+      font-style: italic;
       color: var(--primary-color);
       text-decoration: none;
       opacity: 0.6;
@@ -372,10 +373,17 @@
       gap: 0.5rem;
     }
     .page-nav-link::before {
-      content: "•";
-      font-size: 0.65em;
+      content: "";
+      display: inline-block;
+      width: 0.3em;
+      height: 0.3em;
+      min-width: 0.3em;
+      min-height: 0.3em;
+      border-radius: 50%;
+      background: currentColor;
       opacity: 0.8;
       flex-shrink: 0;
+      align-self: center;
     }
     .page-nav-link:hover {
       opacity: 1;
@@ -496,6 +504,7 @@
       <a href="#teaching" class="page-nav-link" data-section="teaching" target="_self">Teaching</a>
       <a href="#service" class="page-nav-link" data-section="service" target="_self">Service</a>
       <a href="#invited-talks" class="page-nav-link" data-section="invited-talks" target="_self">Invited Talks</a>
+      <a href="#miscellaneous" class="page-nav-link" data-section="miscellaneous" target="_self">Miscellaneous</a>
     </nav>
   </aside>
 
@@ -842,6 +851,17 @@
 
   <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
 
+  <section class="section" id="miscellaneous">
+    <div class="container is-max-desktop">
+      <h2 class="title is-size-4">Miscellaneous</h2>
+      <div class="content">
+        <p class="block">When I'm not in the lab, I'm an aspiring ATP 1000 tennis player, a golf hobbyist, and I love trying new food recipes.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
+
   <p class="has-text-centered has-text-grey" style="font-size: 0.9rem; padding: 1.5rem 1rem;">Updated Mar 2026</p>
 
   </div><!-- .main-with-nav -->
@@ -849,7 +869,7 @@
 
   <script>
     (function() {
-      var sectionIds = ['news', 'publications', 'teaching', 'service', 'invited-talks'];
+      var sectionIds = ['news', 'publications', 'teaching', 'service', 'invited-talks', 'miscellaneous'];
       var links = document.querySelectorAll('.page-nav-link');
       function setActive() {
         var scrollY = window.scrollY || window.pageYOffset;
