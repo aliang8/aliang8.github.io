@@ -41,14 +41,22 @@
     .content, .content p {
       font-family: "Crimson Text", "EB Garamond", Georgia, serif !important;
     }
+    .content {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+    .content a {
+      overflow-wrap: break-word;
+    }
 
     body {
       color: #202020;
-      font-size: 18px;
+      font-size: clamp(15px, 2.2vw + 14px, 18px);
       line-height: 1.5;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
     .navbar {
@@ -134,7 +142,7 @@
     }
 
     .news-scroll-wrapper {
-      max-height: 18rem;
+      max-height: 14rem;
       overflow-y: auto;
       overflow-x: hidden;
       padding-right: 0.5rem;
@@ -241,19 +249,23 @@
     }
 
     .publication-title {
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 1.5vw + 0.8rem, 1.1rem);
       margin-bottom: 0.15rem;
+      word-wrap: break-word;
     }
 
     .publication-authors {
       color: var(--primary-color);
       margin-bottom: 0.1rem;
+      font-size: clamp(0.85rem, 1.2vw + 0.75rem, 1rem);
+      word-wrap: break-word;
     }
 
     .publication-venue {
       color: var(--secondary-color);
       font-style: italic;
       margin-bottom: 0.1rem;
+      font-size: clamp(0.85rem, 1.2vw + 0.75rem, 0.95rem);
     }
 
     .section#publications .column .publication-venue:last-of-type {
@@ -288,20 +300,187 @@
     }
 
     .hero-body {
-      padding: 1rem 1.5rem;
+      padding: clamp(0.5rem, 2vw, 1rem) clamp(0.75rem, 3vw, 1.5rem);
+    }
+    .hero .title.is-2 {
+      font-size: clamp(1.5rem, 4vw + 1rem, 2rem);
+      word-wrap: break-word;
+    }
+    .hero .subtitle {
+      font-size: clamp(0.9rem, 1.5vw + 0.8rem, 1.1rem);
+      word-wrap: break-word;
+      margin-bottom: 0.35rem;
+    }
+    .section.has-background-light .content p,
+    .section.has-background-light .content .block {
+      max-width: 100%;
+      word-wrap: break-word;
+    }
+    .hero .social-icons {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.15rem 0.5rem;
+      margin-top: 0.4rem;
+      padding-left: 0;
+    }
+    .hero .social-icons a {
+      margin: 0;
+      padding: 0.2rem !important;
     }
 
     .container.is-publications-width {
       max-width: 1056px;
     }
 
-    @media screen and (max-width: 768px) {
-      .section {
-        padding: 2rem 1rem;
+    .table.is-hoverable tbody tr.invited-talk-venue:hover {
+      background-color: transparent !important;
+    }
+
+    /* Left nav integrated into page layout */
+    .page-layout {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 2rem;
+      padding-left: 11rem;
+    }
+    .page-nav {
+      position: fixed;
+      left: max(1rem, calc((100vw - 1200px) / 2));
+      top: 50%;
+      transform: translateY(-50%);
+      width: 9rem;
+      padding-top: 0.5rem;
+      z-index: 30;
+    }
+    .page-nav-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .page-nav-link {
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .page-nav-link::before {
+      content: "•";
+      font-size: 0.65em;
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+    .page-nav-link:hover {
+      opacity: 1;
+      color: var(--link-color);
+    }
+    .page-nav-link:hover::before {
+      opacity: 1;
+    }
+    .page-nav-link.is-active {
+      opacity: 1;
+      color: var(--link-color);
+      font-weight: 600;
+    }
+    .page-nav-link.is-active::before {
+      opacity: 1;
+      color: var(--link-color);
+    }
+    .main-with-nav {
+      flex: 1;
+      min-width: 0;
+    }
+    @media screen and (max-width: 1023px) {
+      .page-layout {
+        flex-direction: column;
+        gap: 0;
+        padding: 0 1rem;
+        padding-left: 1rem;
       }
-      
+      .page-nav {
+        position: static;
+        width: auto;
+        top: auto;
+        transform: none;
+        left: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        padding: 0.5rem 0 1rem;
+        border-bottom: 1px solid #dbdbdb;
+        margin-bottom: 0.5rem;
+      }
+      .page-nav-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+      }
+      .page-nav-link {
+        gap: 0.35rem;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .page-layout {
+        max-width: 100%;
+        padding: 0 0.75rem;
+      }
+      .main-with-nav {
+        min-width: 0;
+      }
+      .section {
+        padding: clamp(1rem, 3vw, 1.5rem) 0.5rem;
+      }
+      .section.has-background-light {
+        padding: clamp(0.75rem, 2vw, 1rem) 0.5rem;
+      }
       .hero {
-        padding: 2rem 0;
+        padding: clamp(0.5rem, 2vw, 1rem) 0;
+      }
+      .hero .column.is-9 {
+        text-align: left;
+      }
+      .hero .social-icons {
+        justify-content: flex-start;
+      }
+      .container.is-max-desktop {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .table {
+        font-size: clamp(0.875rem, 1.5vw + 0.8rem, 1rem);
+      }
+      .table td {
+        padding: 0.5rem 0.25rem;
+      }
+      .news-scroll-wrapper {
+        max-height: 11rem;
+      }
+      .section#publications .columns .column.is-3 img,
+      .section#publications .columns .column.is-one-third img {
+        max-height: 100px;
+      }
+      .hr.container {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      .page-layout {
+        padding: 0 0.5rem;
+      }
+      .title.is-2 {
+        font-size: 1.5rem;
+      }
+      .subtitle {
+        font-size: 1rem;
       }
     }
   </style>
@@ -309,48 +488,26 @@
 
 <body>
 
-  <div class="container is-max-desktop">
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="customNavbar">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="customNavbar" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item" href="#publications" target="_self">
-            Publications
-          </a>
-          <a class="navbar-item" href="files/Anthony_Research_Statement.pdf">
-            Research Statement
-          </a>
-          <a class="navbar-item" href="files/AnthonyLiangCV.pdf">
-            CV
-          </a>
-        </div>
-      </div>
+  <div class="page-layout">
+  <aside class="page-nav" aria-label="Page sections">
+    <nav class="page-nav-inner">
+      <a href="#news" class="page-nav-link" data-section="news" target="_self">News</a>
+      <a href="#publications" class="page-nav-link" data-section="publications" target="_self">Publications</a>
+      <a href="#teaching" class="page-nav-link" data-section="teaching" target="_self">Teaching</a>
+      <a href="#service" class="page-nav-link" data-section="service" target="_self">Service</a>
+      <a href="#invited-talks" class="page-nav-link" data-section="invited-talks" target="_self">Invited Talks</a>
     </nav>
-  </div>
+  </aside>
 
-  <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
-
-
+  <div class="main-with-nav">
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-vcentered">
-          <div class="column is-3">
-            <figure class="image block" style="max-width: 150px; margin: 0 auto;">
-              <img src="img/me.png" alt="Anthony Liang's profile picture">
-            </figure>
-          </div>
-          <div class="column is-9">
+          <div class="column is-9 has-text-left">
             <h1 class="title is-2">Anthony Liang</h1>
             <h2 class="subtitle">Ph.D. Student, University of Southern California</h2>
-            <div class="social-icons mt-3">
+            <div class="social-icons">
               <a class="p-2 text-decoration-none" href="https://github.com/aliang8/" aria-label="GitHub">
                 <i class="fab fa-github"></i>
               </a>
@@ -367,6 +524,11 @@
                 <i class="fas fa-graduation-cap"></i>
               </a>
             </div>
+          </div>
+          <div class="column is-3 has-text-right">
+            <figure class="image block hero-photo" style="max-width: 150px; margin-left: auto; margin-right: 0;">
+              <img src="img/me.png" alt="Anthony Liang's profile picture">
+            </figure>
           </div>
         </div>
       </div>
@@ -393,11 +555,10 @@
           I had the pleasure to intern at Amazon, Invisible.ai, Google Ads, Luminar and Socratic.
         </p>
         <p>Feel free to say hi: <b>anthony dot liang at usc dot edu</b></p>
+        <p><a href="files/Anthony_Research_Statement.pdf" class="text-link">Research Statement</a> <span style="color: #999;">|</span> <a href="files/AnthonyLiangCV.pdf" class="text-link">CV</a></p>
       </div>
     </div>
   </section>
-
-  <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
 
   <section class="section" id="news">
     <div class="container is-max-desktop">
@@ -611,31 +772,31 @@
       <table class="table is-narrow is-hoverable is-fullwidth is-completely-borderless">
         <tbody>
           <tr>
-            <td><a href="https://liralab.usc.edu/csci445/">CSCI 445: Foundations of Robotics</a></td>
+            <td><a href="https://liralab.usc.edu/csci445/">CSCI 445: Foundations of Robotics</a> <span class="has-text-grey" style="font-size: 0.9em;">(USC)</span></td>
             <td class="has-text-grey" style="float: right;">Spring 2026</td>
           </tr>
           <tr>
-            <td><a href="https://liralab.usc.edu/csci699/">CSCI 699: Robot Learning</a></td>
+            <td><a href="https://liralab.usc.edu/csci699/">CSCI 699: Robot Learning</a> <span class="has-text-grey" style="font-size: 0.9em;">(USC)</span></td>
             <td class="has-text-grey" style="float: right;">Fall 2024</td>
           </tr>
           <tr>
-            <td><a href="https://jessethomason.com/class_material/csci_499_nlp_for_interactive_ai_fall_2022.pdf">CSCI 499: Interactive Natural Language Processing</a></td>
+            <td><a href="https://jessethomason.com/class_material/csci_499_nlp_for_interactive_ai_fall_2022.pdf">CSCI 499: Interactive Natural Language Processing</a> <span class="has-text-grey" style="font-size: 0.9em;">(USC)</span></td>
             <td class="has-text-grey" style="float: right;">Fall 2023</td>
           </tr>
           <tr>
-            <td><a href="https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2021/">EECS 442: Computer Vision</a></td>
+            <td><a href="https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2021/">EECS 442: Computer Vision</a> <span class="has-text-grey" style="font-size: 0.9em;">(Michigan)</span></td>
             <td class="has-text-grey" style="float: right;">Winter 2021</td>
           </tr>
           <tr>
-            <td><a href="https://web.eecs.umich.edu/~dmitryb/courses/fall2020iar/index.html">EECS 498: Algorithmic Robotics</a></td>
+            <td><a href="https://web.eecs.umich.edu/~dmitryb/courses/fall2020iar/index.html">EECS 498: Algorithmic Robotics</a> <span class="has-text-grey" style="font-size: 0.9em;">(Michigan)</span></td>
             <td class="has-text-grey" style="float: right;">Winter 2020</td>
           </tr>
           <tr>
-            <td><a href="https://web.eecs.umich.edu/~ahowens/eecs504/w20/">EECS 504: Graduate Computer Vision</a></td>
+            <td><a href="https://web.eecs.umich.edu/~ahowens/eecs504/w20/">EECS 504: Graduate Computer Vision</a> <span class="has-text-grey" style="font-size: 0.9em;">(Michigan)</span></td>
             <td class="has-text-grey" style="float: right;">Fall 2020</td>
           </tr>
           <tr>
-            <td><a href="https://eecs280staff.github.io/eecs280.org/">EECS 280: Introduction to Programming and Data Structures</a></td>
+            <td><a href="https://eecs280staff.github.io/eecs280.org/">EECS 280: Introduction to Programming and Data Structures</a> <span class="has-text-grey" style="font-size: 0.9em;">(Michigan)</span></td>
             <td class="has-text-grey" style="float: right;">Fall 2018, Winter 2018, Fall 2019</td>
           </tr>
         </tbody>
@@ -670,7 +831,7 @@
             <td><a href="https://robometer.github.io/" class="text-link">Scaling Reward Models via Preference Comparisons</a></td>
             <td class="has-text-grey" style="float: right;">2026</td>
           </tr>
-          <tr>
+          <tr class="invited-talk-venue">
             <td class="has-text-grey" style="font-size: 0.95em;">Apple Robotics Reading Group (Host: Soheil Habibian)</td>
             <td></td>
           </tr>
@@ -682,6 +843,33 @@
   <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
 
   <p class="has-text-centered has-text-grey" style="font-size: 0.9rem; padding: 1.5rem 1rem;">Updated Mar 2026</p>
+
+  </div><!-- .main-with-nav -->
+  </div><!-- .page-layout -->
+
+  <script>
+    (function() {
+      var sectionIds = ['news', 'publications', 'teaching', 'service', 'invited-talks'];
+      var links = document.querySelectorAll('.page-nav-link');
+      function setActive() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var threshold = window.innerHeight * 0.4;
+        var current = '';
+        sectionIds.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          var top = el.getBoundingClientRect().top + scrollY;
+          if (scrollY >= top - threshold) current = id;
+        });
+        links.forEach(function(a) {
+          a.classList.toggle('is-active', a.getAttribute('data-section') === current);
+        });
+      }
+      window.addEventListener('scroll', setActive, { passive: true });
+      window.addEventListener('resize', setActive);
+      setActive();
+    })();
+  </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92381077-1"></script>
