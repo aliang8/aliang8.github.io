@@ -1,2 +1,6 @@
 *.rb
 _site/*
+
+# CV LaTeX source — only the compiled PDF (files/AnthonyLiangCV.pdf) is committed
+files/cv/
+.DS_Store

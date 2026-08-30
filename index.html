@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anthony Liang</title>
   <meta name="author" content="Anthony Liang">
-  <meta name="description" content="Ph.D. Student at University of Southern California, specializing in meta-reinforcement learning and generalist agents">
+  <meta name="description" content="Research Scientist at Toyota Research Institute; Ph.D. from the University of Southern California, specializing in robot learning and reinforcement learning">
   <link rel="icon" type="image/png" href="img/me.png">
   <link rel="stylesheet" href="stylesheets/timeline.css" />
   <link rel="stylesheet" href="css/mystyles.css">
@@ -489,6 +489,85 @@
         font-size: 1rem;
       }
     }
+
+    /* Experiences */
+    .experiences-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .exp-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.35rem 1rem 1.15rem;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      background: #fff;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .exp-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      border-color: #d5d5d5;
+    }
+    .exp-logo {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+    }
+    .exp-logo img {
+      max-height: 38px;
+      max-width: 150px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.72;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .exp-card:hover .exp-logo img {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: none;
+    }
+    .exp-company {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--text-color);
+      margin-bottom: 0.1rem;
+      line-height: 1.25;
+    }
+    .exp-role {
+      font-size: 0.9rem;
+      color: var(--primary-color);
+      margin-bottom: 0.15rem;
+      line-height: 1.3;
+    }
+    .exp-dates {
+      font-size: 0.83rem;
+      color: #8a8a8a;
+      font-style: italic;
+    }
+    @media screen and (max-width: 768px) {
+      .experiences-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .exp-card {
+        padding: 1rem 0.5rem;
+      }
+    }
+    @media screen and (max-width: 420px) {
+      .experiences-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
   <script data-goatcounter="https://aliang80.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -500,6 +579,7 @@
   <aside class="page-nav" aria-label="Page sections">
     <nav class="page-nav-inner">
       <a href="#news" class="page-nav-link" data-section="news" target="_self">News</a>
+      <a href="#experiences" class="page-nav-link" data-section="experiences" target="_self">Experiences</a>
       <a href="#publications" class="page-nav-link" data-section="publications" target="_self">Publications</a>
       <a href="#teaching" class="page-nav-link" data-section="teaching" target="_self">Teaching</a>
       <a href="#service" class="page-nav-link" data-section="service" target="_self">Service</a>
@@ -515,7 +595,7 @@
         <div class="columns is-vcentered">
           <div class="column is-9 has-text-left">
             <h1 class="title is-2">Anthony Liang</h1>
-            <h2 class="subtitle">Ph.D. Student, University of Southern California</h2>
+            <h2 class="subtitle">Research Scientist, Toyota Research Institute</h2>
             <div class="social-icons">
               <a class="p-2 text-decoration-none" href="https://github.com/aliang8/" aria-label="GitHub">
                 <i class="fab fa-github"></i>
@@ -523,7 +603,7 @@
               <a class="p-2 text-decoration-none" href="https://twitter.com/@aliangdw/" aria-label="Twitter Profile">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a class="p-2 text-decoration-none" href="mailto:anthony.liang@usc.edu" aria-label="Email">
+              <a class="p-2 text-decoration-none" href="mailto:anthony.liang@tri.global" aria-label="Email">
                 <i class="fas fa-envelope"></i>
               </a>
               <a class="p-2 text-decoration-none" href="https://www.linkedin.com/in/ant-liang" aria-label="LinkedIn">
@@ -548,12 +628,13 @@
     <div class="container is-max-desktop">
       <div class="content">
         <p class="block">
-          I am a final year Ph.D. candidate at the University of Southern California coadvised by
+          I am a Research Scientist at <a href="https://www.tri.global/" class="text-link">Toyota Research Institute</a>.
+          I completed my Ph.D. at the University of Southern California, where I was coadvised by
           <a href="https://ebiyik.github.io/" class="text-link">Erdem Bıyık</a>
-          (<a href="https://liralab.usc.edu/" class="text-link">LiRA Lab</a>) and <a href="https://stephentu.github.io/" class="text-link">Stephen Tu</a>. 
+          (<a href="https://liralab.usc.edu/" class="text-link">LiRA Lab</a>) and <a href="https://stephentu.github.io/" class="text-link">Stephen Tu</a>.
           I am interested in efficient robot learning from various forms of natural human feedback, such as gaze, hand demonstrations, videos, and preferences.
           I am also interested in reinforcement learning for efficient adaptation of agents to new tasks and environments.
-          I had the pleasure to intern at Google Gemini to work on post-training RL for reasoning models and with Google Research working on meta-RL on dynamic long-horizon MDPs.
+          During my Ph.D., I interned at Google Gemini working on post-training RL for reasoning models and with Google Research working on meta-RL on dynamic long-horizon MDPs.
           I also interned at Meta Reality Lab building task-oriented dialogue systems using LLMs.
         </p>
         <p class="block">
@@ -563,7 +644,7 @@
           Science where I worked with <a href="https://cogscikid.com/" class="text-link">Wilka Carvalho</a> and <a href="https://web.eecs.umich.edu/~honglak/" class="text-link">Honglak Lee</a>.
           I had the pleasure to intern at Amazon, Invisible.ai, Google Ads, Luminar and Socratic.
         </p>
-        <p>Feel free to say hi: <b>anthony dot liang at usc dot edu</b></p>
+        <p>Feel free to say hi: <b>anthony dot liang at tri dot global</b></p>
         <p><a href="files/Anthony_Research_Statement.pdf" class="text-link">Research Statement</a> <span style="color: #999;">|</span> <a href="files/AnthonyLiangCV.pdf" class="text-link">CV</a></p>
       </div>
     </div>
@@ -578,6 +659,10 @@
           <tr>
             <td class="has-text-grey">June 2026</td>
             <td>🐚 <a href="https://clamrobot.github.io/">CLAM</a> accepted to IROS 2026 — see you in Pittsburgh! With this, all the works during my Ph.D. have been published. 🎉</td>
+          </tr>
+          <tr>
+            <td class="has-text-grey">May 2026</td>
+            <td>🦾 Joined <a href="https://www.tri.global/">Toyota Research Institute</a> as a Research Scientist!</td>
           </tr>
           <tr>
             <td class="has-text-grey">May 2026</td>
@@ -647,9 +732,49 @@
 
   <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
 
+  <section class="section" id="experiences">
+    <div class="container is-max-desktop">
+      <h2 class="title is-size-4">Experiences</h2>
+      <div class="experiences-grid">
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/tri.svg" alt="Toyota Research Institute logo"></div>
+          <div class="exp-company">Toyota Research Institute</div>
+          <div class="exp-role">Research Scientist</div>
+          <div class="exp-dates">2026 &ndash; Present</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/deepmind.svg" alt="Google DeepMind logo"></div>
+          <div class="exp-company">Google DeepMind</div>
+          <div class="exp-role">Research Intern, Gemini</div>
+          <div class="exp-dates">2025</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/google.svg" alt="Google logo"></div>
+          <div class="exp-company">Google Research</div>
+          <div class="exp-role">Student Researcher, Machine Intelligence</div>
+          <div class="exp-dates">2023</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/meta.svg" alt="Meta logo"></div>
+          <div class="exp-company">Meta</div>
+          <div class="exp-role">NLP Research Intern, Reality Labs</div>
+          <div class="exp-dates">2022</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/amazon.svg" alt="Amazon logo"></div>
+          <div class="exp-company">Amazon</div>
+          <div class="exp-role">Applied Scientist Intern</div>
+          <div class="exp-dates">2021</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
+
   <section class="section" id="publications">
     <div class="container is-max-desktop is-publications-width">
-      <h2 class="title is-size-4 has-text-centered mb-6">Publications</h2>
+      <h2 class="title is-size-4">Publications</h2>
       <div class="block"></div>
 
       <h3 class="title is-size-5 mb-4">Conference Papers</h3>
@@ -836,6 +961,10 @@
       <table class="table is-narrow is-hoverable is-fullwidth is-completely-borderless">
         <tbody>
           <tr>
+            <td><a href="https://spin-workshop.github.io/">CoRL 2026 Workshop: SPIN — Structured Physical Intelligence</a></td>
+            <td class="has-text-grey" style="float: right;">Co-organizer</td>
+          </tr>
+          <tr>
             <td><a href="https://hitl-robot-learning.github.io/">RSS 2025 Workshop: Human-in-the-Loop Robot Learning — Teaching, Correcting, and Adapting</a></td>
             <td class="has-text-grey" style="float: right;">Co-organizer</td>
           </tr>
@@ -877,14 +1006,14 @@
 
   <hr class="hr container is-max-desktop" style="margin-bottom: 0;">
 
-  <p class="has-text-centered has-text-grey" style="font-size: 0.9rem; padding: 1.5rem 1rem;">Updated May 2026</p>
+  <p class="has-text-centered has-text-grey" style="font-size: 0.9rem; padding: 1.5rem 1rem;">Updated August 2026</p>
 
   </div><!-- .main-with-nav -->
   </div><!-- .page-layout -->
 
   <script>
     (function() {
-      var sectionIds = ['news', 'publications', 'teaching', 'service', 'invited-talks', 'miscellaneous'];
+      var sectionIds = ['news', 'experiences', 'publications', 'teaching', 'service', 'invited-talks', 'miscellaneous'];
       var links = document.querySelectorAll('.page-nav-link');
       function setActive() {
         var scrollY = window.scrollY || window.pageYOffset;
