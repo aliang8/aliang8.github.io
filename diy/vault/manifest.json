@@ -5,7 +5,7 @@
   "name": "PBKDF2",
   "hash": "SHA-256",
   "iterations": 600000,
-  "salt": "Z1qyx/zZJ7wa9tgBJzciuA=="
+  "salt": "HYhPPLrRC5T1gmz5h3DSTQ=="
  },
  "cipher": "AES-GCM",
  "home": "viewer",
