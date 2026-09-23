@@ -1,11 +1,12 @@
 {
  "version": 2,
  "compression": "gzip",
+ "built": "2026-09-22 18:52",
  "kdf": {
   "name": "PBKDF2",
   "hash": "SHA-256",
   "iterations": 600000,
-  "salt": "rrpR7tNtGMS7Za6ZstyxzA=="
+  "salt": "D+vUB5JExBQLZ2aXt5P56g=="
  },
  "cipher": "AES-GCM",
  "home": "viewer",
