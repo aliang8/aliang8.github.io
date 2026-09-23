@@ -1,12 +1,12 @@
 {
  "version": 2,
  "compression": "gzip",
- "built": "2026-09-22 21:01",
+ "built": "2026-09-23 00:08",
  "kdf": {
   "name": "PBKDF2",
   "hash": "SHA-256",
   "iterations": 600000,
-  "salt": "BuGCYVfzm4Qdkqeye7PHwQ=="
+  "salt": "pU9oS199drCtGEe3jS22Aw=="
  },
  "cipher": "AES-GCM",
  "home": "viewer",
@@ -25,340 +25,332 @@
    "file": "m_001.bin.enc",
    "mime": "model/stl"
   },
-  "files/basket/corner_post_A.stl": {
-   "file": "m_002.bin.enc",
-   "mime": "model/stl"
-  },
-  "files/basket/corner_post_B.stl": {
-   "file": "m_003.bin.enc",
-   "mime": "model/stl"
-  },
-  "files/basket/corner_post_C.stl": {
-   "file": "m_004.bin.enc",
-   "mime": "model/stl"
-  },
-  "files/basket/corner_post_D.stl": {
-   "file": "m_005.bin.enc",
-   "mime": "model/stl"
-  },
   "files/basket/funnel_mx.dxf": {
-   "file": "m_006.bin.enc",
+   "file": "m_002.bin.enc",
    "mime": "application/dxf"
   },
   "files/basket/funnel_my.dxf": {
-   "file": "m_007.bin.enc",
+   "file": "m_003.bin.enc",
    "mime": "application/dxf"
   },
   "files/basket/funnel_px.dxf": {
-   "file": "m_008.bin.enc",
+   "file": "m_004.bin.enc",
    "mime": "application/dxf"
   },
   "files/basket/funnel_py.dxf": {
-   "file": "m_009.bin.enc",
+   "file": "m_005.bin.enc",
    "mime": "application/dxf"
   },
-  "files/basket/plates/plate_nyloncf_01.3mf": {
-   "file": "m_010.bin.enc",
+  "files/basket/plates/18_X1C_petg_P2+3.3mf": {
+   "file": "m_006.bin.enc",
    "mime": "model/3mf"
   },
-  "files/basket/plates/plate_nyloncf_02_h2d.3mf": {
-   "file": "m_011.bin.enc",
+  "files/basket/plates/23_H2D-B_nyloncf_P3+4.3mf": {
+   "file": "m_007.bin.enc",
    "mime": "model/3mf"
   },
-  "files/basket/plates/plate_petg_01.3mf": {
-   "file": "m_012.bin.enc",
+  "files/basket/plates/24_X1E_nyloncf_P2+3.3mf": {
+   "file": "m_008.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/basket/plates/25_H2D-A_nyloncf_P3+4_h2dbed.3mf": {
+   "file": "m_009.bin.enc",
    "mime": "model/3mf"
   },
   "files/basket/wall_mx.dxf": {
-   "file": "m_013.bin.enc",
+   "file": "m_010.bin.enc",
    "mime": "application/dxf"
   },
   "files/basket/wall_my.dxf": {
-   "file": "m_014.bin.enc",
+   "file": "m_011.bin.enc",
    "mime": "application/dxf"
   },
   "files/basket/wall_px.dxf": {
-   "file": "m_015.bin.enc",
+   "file": "m_012.bin.enc",
    "mime": "application/dxf"
   },
   "files/basket/wall_py.dxf": {
-   "file": "m_016.bin.enc",
+   "file": "m_013.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/battery_door.dxf": {
-   "file": "m_017.bin.enc",
+   "file": "m_014.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/chassis_plate.dxf": {
-   "file": "m_018.bin.enc",
+   "file": "m_015.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/deck_ply.dxf": {
-   "file": "m_019.bin.enc",
+   "file": "m_016.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/intake_ramp_flat.dxf": {
-   "file": "m_020.bin.enc",
+   "file": "m_017.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/intake_side_plate_L.dxf": {
-   "file": "m_021.bin.enc",
+   "file": "m_018.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/intake_side_plate_R.dxf": {
-   "file": "m_022.bin.enc",
+   "file": "m_019.bin.enc",
    "mime": "application/dxf"
   },
-  "files/collector/plates/plate_nyloncf_01.3mf": {
+  "files/collector/plates/23_H2D-B_nyloncf_P3+4.3mf": {
+   "file": "m_020.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/25_H2D-A_nyloncf_P3+4_h2dbed.3mf": {
+   "file": "m_021.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/26_X1C_tpu_P4.3mf": {
+   "file": "m_022.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/27_H2D-B_nyloncf_P4.3mf": {
    "file": "m_023.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_nyloncf_02.3mf": {
+  "files/collector/plates/28_X1E_nyloncf_P4.3mf": {
    "file": "m_024.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_nyloncf_03.3mf": {
+  "files/collector/plates/29_X1C_petg_P4.3mf": {
    "file": "m_025.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_nyloncf_04.3mf": {
+  "files/collector/plates/30_X1C_petgcf_P4.3mf": {
    "file": "m_026.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_nyloncf_05_h2d.3mf": {
+  "files/collector/plates/31_H2D-A_petg_P4_h2dbed.3mf": {
    "file": "m_027.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_petg_01.3mf": {
+  "files/collector/plates/32_H2D-B_nyloncf_P4.3mf": {
    "file": "m_028.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_petg_02.3mf": {
+  "files/collector/plates/33_X1C_petgcf_P4.3mf": {
    "file": "m_029.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_petg_03_h2d.3mf": {
+  "files/collector/plates/34_H2D-A_petgcf_P4.3mf": {
    "file": "m_030.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_petgcf_01.3mf": {
+  "files/collector/plates/35_X1E_petgcf_P4.3mf": {
    "file": "m_031.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_petgcf_02.3mf": {
+  "files/collector/plates/36_X1E_petg_P4.3mf": {
    "file": "m_032.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_petgcf_03.3mf": {
+  "files/collector/plates/37_H2D-A_tpu_P4.3mf": {
    "file": "m_033.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/plate_tpu_01.3mf": {
-   "file": "m_034.bin.enc",
-   "mime": "model/3mf"
-  },
-  "files/collector/plates/plate_tpu_02.3mf": {
-   "file": "m_035.bin.enc",
-   "mime": "model/3mf"
-  },
   "files/collector/ramp_hood_flat.dxf": {
-   "file": "m_036.bin.enc",
+   "file": "m_034.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/roller_hug_plate.dxf": {
-   "file": "m_037.bin.enc",
+   "file": "m_035.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_front_return_L.dxf": {
-   "file": "m_038.bin.enc",
+   "file": "m_036.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_lid.dxf": {
-   "file": "m_039.bin.enc",
+   "file": "m_037.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_shelf_L.dxf": {
-   "file": "m_040.bin.enc",
+   "file": "m_038.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_shelf_R.dxf": {
-   "file": "m_041.bin.enc",
+   "file": "m_039.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_side_L.dxf": {
-   "file": "m_042.bin.enc",
+   "file": "m_040.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_side_R.dxf": {
-   "file": "m_043.bin.enc",
+   "file": "m_041.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_tail.dxf": {
-   "file": "m_044.bin.enc",
+   "file": "m_042.bin.enc",
    "mime": "application/dxf"
   },
   "files/collector/skin_tail_return_L.dxf": {
-   "file": "m_045.bin.enc",
+   "file": "m_043.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/base_plate.dxf": {
-   "file": "m_046.bin.enc",
+   "file": "m_044.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/battery_door.dxf": {
-   "file": "m_047.bin.enc",
+   "file": "m_045.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/cam_window.dxf": {
-   "file": "m_048.bin.enc",
+   "file": "m_046.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/console_window.dxf": {
-   "file": "m_049.bin.enc",
+   "file": "m_047.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/ebay_box.dxf": {
-   "file": "m_050.bin.enc",
+   "file": "m_048.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/ebay_door.dxf": {
-   "file": "m_051.bin.enc",
+   "file": "m_049.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/feeder_disc.dxf": {
-   "file": "m_052.bin.enc",
+   "file": "m_050.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/head_cowl.dxf": {
-   "file": "m_053.bin.enc",
+   "file": "m_051.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/head_deck_ply.dxf": {
-   "file": "m_054.bin.enc",
+   "file": "m_052.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/launcher_shell_L.dxf": {
-   "file": "m_055.bin.enc",
+   "file": "m_053.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/launcher_shell_R.dxf": {
-   "file": "m_056.bin.enc",
+   "file": "m_054.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/launcher_side_plates.dxf": {
-   "file": "m_057.bin.enc",
+   "file": "m_055.bin.enc",
    "mime": "application/dxf"
   },
-  "files/shooter/plates/plate_nyloncf_01.3mf": {
+  "files/shooter/plates/01_H2D-A_petgcf_P1_h2dbed.3mf": {
+   "file": "m_056.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/02_H2D-B_tpu_P1+2.3mf": {
+   "file": "m_057.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/03_X1C_petgcf_P1.3mf": {
    "file": "m_058.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_nyloncf_02.3mf": {
+  "files/shooter/plates/04_X1E_nyloncf_P1.3mf": {
    "file": "m_059.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_nyloncf_03.3mf": {
+  "files/shooter/plates/05_H2D-A_petgcf_P1.3mf": {
    "file": "m_060.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_nyloncf_04.3mf": {
+  "files/shooter/plates/06_X1C_petg_P1.3mf": {
    "file": "m_061.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petg_01.3mf": {
+  "files/shooter/plates/07_H2D-B_nyloncf_P1+2.3mf": {
    "file": "m_062.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petg_05.3mf": {
+  "files/shooter/plates/08_H2D-A_nyloncf_P1+2.3mf": {
    "file": "m_063.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petg_06_h2d.3mf": {
+  "files/shooter/plates/09_X1C_petgcf_P1.3mf": {
    "file": "m_064.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_01.3mf": {
+  "files/shooter/plates/10_X1E_petgcf_P1.3mf": {
    "file": "m_065.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_02.3mf": {
+  "files/shooter/plates/11_H2D-A_tpu_P1.3mf": {
    "file": "m_066.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_03.3mf": {
+  "files/shooter/plates/12_H2D-A_tpu_P1.3mf": {
    "file": "m_067.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_04.3mf": {
+  "files/shooter/plates/13_H2D-B_petgcf_P1+2.3mf": {
    "file": "m_068.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_05.3mf": {
+  "files/shooter/plates/14_H2D-A_petg_P1_h2dbed.3mf": {
    "file": "m_069.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_06.3mf": {
+  "files/shooter/plates/16_X1E_petgcf_P1+2.3mf": {
    "file": "m_070.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_07.3mf": {
+  "files/shooter/plates/18_X1C_petg_P2+3.3mf": {
    "file": "m_071.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_petgcf_08_h2d.3mf": {
+  "files/shooter/plates/22_X1C_petgcf_P2.3mf": {
    "file": "m_072.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_tpu_01.3mf": {
+  "files/shooter/plates/24_X1E_nyloncf_P2+3.3mf": {
    "file": "m_073.bin.enc",
    "mime": "model/3mf"
   },
-  "files/shooter/plates/plate_tpu_02.3mf": {
-   "file": "m_074.bin.enc",
-   "mime": "model/3mf"
-  },
-  "files/shooter/plates/plate_tpu_03.3mf": {
-   "file": "m_075.bin.enc",
-   "mime": "model/3mf"
-  },
   "files/shooter/side_panel_L.dxf": {
-   "file": "m_076.bin.enc",
+   "file": "m_074.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/side_panel_R.dxf": {
-   "file": "m_077.bin.enc",
+   "file": "m_075.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/skin_front.dxf": {
-   "file": "m_078.bin.enc",
+   "file": "m_076.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/skin_rear.dxf": {
-   "file": "m_079.bin.enc",
+   "file": "m_077.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/top_plate.dxf": {
-   "file": "m_080.bin.enc",
+   "file": "m_078.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/turntable_plate.dxf": {
-   "file": "m_081.bin.enc",
+   "file": "m_079.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/turntable_skirt.dxf": {
-   "file": "m_082.bin.enc",
+   "file": "m_080.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/yoke_base_ply.dxf": {
-   "file": "m_083.bin.enc",
+   "file": "m_081.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/yoke_rear_web_ply.dxf": {
-   "file": "m_084.bin.enc",
+   "file": "m_082.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/yoke_sides_ply.dxf": {
-   "file": "m_085.bin.enc",
+   "file": "m_083.bin.enc",
    "mime": "application/dxf"
   }
  }
