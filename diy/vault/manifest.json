@@ -1,12 +1,12 @@
 {
  "version": 2,
  "compression": "gzip",
- "built": "2026-09-22 18:52",
+ "built": "2026-09-22 18:57",
  "kdf": {
   "name": "PBKDF2",
   "hash": "SHA-256",
   "iterations": 600000,
-  "salt": "D+vUB5JExBQLZ2aXt5P56g=="
+  "salt": "i4wqDFrtxBanvJ2qveClZA=="
  },
  "cipher": "AES-GCM",
  "home": "viewer",
@@ -549,260 +549,336 @@
    "file": "m_132.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/charge_flap.stl": {
+  "files/shooter/cam_window.dxf": {
    "file": "m_133.bin.enc",
-   "mime": "model/stl"
+   "mime": "application/dxf"
   },
-  "files/shooter/chute_drop_tube.stl": {
+  "files/shooter/charge_flap.stl": {
    "file": "m_134.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/chute_throat.stl": {
+  "files/shooter/chute_drop_tube.stl": {
    "file": "m_135.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/chute_trough.stl": {
+  "files/shooter/chute_throat.stl": {
    "file": "m_136.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/console_box.stl": {
+  "files/shooter/chute_trough.stl": {
    "file": "m_137.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/corner_shell_FL.stl": {
+  "files/shooter/console_box.stl": {
    "file": "m_138.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/corner_shell_FR.stl": {
+  "files/shooter/console_mount.stl": {
    "file": "m_139.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/corner_shell_RL.stl": {
+  "files/shooter/console_window.dxf": {
    "file": "m_140.bin.enc",
-   "mime": "model/stl"
+   "mime": "application/dxf"
   },
-  "files/shooter/corner_shell_RR.stl": {
+  "files/shooter/corner_shell_FL.stl": {
    "file": "m_141.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/ebay_box.dxf": {
+  "files/shooter/corner_shell_FR.stl": {
    "file": "m_142.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/ebay_door_pc.dxf": {
+  "files/shooter/corner_shell_RL.stl": {
    "file": "m_143.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/edge_trim_L.stl": {
+  "files/shooter/corner_shell_RR.stl": {
    "file": "m_144.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/edge_trim_R.stl": {
+  "files/shooter/deck_bracket_L.stl": {
    "file": "m_145.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/edge_trim_front.stl": {
+  "files/shooter/deck_bracket_R.stl": {
    "file": "m_146.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/edge_trim_rear.stl": {
+  "files/shooter/ebay_box.dxf": {
    "file": "m_147.bin.enc",
-   "mime": "model/stl"
+   "mime": "application/dxf"
   },
-  "files/shooter/feeder_agitator.stl": {
+  "files/shooter/ebay_door.dxf": {
    "file": "m_148.bin.enc",
-   "mime": "model/stl"
+   "mime": "application/dxf"
   },
-  "files/shooter/feeder_disc.stl": {
+  "files/shooter/edge_trim_L.stl": {
    "file": "m_149.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/feeder_housing.stl": {
+  "files/shooter/edge_trim_R.stl": {
    "file": "m_150.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/foot_L.stl": {
+  "files/shooter/edge_trim_front.stl": {
    "file": "m_151.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/foot_R.stl": {
+  "files/shooter/edge_trim_rear.stl": {
    "file": "m_152.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/gate_tab.stl": {
+  "files/shooter/feeder_agitator.stl": {
    "file": "m_153.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/handle_clamp_L_220.stl": {
+  "files/shooter/feeder_housing.stl": {
    "file": "m_154.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/handle_clamp_L_80.stl": {
+  "files/shooter/foot_L.stl": {
    "file": "m_155.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/handle_clamp_R_220.stl": {
+  "files/shooter/foot_R.stl": {
    "file": "m_156.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/handle_clamp_R_80.stl": {
+  "files/shooter/gate_tab.stl": {
    "file": "m_157.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/handle_grip_L.stl": {
+  "files/shooter/grip_backer_L.stl": {
    "file": "m_158.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/handle_grip_R.stl": {
+  "files/shooter/grip_backer_R.stl": {
    "file": "m_159.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/head_cowl.dxf": {
+  "files/shooter/handle_clamp_L_10.stl": {
    "file": "m_160.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/head_deck_3mm_alu.dxf": {
+  "files/shooter/handle_clamp_L_250.stl": {
    "file": "m_161.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/head_grip_L.stl": {
+  "files/shooter/handle_clamp_R_10.stl": {
    "file": "m_162.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/head_grip_R.stl": {
+  "files/shooter/handle_clamp_R_250.stl": {
    "file": "m_163.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/launcher_shell_L.dxf": {
+  "files/shooter/handle_grip_L.stl": {
    "file": "m_164.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/launcher_side_plates_3mm.dxf": {
+  "files/shooter/handle_grip_R.stl": {
    "file": "m_165.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/motor_mount_bottom.stl": {
+  "files/shooter/handle_gusset_L.stl": {
    "file": "m_166.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/motor_mount_top.stl": {
+  "files/shooter/handle_gusset_R.stl": {
    "file": "m_167.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/nose_cover.stl": {
+  "files/shooter/handle_midbracket_L.stl": {
    "file": "m_168.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/panel_wedge.stl": {
+  "files/shooter/handle_midbracket_R.stl": {
    "file": "m_169.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/seat_socket_FL.stl": {
+  "files/shooter/harness_clip_0.stl": {
    "file": "m_170.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/seat_socket_FR.stl": {
+  "files/shooter/harness_clip_1.stl": {
    "file": "m_171.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/seat_socket_RL.stl": {
+  "files/shooter/harness_clip_2.stl": {
    "file": "m_172.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/seat_socket_RR.stl": {
+  "files/shooter/head_cowl.dxf": {
    "file": "m_173.bin.enc",
-   "mime": "model/stl"
+   "mime": "application/dxf"
   },
-  "files/shooter/seat_socket_tab.stl": {
+  "files/shooter/head_grip_L.stl": {
    "file": "m_174.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/shell_corner_cap_FL.stl": {
+  "files/shooter/head_grip_R.stl": {
    "file": "m_175.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/shell_corner_cap_FR.stl": {
+  "files/shooter/launcher_shell_L.dxf": {
    "file": "m_176.bin.enc",
-   "mime": "model/stl"
+   "mime": "application/dxf"
   },
-  "files/shooter/shell_corner_cap_RL.stl": {
+  "files/shooter/launcher_shell_R.dxf": {
    "file": "m_177.bin.enc",
-   "mime": "model/stl"
+   "mime": "application/dxf"
   },
-  "files/shooter/shell_corner_cap_RR.stl": {
+  "files/shooter/motor_mount_bottom.stl": {
    "file": "m_178.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/side_panel_L.dxf": {
+  "files/shooter/motor_mount_top.stl": {
    "file": "m_179.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/skin_front.dxf": {
+  "files/shooter/nose_cover.stl": {
    "file": "m_180.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/skin_rear.dxf": {
+  "files/shooter/pivot_hub_L.stl": {
    "file": "m_181.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/stepper_bracket.stl": {
+  "files/shooter/pivot_hub_R.stl": {
    "file": "m_182.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/stepper_cover.stl": {
+  "files/shooter/seat_socket_FL.stl": {
    "file": "m_183.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/top_plate.dxf": {
+  "files/shooter/seat_socket_FR.stl": {
    "file": "m_184.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/turntable_plate.dxf": {
+  "files/shooter/seat_socket_RL.stl": {
    "file": "m_185.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/turntable_ring_gear.stl": {
+  "files/shooter/seat_socket_RR.stl": {
    "file": "m_186.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/turntable_skirt.dxf": {
+  "files/shooter/seat_socket_tab.stl": {
    "file": "m_187.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/wheel_guard_bottom.stl": {
+  "files/shooter/shell_corner_cap_RL.stl": {
    "file": "m_188.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/wheel_guard_top.stl": {
+  "files/shooter/shell_corner_cap_RR.stl": {
    "file": "m_189.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/wheel_hub_bottom.stl": {
+  "files/shooter/side_panel_L.dxf": {
    "file": "m_190.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/side_panel_R.dxf": {
+   "file": "m_191.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/skin_front.dxf": {
+   "file": "m_192.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/skin_rear.dxf": {
+   "file": "m_193.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/stepper_bracket.stl": {
+   "file": "m_194.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/stepper_cover.stl": {
+   "file": "m_195.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/switch_pod.stl": {
+   "file": "m_196.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/trough_saddle_L.stl": {
+   "file": "m_197.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/trough_saddle_R.stl": {
+   "file": "m_198.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/turntable_ring_gear.stl": {
+   "file": "m_199.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/turntable_skirt.dxf": {
+   "file": "m_200.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/wheel_guard_bottom.stl": {
+   "file": "m_201.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/wheel_guard_top.stl": {
+   "file": "m_202.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/wheel_hub_bottom.stl": {
+   "file": "m_203.bin.enc",
    "mime": "model/stl"
   },
   "files/shooter/wheel_hub_top.stl": {
-   "file": "m_191.bin.enc",
+   "file": "m_204.bin.enc",
    "mime": "model/stl"
   },
   "files/shooter/wheel_tread_bottom.stl": {
-   "file": "m_192.bin.enc",
+   "file": "m_205.bin.enc",
    "mime": "model/stl"
   },
   "files/shooter/wheel_tread_top.stl": {
-   "file": "m_193.bin.enc",
+   "file": "m_206.bin.enc",
    "mime": "model/stl"
   },
-  "files/shooter/yoke_plates_3mm_alu.dxf": {
-   "file": "m_194.bin.enc",
-   "mime": "application/dxf"
+  "files/shooter/yoke_base_bracket_L1.stl": {
+   "file": "m_207.bin.enc",
+   "mime": "model/stl"
   },
-  "files/shooter/yoke_rear_web_3mm_alu.dxf": {
-   "file": "m_195.bin.enc",
-   "mime": "application/dxf"
+  "files/shooter/yoke_base_bracket_L2.stl": {
+   "file": "m_208.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/yoke_base_bracket_R1.stl": {
+   "file": "m_209.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/yoke_base_bracket_R2.stl": {
+   "file": "m_210.bin.enc",
+   "mime": "model/stl"
   },
   "files/shooter/yoke_spacers.stl": {
-   "file": "m_196.bin.enc",
+   "file": "m_211.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/yoke_web_bracket_L1.stl": {
+   "file": "m_212.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/yoke_web_bracket_L2.stl": {
+   "file": "m_213.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/yoke_web_bracket_R1.stl": {
+   "file": "m_214.bin.enc",
+   "mime": "model/stl"
+  },
+  "files/shooter/yoke_web_bracket_R2.stl": {
+   "file": "m_215.bin.enc",
    "mime": "model/stl"
   }
  }
