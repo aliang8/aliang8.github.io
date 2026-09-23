@@ -1,12 +1,12 @@
 {
  "version": 2,
  "compression": "gzip",
- "built": "2026-09-23 00:08",
+ "built": "2026-09-23 12:26",
  "kdf": {
   "name": "PBKDF2",
   "hash": "SHA-256",
   "iterations": 600000,
-  "salt": "pU9oS199drCtGEe3jS22Aw=="
+  "salt": "CW2WqKfBDHq3kPFS9JxFHA=="
  },
  "cipher": "AES-GCM",
  "home": "viewer",
@@ -17,340 +17,644 @@
   }
  },
  "media": {
-  "files/basket/bottom_rail_back.stl": {
+  "ball_machine/print_plan/figs/print_plan_gantt.png": {
    "file": "m_000.bin.enc",
-   "mime": "model/stl"
+   "mime": "image/png"
   },
-  "files/basket/bottom_rail_front.stl": {
+  "ball_machine/print_plan/plates/01_H2D-A_petgcf_P1_h2dbed.3mf": {
    "file": "m_001.bin.enc",
-   "mime": "model/stl"
+   "mime": "model/3mf"
   },
-  "files/basket/funnel_mx.dxf": {
+  "ball_machine/print_plan/plates/02_H2D-B_tpu_P1+2.3mf": {
    "file": "m_002.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/basket/funnel_my.dxf": {
+  "ball_machine/print_plan/plates/03_X1C_petgcf_P1.3mf": {
    "file": "m_003.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/basket/funnel_px.dxf": {
+  "ball_machine/print_plan/plates/04_X1E_nyloncf_P1.3mf": {
    "file": "m_004.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/basket/funnel_py.dxf": {
+  "ball_machine/print_plan/plates/05_H2D-A_petgcf_P1.3mf": {
    "file": "m_005.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/basket/plates/18_X1C_petg_P2+3.3mf": {
+  "ball_machine/print_plan/plates/06_X1C_petg_P1.3mf": {
    "file": "m_006.bin.enc",
    "mime": "model/3mf"
   },
-  "files/basket/plates/23_H2D-B_nyloncf_P3+4.3mf": {
+  "ball_machine/print_plan/plates/07_H2D-B_nyloncf_P1+2.3mf": {
    "file": "m_007.bin.enc",
    "mime": "model/3mf"
   },
-  "files/basket/plates/24_X1E_nyloncf_P2+3.3mf": {
+  "ball_machine/print_plan/plates/08_H2D-A_nyloncf_P1+2.3mf": {
    "file": "m_008.bin.enc",
    "mime": "model/3mf"
   },
-  "files/basket/plates/25_H2D-A_nyloncf_P3+4_h2dbed.3mf": {
+  "ball_machine/print_plan/plates/09_X1C_petgcf_P1.3mf": {
    "file": "m_009.bin.enc",
    "mime": "model/3mf"
   },
-  "files/basket/wall_mx.dxf": {
+  "ball_machine/print_plan/plates/10_X1E_petgcf_P1.3mf": {
    "file": "m_010.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/basket/wall_my.dxf": {
+  "ball_machine/print_plan/plates/11_H2D-A_tpu_P1.3mf": {
    "file": "m_011.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/basket/wall_px.dxf": {
+  "ball_machine/print_plan/plates/12_H2D-A_tpu_P1.3mf": {
    "file": "m_012.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/basket/wall_py.dxf": {
+  "ball_machine/print_plan/plates/13_H2D-B_petgcf_P1+2.3mf": {
    "file": "m_013.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/battery_door.dxf": {
+  "ball_machine/print_plan/plates/14_H2D-A_petg_P1_h2dbed.3mf": {
    "file": "m_014.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/chassis_plate.dxf": {
+  "ball_machine/print_plan/plates/15_H2D-A_petg_P1_h2dbed.3mf": {
    "file": "m_015.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/deck_ply.dxf": {
+  "ball_machine/print_plan/plates/16_X1E_petgcf_P1+2.3mf": {
    "file": "m_016.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/intake_ramp_flat.dxf": {
+  "ball_machine/print_plan/plates/17_H2D-B_petg_P1_h2dbed.3mf": {
    "file": "m_017.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/intake_side_plate_L.dxf": {
+  "ball_machine/print_plan/plates/18_X1C_petg_P2+3.3mf": {
    "file": "m_018.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/intake_side_plate_R.dxf": {
+  "ball_machine/print_plan/plates/19_X1C_petg_P2.3mf": {
    "file": "m_019.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/plates/23_H2D-B_nyloncf_P3+4.3mf": {
+  "ball_machine/print_plan/plates/20_X1E_petg_P2.3mf": {
    "file": "m_020.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/25_H2D-A_nyloncf_P3+4_h2dbed.3mf": {
+  "ball_machine/print_plan/plates/21_H2D-A_petg_P2.3mf": {
    "file": "m_021.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/26_X1C_tpu_P4.3mf": {
+  "ball_machine/print_plan/plates/22_X1C_petgcf_P2.3mf": {
    "file": "m_022.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/27_H2D-B_nyloncf_P4.3mf": {
+  "ball_machine/print_plan/plates/23_H2D-B_nyloncf_P3+4.3mf": {
    "file": "m_023.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/28_X1E_nyloncf_P4.3mf": {
+  "ball_machine/print_plan/plates/24_X1E_nyloncf_P2+3.3mf": {
    "file": "m_024.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/29_X1C_petg_P4.3mf": {
+  "ball_machine/print_plan/plates/25_H2D-A_nyloncf_P3+4_h2dbed.3mf": {
    "file": "m_025.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/30_X1C_petgcf_P4.3mf": {
+  "ball_machine/print_plan/plates/26_X1C_tpu_P4.3mf": {
    "file": "m_026.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/31_H2D-A_petg_P4_h2dbed.3mf": {
+  "ball_machine/print_plan/plates/27_H2D-B_nyloncf_P4.3mf": {
    "file": "m_027.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/32_H2D-B_nyloncf_P4.3mf": {
+  "ball_machine/print_plan/plates/28_X1E_nyloncf_P4.3mf": {
    "file": "m_028.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/33_X1C_petgcf_P4.3mf": {
+  "ball_machine/print_plan/plates/29_X1C_petg_P4.3mf": {
    "file": "m_029.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/34_H2D-A_petgcf_P4.3mf": {
+  "ball_machine/print_plan/plates/30_X1C_petgcf_P4.3mf": {
    "file": "m_030.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/35_X1E_petgcf_P4.3mf": {
+  "ball_machine/print_plan/plates/31_H2D-A_petg_P4_h2dbed.3mf": {
    "file": "m_031.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/36_X1E_petg_P4.3mf": {
+  "ball_machine/print_plan/plates/32_H2D-B_nyloncf_P4.3mf": {
    "file": "m_032.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/plates/37_H2D-A_tpu_P4.3mf": {
+  "ball_machine/print_plan/plates/33_X1C_petgcf_P4.3mf": {
    "file": "m_033.bin.enc",
    "mime": "model/3mf"
   },
-  "files/collector/ramp_hood_flat.dxf": {
+  "ball_machine/print_plan/plates/34_H2D-A_petgcf_P4.3mf": {
    "file": "m_034.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/roller_hug_plate.dxf": {
+  "ball_machine/print_plan/plates/35_X1E_petgcf_P4.3mf": {
    "file": "m_035.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/skin_front_return_L.dxf": {
+  "ball_machine/print_plan/plates/36_X1E_petg_P4.3mf": {
    "file": "m_036.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/skin_lid.dxf": {
+  "ball_machine/print_plan/plates/37_H2D-A_tpu_P4.3mf": {
    "file": "m_037.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/3mf"
   },
-  "files/collector/skin_shelf_L.dxf": {
+  "ball_machine/print_plan/plates/previews/01_H2D-A_petgcf_P1_h2dbed.png": {
    "file": "m_038.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/collector/skin_shelf_R.dxf": {
+  "ball_machine/print_plan/plates/previews/02_H2D-B_tpu_P1+2.png": {
    "file": "m_039.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/collector/skin_side_L.dxf": {
+  "ball_machine/print_plan/plates/previews/03_X1C_petgcf_P1.png": {
    "file": "m_040.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/collector/skin_side_R.dxf": {
+  "ball_machine/print_plan/plates/previews/04_X1E_nyloncf_P1.png": {
    "file": "m_041.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/collector/skin_tail.dxf": {
+  "ball_machine/print_plan/plates/previews/05_H2D-A_petgcf_P1.png": {
    "file": "m_042.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/collector/skin_tail_return_L.dxf": {
+  "ball_machine/print_plan/plates/previews/06_X1C_petg_P1.png": {
    "file": "m_043.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/base_plate.dxf": {
+  "ball_machine/print_plan/plates/previews/07_H2D-B_nyloncf_P1+2.png": {
    "file": "m_044.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/battery_door.dxf": {
+  "ball_machine/print_plan/plates/previews/08_H2D-A_nyloncf_P1+2.png": {
    "file": "m_045.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/cam_window.dxf": {
+  "ball_machine/print_plan/plates/previews/09_X1C_petgcf_P1.png": {
    "file": "m_046.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/console_window.dxf": {
+  "ball_machine/print_plan/plates/previews/10_X1E_petgcf_P1.png": {
    "file": "m_047.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/ebay_box.dxf": {
+  "ball_machine/print_plan/plates/previews/11_H2D-A_tpu_P1.png": {
    "file": "m_048.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/ebay_door.dxf": {
+  "ball_machine/print_plan/plates/previews/12_H2D-A_tpu_P1.png": {
    "file": "m_049.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/feeder_disc.dxf": {
+  "ball_machine/print_plan/plates/previews/13_H2D-B_petgcf_P1+2.png": {
    "file": "m_050.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/head_cowl.dxf": {
+  "ball_machine/print_plan/plates/previews/14_H2D-A_petg_P1_h2dbed.png": {
    "file": "m_051.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/head_deck_ply.dxf": {
+  "ball_machine/print_plan/plates/previews/15_H2D-A_petg_P1_h2dbed.png": {
    "file": "m_052.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/launcher_shell_L.dxf": {
+  "ball_machine/print_plan/plates/previews/16_X1E_petgcf_P1+2.png": {
    "file": "m_053.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/launcher_shell_R.dxf": {
+  "ball_machine/print_plan/plates/previews/17_H2D-B_petg_P1_h2dbed.png": {
    "file": "m_054.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/launcher_side_plates.dxf": {
+  "ball_machine/print_plan/plates/previews/18_X1C_petg_P2+3.png": {
    "file": "m_055.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/01_H2D-A_petgcf_P1_h2dbed.3mf": {
+  "ball_machine/print_plan/plates/previews/19_X1C_petg_P2.png": {
    "file": "m_056.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/02_H2D-B_tpu_P1+2.3mf": {
+  "ball_machine/print_plan/plates/previews/20_X1E_petg_P2.png": {
    "file": "m_057.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/03_X1C_petgcf_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/21_H2D-A_petg_P2.png": {
    "file": "m_058.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/04_X1E_nyloncf_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/22_X1C_petgcf_P2.png": {
    "file": "m_059.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/05_H2D-A_petgcf_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/23_H2D-B_nyloncf_P3+4.png": {
    "file": "m_060.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/06_X1C_petg_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/24_X1E_nyloncf_P2+3.png": {
    "file": "m_061.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/07_H2D-B_nyloncf_P1+2.3mf": {
+  "ball_machine/print_plan/plates/previews/25_H2D-A_nyloncf_P3+4_h2dbed.png": {
    "file": "m_062.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/08_H2D-A_nyloncf_P1+2.3mf": {
+  "ball_machine/print_plan/plates/previews/26_X1C_tpu_P4.png": {
    "file": "m_063.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/09_X1C_petgcf_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/27_H2D-B_nyloncf_P4.png": {
    "file": "m_064.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/10_X1E_petgcf_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/28_X1E_nyloncf_P4.png": {
    "file": "m_065.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/11_H2D-A_tpu_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/29_X1C_petg_P4.png": {
    "file": "m_066.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/12_H2D-A_tpu_P1.3mf": {
+  "ball_machine/print_plan/plates/previews/30_X1C_petgcf_P4.png": {
    "file": "m_067.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/13_H2D-B_petgcf_P1+2.3mf": {
+  "ball_machine/print_plan/plates/previews/31_H2D-A_petg_P4_h2dbed.png": {
    "file": "m_068.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/14_H2D-A_petg_P1_h2dbed.3mf": {
+  "ball_machine/print_plan/plates/previews/32_H2D-B_nyloncf_P4.png": {
    "file": "m_069.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/16_X1E_petgcf_P1+2.3mf": {
+  "ball_machine/print_plan/plates/previews/33_X1C_petgcf_P4.png": {
    "file": "m_070.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/18_X1C_petg_P2+3.3mf": {
+  "ball_machine/print_plan/plates/previews/34_H2D-A_petgcf_P4.png": {
    "file": "m_071.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/22_X1C_petgcf_P2.3mf": {
+  "ball_machine/print_plan/plates/previews/35_X1E_petgcf_P4.png": {
    "file": "m_072.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/plates/24_X1E_nyloncf_P2+3.3mf": {
+  "ball_machine/print_plan/plates/previews/36_X1E_petg_P4.png": {
    "file": "m_073.bin.enc",
-   "mime": "model/3mf"
+   "mime": "image/png"
   },
-  "files/shooter/side_panel_L.dxf": {
+  "ball_machine/print_plan/plates/previews/37_H2D-A_tpu_P4.png": {
    "file": "m_074.bin.enc",
-   "mime": "application/dxf"
+   "mime": "image/png"
   },
-  "files/shooter/side_panel_R.dxf": {
+  "ball_machine/print_plan/print_plan.csv": {
    "file": "m_075.bin.enc",
-   "mime": "application/dxf"
+   "mime": "text/csv"
   },
-  "files/shooter/skin_front.dxf": {
+  "files/basket/bottom_rail_back.stl": {
    "file": "m_076.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/skin_rear.dxf": {
+  "files/basket/bottom_rail_front.stl": {
    "file": "m_077.bin.enc",
-   "mime": "application/dxf"
+   "mime": "model/stl"
   },
-  "files/shooter/top_plate.dxf": {
+  "files/basket/funnel_mx.dxf": {
    "file": "m_078.bin.enc",
    "mime": "application/dxf"
   },
-  "files/shooter/turntable_plate.dxf": {
+  "files/basket/funnel_my.dxf": {
    "file": "m_079.bin.enc",
    "mime": "application/dxf"
   },
-  "files/shooter/turntable_skirt.dxf": {
+  "files/basket/funnel_px.dxf": {
    "file": "m_080.bin.enc",
    "mime": "application/dxf"
   },
-  "files/shooter/yoke_base_ply.dxf": {
+  "files/basket/funnel_py.dxf": {
    "file": "m_081.bin.enc",
    "mime": "application/dxf"
   },
-  "files/shooter/yoke_rear_web_ply.dxf": {
+  "files/basket/plates/18_X1C_petg_P2+3.3mf": {
    "file": "m_082.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/basket/plates/23_H2D-B_nyloncf_P3+4.3mf": {
+   "file": "m_083.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/basket/plates/24_X1E_nyloncf_P2+3.3mf": {
+   "file": "m_084.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/basket/plates/25_H2D-A_nyloncf_P3+4_h2dbed.3mf": {
+   "file": "m_085.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/basket/wall_mx.dxf": {
+   "file": "m_086.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/basket/wall_my.dxf": {
+   "file": "m_087.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/basket/wall_px.dxf": {
+   "file": "m_088.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/basket/wall_py.dxf": {
+   "file": "m_089.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/battery_door.dxf": {
+   "file": "m_090.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/chassis_plate.dxf": {
+   "file": "m_091.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/deck_ply.dxf": {
+   "file": "m_092.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/intake_ramp_flat.dxf": {
+   "file": "m_093.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/intake_side_plate_L.dxf": {
+   "file": "m_094.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/intake_side_plate_R.dxf": {
+   "file": "m_095.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/plates/23_H2D-B_nyloncf_P3+4.3mf": {
+   "file": "m_096.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/25_H2D-A_nyloncf_P3+4_h2dbed.3mf": {
+   "file": "m_097.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/26_X1C_tpu_P4.3mf": {
+   "file": "m_098.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/27_H2D-B_nyloncf_P4.3mf": {
+   "file": "m_099.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/28_X1E_nyloncf_P4.3mf": {
+   "file": "m_100.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/29_X1C_petg_P4.3mf": {
+   "file": "m_101.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/30_X1C_petgcf_P4.3mf": {
+   "file": "m_102.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/31_H2D-A_petg_P4_h2dbed.3mf": {
+   "file": "m_103.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/32_H2D-B_nyloncf_P4.3mf": {
+   "file": "m_104.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/33_X1C_petgcf_P4.3mf": {
+   "file": "m_105.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/34_H2D-A_petgcf_P4.3mf": {
+   "file": "m_106.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/35_X1E_petgcf_P4.3mf": {
+   "file": "m_107.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/36_X1E_petg_P4.3mf": {
+   "file": "m_108.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/plates/37_H2D-A_tpu_P4.3mf": {
+   "file": "m_109.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/collector/ramp_hood_flat.dxf": {
+   "file": "m_110.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/roller_hug_plate.dxf": {
+   "file": "m_111.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_front_return_L.dxf": {
+   "file": "m_112.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_lid.dxf": {
+   "file": "m_113.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_shelf_L.dxf": {
+   "file": "m_114.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_shelf_R.dxf": {
+   "file": "m_115.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_side_L.dxf": {
+   "file": "m_116.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_side_R.dxf": {
+   "file": "m_117.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_tail.dxf": {
+   "file": "m_118.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/collector/skin_tail_return_L.dxf": {
+   "file": "m_119.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/base_plate.dxf": {
+   "file": "m_120.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/battery_door.dxf": {
+   "file": "m_121.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/cam_window.dxf": {
+   "file": "m_122.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/console_window.dxf": {
+   "file": "m_123.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/ebay_box.dxf": {
+   "file": "m_124.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/ebay_door.dxf": {
+   "file": "m_125.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/feeder_disc.dxf": {
+   "file": "m_126.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/head_cowl.dxf": {
+   "file": "m_127.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/head_deck_ply.dxf": {
+   "file": "m_128.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/launcher_shell_L.dxf": {
+   "file": "m_129.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/launcher_shell_R.dxf": {
+   "file": "m_130.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/launcher_side_plates.dxf": {
+   "file": "m_131.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/plates/01_H2D-A_petgcf_P1_h2dbed.3mf": {
+   "file": "m_132.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/02_H2D-B_tpu_P1+2.3mf": {
+   "file": "m_133.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/03_X1C_petgcf_P1.3mf": {
+   "file": "m_134.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/04_X1E_nyloncf_P1.3mf": {
+   "file": "m_135.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/05_H2D-A_petgcf_P1.3mf": {
+   "file": "m_136.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/06_X1C_petg_P1.3mf": {
+   "file": "m_137.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/07_H2D-B_nyloncf_P1+2.3mf": {
+   "file": "m_138.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/08_H2D-A_nyloncf_P1+2.3mf": {
+   "file": "m_139.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/09_X1C_petgcf_P1.3mf": {
+   "file": "m_140.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/10_X1E_petgcf_P1.3mf": {
+   "file": "m_141.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/11_H2D-A_tpu_P1.3mf": {
+   "file": "m_142.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/12_H2D-A_tpu_P1.3mf": {
+   "file": "m_143.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/13_H2D-B_petgcf_P1+2.3mf": {
+   "file": "m_144.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/14_H2D-A_petg_P1_h2dbed.3mf": {
+   "file": "m_145.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/16_X1E_petgcf_P1+2.3mf": {
+   "file": "m_146.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/18_X1C_petg_P2+3.3mf": {
+   "file": "m_147.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/22_X1C_petgcf_P2.3mf": {
+   "file": "m_148.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/plates/24_X1E_nyloncf_P2+3.3mf": {
+   "file": "m_149.bin.enc",
+   "mime": "model/3mf"
+  },
+  "files/shooter/side_panel_L.dxf": {
+   "file": "m_150.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/side_panel_R.dxf": {
+   "file": "m_151.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/skin_front.dxf": {
+   "file": "m_152.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/skin_rear.dxf": {
+   "file": "m_153.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/top_plate.dxf": {
+   "file": "m_154.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/turntable_plate.dxf": {
+   "file": "m_155.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/turntable_skirt.dxf": {
+   "file": "m_156.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/yoke_base_ply.dxf": {
+   "file": "m_157.bin.enc",
+   "mime": "application/dxf"
+  },
+  "files/shooter/yoke_rear_web_ply.dxf": {
+   "file": "m_158.bin.enc",
    "mime": "application/dxf"
   },
   "files/shooter/yoke_sides_ply.dxf": {
-   "file": "m_083.bin.enc",
+   "file": "m_159.bin.enc",
    "mime": "application/dxf"
   }
  }
