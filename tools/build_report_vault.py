@@ -9,9 +9,9 @@ Every top-level *.html in REPORT_DIR is a page (index.html is the home page); ev
 16-byte salt, 600k, 32 bytes); entry = IV(12) || AES-256-GCM(gzip(plaintext)). Entries get opaque names (m_000.enc);
 the page/asset map is itself an encrypted entry, so manifest.json only holds KDF params and that entry's name.
 Passwords live in ~/Documents/reports/.vault_passwords.json (mode 600), never in the site repo; an existing slug
-reuses its password, so republishing keeps the same password.
+reuses its password and salt, so republishing keeps the same password and only changed entries change bytes.
 """
-import argparse, base64, datetime, gzip, hashlib, json, mimetypes, os, re, secrets, shutil, sys
+import argparse, base64, datetime, gzip, hashlib, hmac, json, mimetypes, os, re, secrets, shutil, sys
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -80,16 +80,22 @@ def main():
     if os.path.isdir(out):
         shutil.rmtree(out)
     os.makedirs(out)
-    salt = os.urandom(16)
-    aes = AESGCM(hashlib.pbkdf2_hmac("sha256", password.encode(), salt, ITERS, 32))
+    if "salt" not in pw[slug]:
+        pw[slug]["salt"] = base64.b64encode(os.urandom(16)).decode()
+        save_passwords(pw)
+    salt = base64.b64decode(pw[slug]["salt"])
+    key = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, ITERS, 32)
+    aes = AESGCM(key)
     n = [0]
     total = [0]
 
     def enc(data):
         name = f"m_{n[0]:03d}.enc"
         n[0] += 1
-        iv = os.urandom(12)
-        blob = iv + aes.encrypt(iv, gzip.compress(data, 6), None)
+        # IV = HMAC(key, plaintext): an unchanged asset re-encrypts to identical bytes (git stores it once); a nonce
+        # only repeats for an identical message, which reveals nothing beyond "this entry did not change".
+        iv = hmac.new(key, data, hashlib.sha256).digest()[:12]
+        blob = iv + aes.encrypt(iv, gzip.compress(data, 6, mtime=0), None)
         open(os.path.join(out, name), "wb").write(blob)
         total[0] += len(blob)
         return name
