@@ -52,12 +52,16 @@ def main():
     ap.add_argument("report_dir")
     ap.add_argument("slug")
     ap.add_argument("--prefix", default="r")
+    ap.add_argument("--password", help="set this slug's password (default: a generated passphrase)")
     a = ap.parse_args()
     src = os.path.abspath(a.report_dir)
     pw = load_passwords()
     slug = f"{a.prefix}-{secrets.token_hex(3)}" if a.slug == "new" else a.slug
     if slug not in pw:
-        pw[slug] = {"password": new_password(), "report_dir": src}
+        pw[slug] = {"password": a.password or new_password(), "report_dir": src}
+        save_passwords(pw)
+    elif a.password and a.password != pw[slug]["password"]:
+        pw[slug]["password"] = a.password
         save_passwords(pw)
     password = pw[slug]["password"]
 
