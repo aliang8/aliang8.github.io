@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Private report</title>
+<link rel="icon" type="image/png" href="../../img/me.png">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --text:#202020; --muted:#6b6b6b; --link:#3273dc; --bg:#f5f5f5; --card:#ffffff; --line:#dcdcdc; }
+  html, body { margin:0; height:100%; }
+  body { background:var(--bg); color:var(--text); font-family:"EB Garamond", Georgia, "Times New Roman", serif; font-size:18px; line-height:1.5; }
+  #gate { min-height:100%; display:flex; align-items:center; justify-content:center; padding:24px; box-sizing:border-box; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:36px 40px; max-width:420px; width:100%;
+          box-shadow:0 2px 3px rgba(10,10,10,.1); text-align:center; }
+  .lock { font-size:34px; margin-bottom:8px; }
+  h1 { font-size:26px; font-weight:600; margin:0 0 18px; }
+  form { display:flex; gap:8px; }
+  input[type=password] { flex:1; font:inherit; padding:9px 12px; border:1px solid var(--line); border-radius:6px; }
+  input:focus { outline:2px solid var(--link); outline-offset:1px; border-color:var(--link); }
+  button { font:inherit; padding:9px 16px; border:1px solid var(--link); background:var(--link); color:#fff; border-radius:6px; cursor:pointer; }
+  button:disabled { opacity:.6; cursor:progress; }
+  label.rem { display:block; margin-top:12px; font-size:15px; color:var(--muted); }
+  #status { min-height:1.5em; margin:10px 0 0; color:var(--muted); font-size:16px; }
+  #status.err { color:#b3261e; }
+  #app { position:fixed; inset:0; width:100%; height:100%; border:0; display:none; background:#f9f9f7; }
+  body.open #gate { display:none; } body.open #app { display:block; }
+  #lockbtn { position:fixed; right:10px; bottom:10px; z-index:2; display:none; font-size:13px; padding:4px 10px;
+             background:rgba(255,255,255,.85); color:var(--text); border:1px solid var(--line); }
+  body.open #lockbtn { display:block; }
+</style>
+</head>
+<body>
+<section id="gate">
+  <div class="card">
+    <div class="lock" aria-hidden="true">&#128274;</div>
+    <h1>Private report</h1>
+    <form id="form" autocomplete="off">
+      <input id="pass" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password" required>
+      <button id="go" type="submit">Open</button>
+    </form>
+    <label class="rem"><input id="rem" type="checkbox"> Remember on this device</label>
+    <p id="status" role="status" aria-live="polite"></p>
+  </div>
+</section>
+<iframe id="app" title="Report"></iframe>
+<button id="lockbtn" type="button" title="Forget the password on this device">Lock</button>
+<script>
+// Client-side vault (same scheme as /diy): PBKDF2-SHA256 (600k) -> AES-256-GCM; every entry is IV || ciphertext
+// of a gzip stream. Only manifest.json (KDF params + the name of the encrypted index) is plaintext; page names,
+// asset paths and content all live inside encrypted entries. Requires https or localhost (WebCrypto).
+const $ = (id) => document.getElementById(id);
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+const STORE = 'report.pass:' + location.pathname;
+let manifest = null, key = null, index = null, media = {}, pageCache = {};
+
+async function loadManifest() {
+  if (manifest) return manifest;
+  const r = await fetch('manifest.json?v=' + Date.now(), { cache: 'no-store' });
+  if (!r.ok) throw new Error('manifest missing');
+  return (manifest = await r.json());
+}
+async function deriveKey(pass) {
+  const m = await loadManifest();
+  const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: m.kdf.hash, salt: b64(m.kdf.salt), iterations: m.kdf.iterations },
+    km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+}
+async function decryptEntry(file) {
+  const r = await fetch(file + '?v=' + encodeURIComponent(manifest.built), { cache: 'no-store' });
+  if (!r.ok) throw new Error('missing ' + file);
+  const packed = new Uint8Array(await r.arrayBuffer());
+  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: packed.slice(0, 12) }, key, packed.slice(12));
+  const s = new Blob([plain]).stream().pipeThrough(new DecompressionStream('gzip'));
+  return new Uint8Array(await new Response(s).arrayBuffer());
+}
+// In-report links to other pages become #vault:<page>; this script (injected into every page) hands them back to us.
+const NAV = "<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^=\"#vault:\"]');" +
+            "if(!a)return;e.preventDefault();e.stopPropagation();parent.postMessage({type:'vault-nav',page:a.getAttribute('href').slice(7)},'*')},true);<\/script>";
+function rewrite(html) {
+  html = html.replace(/(['"])([^'"<>\s]+)\1/g, (m, q, p) => {
+    if (media[p]) return q + media[p] + q;
+    const pg = p.match(/^([\w-]+)\.html$/);
+    if (pg && index.pages[pg[1]]) return q + '#vault:' + pg[1] + q;
+    return m;
+  });
+  return html.includes('</body>') ? html.replace('</body>', NAV + '</body>') : html + NAV;
+}
+async function showPage(name) {
+  if (!index.pages[name]) name = index.home;
+  if (!pageCache[name]) {
+    const html = rewrite(new TextDecoder().decode(await decryptEntry(index.pages[name])));
+    pageCache[name] = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+  }
+  $('app').src = pageCache[name];
+  history.replaceState(null, '', location.pathname + (name === index.home ? '' : '#' + name));
+}
+window.addEventListener('message', (ev) => { const m = ev.data; if (m && m.type === 'vault-nav') showPage(m.page); });
+
+const status = (t, err) => { const s = $('status'); s.textContent = t; s.className = err ? 'err' : ''; };
+async function open_(pass, remember) {
+  $('go').disabled = true; status('Unlocking…');
+  try {
+    key = await deriveKey(pass);
+    index = JSON.parse(new TextDecoder().decode(await decryptEntry(manifest.index)));
+    const names = Object.keys(index.media); let done = 0;
+    await Promise.all(names.map(async (p) => {
+      const e = index.media[p];
+      media[p] = URL.createObjectURL(new Blob([await decryptEntry(e.file)], { type: e.mime }));
+      status('Decrypting… ' + (++done) + '/' + names.length);
+    }));
+    if (remember) localStorage.setItem(STORE, pass);
+    await showPage(location.hash.slice(1) || index.home);
+    document.body.classList.add('open'); status('');
+    window.__vault = { open: true, pages: Object.keys(index.pages), media: names.length };
+  } catch (e) {
+    key = null; index = null; localStorage.removeItem(STORE);
+    status(e && e.name === 'OperationError' ? 'Wrong password.' : 'Could not open: ' + (e.message || e), true);
+    window.__vault = { open: false, error: String(e && e.name) };
+  } finally { $('go').disabled = false; }
+}
+$('form').addEventListener('submit', (e) => { e.preventDefault(); open_($('pass').value, $('rem').checked); });
+$('lockbtn').addEventListener('click', () => { localStorage.removeItem(STORE); location.href = location.pathname; });
+(async () => {
+  if (!window.isSecureContext || !crypto.subtle) { status('This page needs https.', true); return; }
+  const saved = localStorage.getItem(STORE);
+  // Verification hook: ?pass= auto-submits ONLY on localhost; the public host ignores it.
+  const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+  const hook = local ? new URLSearchParams(location.search).get('pass') : null;
+  if (saved) open_(saved, false); else if (hook) open_(hook, false); else $('pass').focus();
+})();
+</script>
+</body>
+</html>
