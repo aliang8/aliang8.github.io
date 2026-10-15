@@ -103,7 +103,8 @@ async function showPage(target, push) {
     for (let d = el.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
     el.scrollIntoView({ block: 'start' });
   }; else frame.onload = null;
-  frame.src = url;
+  // replace() so swapping pages adds no iframe history entry; the top-level pushState below owns Back/Forward
+  if (frame.getAttribute('src')) frame.contentWindow.location.replace(url); else frame.src = url;
   const h = location.pathname + (name === index.home && !anchor ? '' : '#' + name + (anchor ? '#' + anchor : ''));
   if (push) history.pushState({ page: target }, '', h); else history.replaceState({ page: target }, '', h);
 }
