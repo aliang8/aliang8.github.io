@@ -82,22 +82,34 @@ const NAV = "<script>document.addEventListener('click',function(e){var a=e.targe
 function rewrite(html) {
   html = html.replace(/(['"])([^'"<>\s]+)\1/g, (m, q, p) => {
     if (media[p]) return q + media[p] + q;
-    const pg = p.match(/^([\w-]+)\.html$/);
-    if (pg && index.pages[pg[1]]) return q + '#vault:' + pg[1] + q;
+    const pg = p.match(/^([\w-]+)\.html(#[\w-]+)?$/);   // page.html or page.html#anchor
+    if (pg && index.pages[pg[1]]) return q + '#vault:' + pg[1] + (pg[2] || '') + q;
     return m;
   });
   return html.includes('</body>') ? html.replace('</body>', NAV + '</body>') : html + NAV;
 }
-async function showPage(name) {
+// target "page" or "page#anchor"; push = add a browser-history entry so Back returns to the previous tab
+async function showPage(target, push) {
+  let [name, anchor] = String(target).split('#');
   if (!index.pages[name]) name = index.home;
   if (!pageCache[name]) {
     const html = rewrite(new TextDecoder().decode(await decryptEntry(index.pages[name])));
     pageCache[name] = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
   }
-  $('app').src = pageCache[name];
-  history.replaceState(null, '', location.pathname + (name === index.home ? '' : '#' + name));
+  const frame = $('app'), url = pageCache[name] + (anchor ? '#' + anchor : '');
+  if (anchor) frame.onload = () => {   // open any collapsed section holding the anchor, then scroll to it
+    const el = frame.contentDocument.getElementById(anchor);
+    if (!el) return;
+    for (let d = el.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
+    el.scrollIntoView({ block: 'start' });
+  }; else frame.onload = null;
+  // replace() so swapping pages adds no iframe history entry; the top-level pushState below owns Back/Forward
+  if (frame.getAttribute('src')) frame.contentWindow.location.replace(url); else frame.src = url;
+  const h = location.pathname + (name === index.home && !anchor ? '' : '#' + name + (anchor ? '#' + anchor : ''));
+  if (push) history.pushState({ page: target }, '', h); else history.replaceState({ page: target }, '', h);
 }
-window.addEventListener('message', (ev) => { const m = ev.data; if (m && m.type === 'vault-nav') showPage(m.page); });
+window.addEventListener('message', (ev) => { const m = ev.data; if (m && m.type === 'vault-nav') showPage(m.page, true); });
+window.addEventListener('popstate', () => { if (index) showPage(location.hash.slice(1) || index.home, false); });
 
 const status = (t, err) => { const s = $('status'); s.textContent = t; s.className = err ? 'err' : ''; };
 async function open_(pass, remember) {
