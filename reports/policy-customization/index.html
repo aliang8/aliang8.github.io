@@ -163,9 +163,9 @@ function rewrite(html) {
     const src = attrs.match(/\ssrc=(['"])([^'"<>\s]+)\1/);
     if (src && isMedia(src[2])) {
       lazyScripts = true; used.add(src[2]);
-      return '<script type="text/x-vault" data-vlz-src="' + src[2] + '"></script>';
+      return '<script type="text/x-vault" data-vlz-src="' + src[2] + '"><\/script>';
     }
-    if (lazyScripts && !/\btype=/.test(attrs) && !src) return '<script type="text/x-vault">' + body + '</script>';
+    if (lazyScripts && !/\btype=/.test(attrs) && !src) return '<script type="text/x-vault">' + body + '<\/script>';
     return m;
   });
   // 2) media attributes -> data-vlz-<attr>, resolved by the page script when needed

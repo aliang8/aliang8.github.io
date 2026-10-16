@@ -10,6 +10,7 @@ Every top-level *.html in REPORT_DIR is a page (index.html is the home page); ev
 the page/asset map is itself an encrypted entry, so manifest.json only holds KDF params and that entry's name.
 Passwords live in ~/Documents/reports/.vault_passwords.json (mode 600), never in the site repo; an existing slug
 reuses its password and salt, so republishing keeps the same password and only changed entries change bytes.
+The gate (tools/report_gate.html) decrypts the index and the requested page at unlock, and media on demand.
 """
 import argparse, base64, datetime, gzip, hashlib, hmac, json, mimetypes, os, re, secrets, shutil, sys
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
