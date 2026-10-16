@@ -51,10 +51,13 @@
 // Client-side vault (same scheme as /diy): PBKDF2-SHA256 (600k) -> AES-256-GCM; every entry is IV || ciphertext
 // of a gzip stream. Only manifest.json (KDF params + the name of the encrypted index) is plaintext; page names,
 // asset paths and content all live inside encrypted entries. Requires https or localhost (WebCrypto).
+// Unlock decrypts only the index and the requested page; media is decrypted on demand (in/near view first, then a
+// low-concurrency background prefetch of the current page), so the first page shows without fetching ~40 MB.
 const $ = (id) => document.getElementById(id);
 const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
-const STORE = 'report.pass:' + location.pathname;
-let manifest = null, key = null, index = null, media = {}, pageCache = {};
+const STORE = 'report.pass:' + location.pathname;          // legacy: a remembered password (migrated to the key cache)
+const KEYDB = 'report-vault', KEYSTORE = 'keys';
+let manifest = null, key = null, index = null, pageCache = {};
 
 async function loadManifest() {
   if (manifest) return manifest;
@@ -68,6 +71,27 @@ async function deriveKey(pass) {
   return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: m.kdf.hash, salt: b64(m.kdf.salt), iterations: m.kdf.iterations },
     km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
 }
+// "Remember on this device" keeps the derived, NON-extractable AES key in IndexedDB (scripts can use it but never
+// read its bytes) instead of the password, keyed by page + salt so a new password invalidates it.
+function keyDb() {
+  return new Promise((ok, bad) => {
+    const r = indexedDB.open(KEYDB, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore(KEYSTORE);
+    r.onsuccess = () => ok(r.result); r.onerror = () => bad(r.error);
+  });
+}
+async function keyOp(mode, fn) {
+  const db = await keyDb();
+  return new Promise((ok, bad) => {
+    const t = db.transaction(KEYSTORE, mode), req = fn(t.objectStore(KEYSTORE));
+    t.oncomplete = () => ok(req && req.result); t.onerror = () => bad(t.error);
+  });
+}
+const keyId = () => location.pathname + '|' + manifest.kdf.salt;
+const saveKey = (k) => keyOp('readwrite', (s) => s.put(k, keyId())).catch(() => {});
+const loadKey = () => keyOp('readonly', (s) => s.get(keyId())).catch(() => null);
+const forgetKey = () => keyOp('readwrite', (s) => s.delete(keyId())).catch(() => {});
+
 async function decryptEntry(file) {
   const r = await fetch(file + '?v=' + encodeURIComponent(manifest.built), { cache: 'no-store' });
   if (!r.ok) throw new Error('missing ' + file);
@@ -76,24 +100,102 @@ async function decryptEntry(file) {
   const s = new Blob([plain]).stream().pipeThrough(new DecompressionStream('gzip'));
   return new Uint8Array(await new Response(s).arrayBuffer());
 }
-// In-report links to other pages become #vault:<page>; this script (injected into every page) hands them back to us.
-const NAV = "<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^=\"#vault:\"]');" +
-            "if(!a)return;e.preventDefault();e.stopPropagation();parent.postMessage({type:'vault-nav',page:a.getAttribute('href').slice(7)},'*')},true);<\/script>";
+
+// ---- media on demand: one cached object URL per asset; "now" requests jump the low-concurrency background queue
+const mediaUrl = {}, mediaJob = {}, bgQueue = [];
+let bgActive = 0;
+const BG_CONCURRENCY = 4;
+function getMedia(name) {
+  if (mediaUrl[name]) return Promise.resolve(mediaUrl[name]);
+  if (!mediaJob[name]) {
+    const e = index.media[name];
+    if (!e) return Promise.reject(new Error('not in the vault: ' + name));
+    mediaJob[name] = decryptEntry(e.file).then((d) => (mediaUrl[name] = URL.createObjectURL(new Blob([d], { type: e.mime }))));
+  }
+  return mediaJob[name];
+}
+function prefetch(names) {
+  for (const n of names) if (!mediaUrl[n] && !mediaJob[n] && !bgQueue.includes(n)) bgQueue.push(n);
+  pumpBg();
+}
+function pumpBg() {
+  while (bgActive < BG_CONCURRENCY && bgQueue.length) {
+    const n = bgQueue.shift();
+    if (mediaUrl[n] || mediaJob[n]) continue;
+    bgActive++;
+    getMedia(n).catch(() => {}).finally(() => { bgActive--; pumpBg(); });
+  }
+}
+window.__vaultGet = getMedia;           // the page (a same-origin blob: iframe) calls parent.__vaultGet(name)
+window.__vaultPrefetch = prefetch;
+
+// In-report links to other pages become #vault:<page>; the injected page script below hands them back to us, and
+// resolves lazy media (data-vlz-<attr>) when an element nears the viewport, or a collapsed section holding it opens.
+const PAGE_JS = "<script>(function(){" +
+  "document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^=\"#vault:\"]');" +
+  "if(!a)return;e.preventDefault();e.stopPropagation();parent.postMessage({type:'vault-nav',page:a.getAttribute('href').slice(7)},'*')},true);" +
+  "var P='data-vlz-';function names(el){var o=[];for(var i=0;i<el.attributes.length;i++){var at=el.attributes[i];" +
+  "if(at.name.indexOf(P)===0)o.push([at.name.slice(P.length),at.value])}return o}" +
+  "function resolve(el){if(el.__vlz)return el.__vlz;var ns=names(el);el.__vlz=Promise.all(ns.map(function(p){" +
+  "return parent.__vaultGet(p[1]).then(function(u){el.setAttribute(p[0],u);el.removeAttribute(P+p[0])})}))" +
+  ".then(function(){if(el.tagName==='VIDEO'&&el.hasAttribute('autoplay')){var r=el.play();if(r&&r.catch)r.catch(function(){})}});return el.__vlz}" +
+  "var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){" +
+  "if(e.isIntersecting){io.unobserve(e.target);resolve(e.target)}})},{rootMargin:'600px 0px'}):null;" +
+  "function scan(root){var els=(root||document).querySelectorAll('[data-vlz-src],[data-vlz-poster],[data-vlz-href],[data-vlz-data-v]');" +
+  "for(var i=0;i<els.length;i++){var el=els[i];if(el.tagName==='SCRIPT')continue;if(io)io.observe(el);else resolve(el)}}" +
+  // a click on a link / lightbox trigger whose target is still encrypted: resolve it, then replay the click
+  "document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('[data-vlz-href],[data-vlz-data-v]');" +
+  "if(!el||el.__vlzReplay)return;e.preventDefault();e.stopImmediatePropagation();resolve(el).then(function(){el.__vlzReplay=1;el.click();el.__vlzReplay=0})},true);" +
+  // scripts that load encrypted files run in document order (with the inline scripts after them) once fetched
+  "async function scripts(){var ss=document.querySelectorAll('script[type=\"text/x-vault\"]');for(var i=0;i<ss.length;i++){" +
+  "var o=ss[i],n=document.createElement('script'),src=o.getAttribute('data-vlz-src');" +
+  "if(src){n.src=await parent.__vaultGet(src);await new Promise(function(ok){n.onload=n.onerror=ok;o.replaceWith(n)})}" +
+  "else{n.textContent=o.textContent;o.replaceWith(n)}}}" +
+  "function go(){scan();scripts();setTimeout(function(){parent.__vaultPrefetch(window.__vaultPage||[])},1500)}" +
+  "if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();" +
+  "})();<\/script>";
+const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 function rewrite(html) {
+  const used = new Set(), isMedia = (p) => Object.prototype.hasOwnProperty.call(index.media, p);
+  // 1) <script src=media> and every inline script after the first of them -> ordered lazy chain
+  let lazyScripts = false;
+  html = html.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (m, attrs, body) => {
+    const src = attrs.match(/\ssrc=(['"])([^'"<>\s]+)\1/);
+    if (src && isMedia(src[2])) {
+      lazyScripts = true; used.add(src[2]);
+      return '<script type="text/x-vault" data-vlz-src="' + src[2] + '"></script>';
+    }
+    if (lazyScripts && !/\btype=/.test(attrs) && !src) return '<script type="text/x-vault">' + body + '</script>';
+    return m;
+  });
+  // 2) media attributes -> data-vlz-<attr>, resolved by the page script when needed
+  html = html.replace(/(\s)(src|poster|href|data-[\w-]+)=(['"])([^'"<>\s]+)\3/g, (m, sp, attr, q, p) => {
+    if (attr.startsWith('data-vlz-') || !isMedia(p)) return m;
+    used.add(p);
+    return sp + 'data-vlz-' + attr + '=' + q + p + q + (attr === 'src' ? ' src=' + q + BLANK + q : '');
+  });
+  // 3) other quoted references: page links, and (rare) media quoted outside an attribute, resolved before showing
+  const eager = new Set();
   html = html.replace(/(['"])([^'"<>\s]+)\1/g, (m, q, p) => {
-    if (media[p]) return q + media[p] + q;
+    if (isMedia(p) && !used.has(p)) { eager.add(p); return m; }
     const pg = p.match(/^([\w-]+)\.html(#[\w-]+)?$/);   // page.html or page.html#anchor
     if (pg && index.pages[pg[1]]) return q + '#vault:' + pg[1] + (pg[2] || '') + q;
     return m;
   });
-  return html.includes('</body>') ? html.replace('</body>', NAV + '</body>') : html + NAV;
+  const list = '<script>window.__vaultPage=' + JSON.stringify([...used]) + ';<\/script>';
+  html = html.includes('</body>') ? html.replace('</body>', list + PAGE_JS + '</body>') : html + list + PAGE_JS;
+  return { html, eager: [...eager] };
 }
 // target "page" or "page#anchor"; push = add a browser-history entry so Back returns to the previous tab
 async function showPage(target, push) {
   let [name, anchor] = String(target).split('#');
   if (!index.pages[name]) name = index.home;
   if (!pageCache[name]) {
-    const html = rewrite(new TextDecoder().decode(await decryptEntry(index.pages[name])));
+    let { html, eager } = rewrite(new TextDecoder().decode(await decryptEntry(index.pages[name])));
+    if (eager.length) {
+      const urls = await Promise.all(eager.map(getMedia));
+      eager.forEach((p, i) => { html = html.split("'" + p + "'").join("'" + urls[i] + "'").split('"' + p + '"').join('"' + urls[i] + '"'); });
+    }
     pageCache[name] = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
   }
   const frame = $('app'), url = pageCache[name] + (anchor ? '#' + anchor : '');
@@ -112,36 +214,40 @@ window.addEventListener('message', (ev) => { const m = ev.data; if (m && m.type 
 window.addEventListener('popstate', () => { if (index) showPage(location.hash.slice(1) || index.home, false); });
 
 const status = (t, err) => { const s = $('status'); s.textContent = t; s.className = err ? 'err' : ''; };
-async function open_(pass, remember) {
+// open with a password (derives the key) or with a cached key (skips the 600k-iteration KDF)
+async function open_(pass, remember, cachedKey) {
   $('go').disabled = true; status('Unlocking…');
   try {
-    key = await deriveKey(pass);
+    await loadManifest();
+    key = cachedKey || await deriveKey(pass);
     index = JSON.parse(new TextDecoder().decode(await decryptEntry(manifest.index)));
-    const names = Object.keys(index.media); let done = 0;
-    await Promise.all(names.map(async (p) => {
-      const e = index.media[p];
-      media[p] = URL.createObjectURL(new Blob([await decryptEntry(e.file)], { type: e.mime }));
-      status('Decrypting… ' + (++done) + '/' + names.length);
-    }));
-    if (remember) localStorage.setItem(STORE, pass);
+    if (remember) await saveKey(key);
+    localStorage.removeItem(STORE);
     await showPage(location.hash.slice(1) || index.home);
     document.body.classList.add('open'); status('');
-    window.__vault = { open: true, pages: Object.keys(index.pages), media: names.length };
+    window.__vault = { open: true, pages: Object.keys(index.pages), media: Object.keys(index.media).length };
   } catch (e) {
     key = null; index = null; localStorage.removeItem(STORE);
+    if (cachedKey) { await forgetKey(); status(''); $('pass').focus(); window.__vault = { open: false, error: 'stale key' }; return; }
     status(e && e.name === 'OperationError' ? 'Wrong password.' : 'Could not open: ' + (e.message || e), true);
     window.__vault = { open: false, error: String(e && e.name) };
   } finally { $('go').disabled = false; }
 }
 $('form').addEventListener('submit', (e) => { e.preventDefault(); open_($('pass').value, $('rem').checked); });
-$('lockbtn').addEventListener('click', () => { localStorage.removeItem(STORE); location.href = location.pathname; });
+$('lockbtn').addEventListener('click', async () => {
+  localStorage.removeItem(STORE); if (manifest) await forgetKey(); location.href = location.pathname;
+});
 (async () => {
   if (!window.isSecureContext || !crypto.subtle) { status('This page needs https.', true); return; }
-  const saved = localStorage.getItem(STORE);
   // Verification hook: ?pass= auto-submits ONLY on localhost; the public host ignores it.
   const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
   const hook = local ? new URLSearchParams(location.search).get('pass') : null;
-  if (saved) open_(saved, false); else if (hook) open_(hook, false); else $('pass').focus();
+  if (hook) return open_(hook, false);
+  const legacy = localStorage.getItem(STORE);           // a password remembered by the old gate: migrate to the key cache
+  if (legacy) return open_(legacy, true);
+  try { await loadManifest(); } catch (e) { status('Could not open: ' + e.message, true); return; }
+  const k = await loadKey();
+  if (k) open_(null, false, k); else $('pass').focus();
 })();
 </script>
 </body>
