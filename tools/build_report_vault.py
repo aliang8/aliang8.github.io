@@ -70,14 +70,25 @@ def main():
     if "index" not in pages:
         sys.exit(f"{src} has no index.html")
     assets, missing = set(), set()
-    for p in pages:
-        for _, ref in QUOTED.findall(open(os.path.join(src, p + ".html")).read()):
-            if re.match(r"^[a-z]+:|^#|^/", ref) or not ref.lower().endswith(MEDIA_EXT):
+    # Self-contained HTML artifacts in a subdirectory (e.g. artifacts/x.html, shown in an <iframe>) are assets too, decrypted on
+    # demand like media; they are scanned for their own media (clips) in turn. Top-level *.html stay pages.
+    def is_asset(ref):
+        return ref.lower().endswith(MEDIA_EXT) or (ref.lower().endswith(".html") and "/" in ref)
+    queue = [os.path.join(src, p + ".html") for p in pages]
+    seen_html = set()
+    while queue:
+        fpath = queue.pop()
+        for _, ref in QUOTED.findall(open(fpath).read()):
+            if re.match(r"^[a-z]+:|^#|^/", ref) or not is_asset(ref):
                 continue
             path = os.path.normpath(os.path.join(src, ref))
             if not path.startswith(src + os.sep):
                 continue
-            (assets if os.path.isfile(path) else missing).add(ref)
+            if not os.path.isfile(path):
+                missing.add(ref); continue
+            assets.add(ref)
+            if ref.lower().endswith(".html") and path not in seen_html:
+                seen_html.add(path); queue.append(path)
     if missing:
         sys.exit(f"pages reference {len(missing)} missing files, e.g. {sorted(missing)[:5]}")
 
