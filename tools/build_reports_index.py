@@ -6,6 +6,7 @@ import datetime, glob, html, json, os, re
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPORTS = os.path.expanduser("~/Documents/reports")
+HUB_SRC = os.path.expanduser("~/Documents/reports/_hub")   # staging for the hub page before it is vaulted
 # slug -> (title, tagline, local dir, status, colour)
 PROJECTS = [
     ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
@@ -51,7 +52,7 @@ def card(slug, title, tag, local, status, color):
     upd = f"updated {b[:10]}" if b else "not published"
     strip = f"<div class=\"strip\">{''.join(bars)}</div><div class=\"axis\"><span>{fmt(span[0])}</span><span>this week</span></div>" if wk else "<div class=\"strip empty\">no weekly log</div>"
     return f"""
-<a class="card" href="{slug}/" style="--c:{color}">
+<a class="card" href="https://aliang8.github.io/reports/{slug}/" target="_top" style="--c:{color}">
   <div class="top"><span class="chip {status}">{status}</span><span class="upd">{esc(upd)}</span></div>
   <h2>{esc(title)}</h2>
   <p>{esc(tag)}</p>
@@ -107,7 +108,7 @@ def main():
     nk = sum(k for w in allw for k, _ in w.values()); nw = len({m for w in allw for m in w})
     doc = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
-<title>Reports — Anthony Liang</title><link rel="icon" type="image/png" href="../img/me.png">
+<title>Reports — Anthony Liang</title><link rel="icon" type="image/png" href="https://aliang8.github.io/img/me.png">
 <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>{CSS}</style></head>
 <body><main class="page">
@@ -116,11 +117,17 @@ def main():
   <p class="lead">One weekly research log per project: an overview page, then the key findings of each week with their plots and clips.</p>
   <div class="totals"><b>{len(PROJECTS)}</b> projects · <b>{nk}</b> key findings over <b>{nw}</b> weeks · bars = entries per week (colour = key findings, grey = the rest) · rebuilt {datetime.datetime.now():%Y-%m-%d %H:%M}</div>
   <div class="grid">{''.join(cards)}</div>
-  <footer><span>Reports are shared by direct link; each has its own password.</span><a href="../">aliang8.github.io</a></footer>
+  <footer><span>Reports are shared by direct link; each has its own password.</span><a href="https://aliang8.github.io/" target="_top">aliang8.github.io</a></footer>
 </main></body></html>
 """
-    open(os.path.join(SITE, "reports", "index.html"), "w").write(doc)
-    print(f"reports/index.html: {len(PROJECTS)} projects, {nk} key findings, {nw} weeks")
+    # The hub is gated like a report (slug "hub", Anthony only); the public reports/index.html only redirects to it.
+    os.makedirs(HUB_SRC, exist_ok=True)
+    open(os.path.join(HUB_SRC, "index.html"), "w").write(doc)
+    import build_report_vault; build_report_vault.vault(HUB_SRC, "hub")
+    open(os.path.join(SITE, "reports", "index.html"), "w").write(
+        '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=hub/">'
+        '<title>Reports</title><a href="hub/">Reports</a>\n')
+    print(f"reports/hub/: {len(PROJECTS)} projects, {nk} key findings, {nw} weeks")
 
 if __name__ == "__main__":
     main()

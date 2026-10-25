@@ -55,14 +55,20 @@ def main():
     ap.add_argument("--prefix", default="r")
     ap.add_argument("--password", help="set this slug's password (default: a generated passphrase)")
     a = ap.parse_args()
-    src = os.path.abspath(a.report_dir)
-    pw = load_passwords()
     slug = f"{a.prefix}-{secrets.token_hex(3)}" if a.slug == "new" else a.slug
+    vault(a.report_dir, slug, a.password)
+    import build_reports_index; build_reports_index.main()   # the hub (reports/hub/, gated) + its public redirect follow every publish
+
+
+def vault(report_dir, slug, password=None):
+    """Encrypt report_dir into reports/<slug>/ (pages + referenced assets) behind the slug's passphrase."""
+    src = os.path.abspath(report_dir)
+    pw = load_passwords()
     if slug not in pw:
-        pw[slug] = {"password": a.password or new_password(), "report_dir": src}
+        pw[slug] = {"password": password or new_password(), "report_dir": src}
         save_passwords(pw)
-    elif a.password and a.password != pw[slug]["password"]:
-        pw[slug]["password"] = a.password
+    elif password and password != pw[slug]["password"]:
+        pw[slug]["password"] = password
         save_passwords(pw)
     password = pw[slug]["password"]
 
@@ -132,7 +138,6 @@ def main():
     json.dump(manifest, open(os.path.join(out, "manifest.json"), "w"), indent=1)
     shutil.copy(GATE, os.path.join(out, "index.html"))
     print(f"{slug}: {len(pages)} pages, {len(assets)} assets, {total[0] / 1e6:.1f} MB -> reports/{slug}/")
-    import build_reports_index; build_reports_index.main()   # the public hub (reports/index.html) follows every publish
 
 
 if __name__ == "__main__":
