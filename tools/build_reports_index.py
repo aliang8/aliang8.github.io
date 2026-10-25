@@ -12,6 +12,8 @@ PROJECTS = [
      "policy_customization", "active", "#c64b2f"),
     ("boost", "BOOST", "Online RL on top of a frozen generative policy: a steering head, a demo-anchored residual and a critic that picks one of K candidates.",
      "boost_results", "active", "#0173B2"),
+    ("wm_value", "WM value", "World-model value learning on the YAM stations: Max's LTX-2.5 world-action model scores imagined futures and the robot executes the best plan.",
+     "wm_value", "active", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
      "oopsie_dataset", "static", "#029E73"),
 ]
