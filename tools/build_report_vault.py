@@ -132,6 +132,7 @@ def main():
     json.dump(manifest, open(os.path.join(out, "manifest.json"), "w"), indent=1)
     shutil.copy(GATE, os.path.join(out, "index.html"))
     print(f"{slug}: {len(pages)} pages, {len(assets)} assets, {total[0] / 1e6:.1f} MB -> reports/{slug}/")
+    import build_reports_index; build_reports_index.main()   # the public hub (reports/index.html) follows every publish
 
 
 if __name__ == "__main__":

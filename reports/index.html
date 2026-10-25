@@ -1,3 +1,70 @@
 <!doctype html>
-<meta charset="utf-8"><meta name="robots" content="noindex"><title>Reports</title>
-<p style="font-family:Georgia,serif;margin:40px">Reports are shared by direct link. <a href="../">aliang8.github.io</a></p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Reports — Anthony Liang</title><link rel="icon" type="image/png" href="../img/me.png">
+<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --paper:#f3f0e8; --sheet:#fbfaf6; --ink:#20201d; --soft:#62625c; --rule:#d8d3c7; --accent:#c64b2f; }
+* { box-sizing:border-box; } html { background:var(--paper); }
+body { margin:0; color:var(--ink); font-family:"EB Garamond", Georgia, serif; line-height:1.5;
+  background: linear-gradient(90deg, transparent 0 31px, rgba(198,75,47,.10) 31px 32px, transparent 32px), var(--paper); }
+.page { max-width:1100px; margin:0 auto; padding:72px 40px 96px; }
+.eyebrow { font:600 12px/1 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
+h1 { font-size:clamp(44px, 7vw, 72px); font-weight:400; line-height:1; margin:10px 0 8px; letter-spacing:-.01em; }
+.lead { color:var(--soft); font-size:20px; margin:0 0 10px; }
+.totals { font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:13px; color:var(--soft); padding-bottom:28px; border-bottom:1px solid var(--ink); margin-bottom:36px; }
+.totals b { color:var(--ink); }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:22px; }
+.card { display:block; position:relative; background:var(--sheet); border:1px solid var(--rule); border-top:3px solid var(--c); padding:22px 24px 20px; color:inherit; text-decoration:none;
+  transition: transform .18s ease, box-shadow .18s ease; }
+.card:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(32,32,29,.10); }
+.top { display:flex; justify-content:space-between; align-items:center; font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:11.5px; color:var(--soft); }
+.chip { text-transform:uppercase; letter-spacing:.08em; font-weight:600; padding:2px 8px; border-radius:3px; border:1px solid var(--rule); }
+.chip.active { color:#0b7a4b; border-color:#b9dfc9; background:#eaf6ef; } .chip.static { color:var(--soft); }
+.chip.closed { color:#b3261e; border-color:#efc4bf; background:#fbeceb; }
+.card h2 { font-size:30px; font-weight:500; margin:12px 0 4px; }
+.card p { margin:0 0 18px; color:#3e3e39; font-size:16.5px; min-height:3em; }
+.strip { display:flex; align-items:flex-end; gap:5px; height:56px; padding-top:2px; border-bottom:1px solid var(--rule); }
+.strip.empty { align-items:center; justify-content:center; color:var(--soft); font-size:13px; font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; border-bottom:1px solid var(--rule); }
+.wk { flex:1; display:flex; flex-direction:column; justify-content:flex-end; height:100%; }
+.wk .key, .wk .extra { width:100%; border-radius:2px 2px 0 0; }
+.wk .extra { background:#d8d3c7; } .wk .key { margin-top:1px; }
+.axis { display:flex; justify-content:space-between; font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:10.5px; color:var(--soft); margin-top:4px; }
+.meta { font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:13px; color:var(--soft); margin-top:14px; } .meta b { color:var(--ink); }
+.open { margin-top:14px; font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:13px; font-weight:600; color:var(--c); }
+.lock { font-size:12px; margin-left:4px; }
+footer { margin-top:56px; font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:12.5px; color:var(--soft); display:flex; justify-content:space-between; }
+footer a { color:inherit; }
+@media (max-width:640px) { .page { padding:48px 20px 64px; } }
+</style></head>
+<body><main class="page">
+  <div class="eyebrow">Research logs</div>
+  <h1>Reports</h1>
+  <p class="lead">One weekly research log per project: an overview page, then the key findings of each week with their plots and clips.</p>
+  <div class="totals"><b>3</b> projects · <b>9</b> key findings over <b>2</b> weeks · bars = entries per week (colour = key findings, grey = the rest) · rebuilt 2026-10-25 01:02</div>
+  <div class="grid">
+<a class="card" href="policy-customization/" style="--c:#c64b2f">
+  <div class="top"><span class="chip active">active</span><span class="upd">updated 2026-10-25</span></div>
+  <h2>TAILOR</h2>
+  <p>Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.</p>
+  <div class="strip"><div class="wk" title="Sep 14: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#c64b2f"></div></div><div class="wk" title="Sep 21: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#c64b2f"></div></div><div class="wk" title="Sep 28: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#c64b2f"></div></div><div class="wk" title="Oct 5: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#c64b2f"></div></div><div class="wk" title="Oct 12: 4 key findings, 13 more"><div class="extra" style="height:41px"></div><div class="key" style="height:13px;background:#c64b2f"></div></div><div class="wk" title="Oct 19: 3 key findings"><div class="extra" style="height:0px"></div><div class="key" style="height:10px;background:#c64b2f"></div></div></div><div class="axis"><span>Sep 14</span><span>this week</span></div>
+  <div class="meta">2 weeks logged · <b>7</b> key findings · 13 more entries</div>
+  <div class="open">Open report <span class="lock" aria-hidden="true">&#128274;</span></div>
+</a>
+<a class="card" href="boost/" style="--c:#0173B2">
+  <div class="top"><span class="chip active">active</span><span class="upd">updated 2026-10-25</span></div>
+  <h2>BOOST</h2>
+  <p>Online RL on top of a frozen generative policy: a steering head, a demo-anchored residual and a critic that picks one of K candidates.</p>
+  <div class="strip"><div class="wk" title="Sep 14: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#0173B2"></div></div><div class="wk" title="Sep 21: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#0173B2"></div></div><div class="wk" title="Sep 28: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#0173B2"></div></div><div class="wk" title="Oct 5: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#0173B2"></div></div><div class="wk" title="Oct 12: no entries"><div class="extra" style="height:0px"></div><div class="key" style="height:0px;background:#0173B2"></div></div><div class="wk" title="Oct 19: 2 key findings, 5 more"><div class="extra" style="height:39px"></div><div class="key" style="height:15px;background:#0173B2"></div></div></div><div class="axis"><span>Sep 14</span><span>this week</span></div>
+  <div class="meta">1 week logged · <b>2</b> key findings · 5 more entries</div>
+  <div class="open">Open report <span class="lock" aria-hidden="true">&#128274;</span></div>
+</a>
+<a class="card" href="oopsie/" style="--c:#029E73">
+  <div class="top"><span class="chip static">static</span><span class="upd">updated 2026-10-25</span></div>
+  <h2>Oopsie dataset</h2>
+  <p>Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.</p>
+  <div class="strip empty">no weekly log</div>
+  <div class="meta">static report</div>
+  <div class="open">Open report <span class="lock" aria-hidden="true">&#128274;</span></div>
+</a></div>
+  <footer><span>Reports are shared by direct link; each has its own password.</span><a href="../">aliang8.github.io</a></footer>
+</main></body></html>
