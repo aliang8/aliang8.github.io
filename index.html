@@ -44,9 +44,6 @@
     .title {
       color: var(--heading-color);
     }
-    .hero .title.is-2 {
-      letter-spacing: 0.01em;
-    }
     .section > .container > .title.is-size-4 {
       display: inline-block;
       padding-bottom: 0.2rem;
@@ -78,40 +75,34 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, #f3f7fc 0%, #dbe5f1 100%);
-      padding: 0.25rem 0;
+      display: block;   /* Bulma makes .hero a flex column, which shrinks the auto-margin container */
+      border-bottom: 1px solid #e1e8f0;
     }
-    .hero-body {
-      padding: clamp(0.4rem, 1.5vw, 0.75rem) clamp(0.75rem, 3vw, 1.5rem);
-    }
-    .hero .title.is-2 {
-      margin-bottom: 0.5rem;
-    }
-    .hero .columns {
-      margin-top: 0;
-      margin-bottom: 0;
+    .hero-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.75rem 1.5rem;
     }
     .hero .title.is-2 {
-      font-size: clamp(1.5rem, 4vw + 1rem, 2rem);
-      overflow-wrap: break-word;
-    }
-    .hero .subtitle {
-      font-size: clamp(0.9rem, 1.5vw + 0.8rem, 1.1rem);
-      overflow-wrap: break-word;
-      margin-bottom: 0.35rem;
-    }
-    .hero-photo {
-      max-width: 120px;
-      margin-left: auto;
-      margin-right: 0;
+      font-size: clamp(1.4rem, 3vw + 0.8rem, 1.9rem);
+      margin: 0;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
     }
     .hero .social-icons {
       display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 0.15rem 0.5rem;
-      margin-top: 0;
+      gap: 0.15rem 0.4rem;
+      flex: 1;
+    }
+    .hero-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(27, 58, 92, 0.18);
+      flex-shrink: 0;
     }
     .social-icons a {
       padding: 0.2rem;
@@ -297,61 +288,71 @@
     }
 
     /* Experiences */
-    .exp-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .experiences-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.75rem;
+      margin: 0.25rem 0 0.5rem;
     }
-    .exp-list li {
+    .exp-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0.9rem 0.75rem 0.75rem;
+      border: 1px solid #dbe4ee;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .exp-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(27, 58, 92, 0.12);
+      border-color: #b9cbe0;
+    }
+    .exp-logo {
+      height: 36px;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.15rem 0.5rem;
+      justify-content: center;
+      margin-bottom: 0.6rem;
     }
-    .exp-list img {
-      height: 20px;
-      width: 60px;
+    .exp-logo img {
+      max-height: 32px;
+      max-width: 140px;
+      width: auto;
       object-fit: contain;
-      object-position: left;
-      filter: grayscale(100%);
-      opacity: 0.75;
-      flex-shrink: 0;
     }
     .exp-company {
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1rem;
       color: var(--heading-color);
+      line-height: 1.25;
+      margin-bottom: 0.1rem;
     }
     .exp-role {
+      font-size: 0.88rem;
       color: var(--primary-color);
-      flex: 1;
-      min-width: 0;
-    }
-    .exp-role::before {
-      content: "\00b7";
-      margin-right: 0.5rem;
-      color: #999;
+      line-height: 1.3;
+      margin-bottom: 0.1rem;
     }
     .exp-dates {
-      color: #8a8a8a;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
       font-style: italic;
-      white-space: nowrap;
-      font-size: 0.95em;
     }
-    @media screen and (max-width: 600px) {
-      .exp-list li {
-        flex-wrap: wrap;
-        row-gap: 0;
+    @media screen and (max-width: 768px) {
+      .experiences-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
       }
-      .exp-role {
-        order: 3;
-        flex-basis: 100%;
-        padding-left: calc(60px + 0.75rem);
+      .exp-card {
+        padding: 0.75rem 0.5rem;
       }
-      .exp-dates {
-        margin-left: auto;
-      }
-      .exp-role::before {
-        content: none;
+    }
+    @media screen and (max-width: 420px) {
+      .experiences-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -367,11 +368,22 @@
       .section.bio {
         padding: clamp(0.75rem, 2vw, 1rem) 0.5rem 0.25rem;
       }
-      .hero {
-        padding: clamp(0.5rem, 2vw, 1rem) 0;
+      .hero-row {
+        padding: 0.6rem 0.5rem;
+        gap: 0.6rem;
+      }
+      .hero .title.is-2 {
+        font-size: 1.3rem;
+      }
+      .hero .social-icons {
+        gap: 0.1rem;
+      }
+      .hero .social-icons i {
+        font-size: 1.1rem;
       }
       .hero-photo {
-        margin: 0 auto;
+        width: 48px;
+        height: 48px;
       }
       .container.is-max-desktop {
         padding-left: 0.5rem;
@@ -405,39 +417,29 @@
 
 <body>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-vcentered">
-          <div class="column is-9 has-text-left">
-            <h1 class="title is-2">Anthony Liang</h1>
-            <div class="social-icons">
-              <a href="https://github.com/aliang8/" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://twitter.com/aliangdw" aria-label="Twitter Profile">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="mailto:anthony.liang@tri.global" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/ant-liang" aria-label="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="https://scholar.google.com/citations?user=LjmRrbUAAAAJ&hl=en" aria-label="Google Scholar">
-                <i class="fas fa-graduation-cap"></i>
-              </a>
-            </div>
-          </div>
-          <div class="column is-3 has-text-right">
-            <figure class="image block hero-photo">
-              <img src="img/me.png" alt="Anthony Liang's profile picture">
-            </figure>
-          </div>
-        </div>
+  <header class="hero">
+    <div class="container is-max-desktop hero-row">
+      <h1 class="title is-2">Anthony Liang</h1>
+      <div class="social-icons">
+        <a href="https://github.com/aliang8/" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/aliangdw" aria-label="Twitter Profile">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:anthony.liang@tri.global" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ant-liang" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=LjmRrbUAAAAJ&hl=en" aria-label="Google Scholar">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
       </div>
+      <img class="hero-photo" src="img/me.png" alt="Anthony Liang's profile picture">
     </div>
-  </section>
+  </header>
 
   <section class="section bio">
     <div class="container is-max-desktop">
@@ -553,13 +555,38 @@
   <section class="section" id="experiences">
     <div class="container is-max-desktop">
       <h2 class="title is-size-4">Experiences</h2>
-      <ul class="exp-list">
-        <li><img src="img/logos/tri.svg" alt="Toyota Research Institute logo"><span class="exp-company">Toyota Research Institute</span><span class="exp-role">Research Scientist</span><span class="exp-dates">2026 &ndash; Present</span></li>
-        <li><img src="img/logos/deepmind.svg" alt="Google DeepMind logo"><span class="exp-company">Google DeepMind</span><span class="exp-role">Research Intern, Gemini</span><span class="exp-dates">2025</span></li>
-        <li><img src="img/logos/google.svg" alt="Google logo"><span class="exp-company">Google Research</span><span class="exp-role">Student Researcher, Machine Intelligence</span><span class="exp-dates">2023</span></li>
-        <li><img src="img/logos/meta.svg" alt="Meta logo"><span class="exp-company">Meta</span><span class="exp-role">NLP Research Intern, Reality Labs</span><span class="exp-dates">2022</span></li>
-        <li><img src="img/logos/amazon.svg" alt="Amazon logo"><span class="exp-company">Amazon</span><span class="exp-role">Applied Scientist Intern</span><span class="exp-dates">2021</span></li>
-      </ul>
+      <div class="experiences-grid">
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/tri.svg" alt="Toyota Research Institute logo"></div>
+          <div class="exp-company">Toyota Research Institute</div>
+          <div class="exp-role">Research Scientist</div>
+          <div class="exp-dates">2026 &ndash; Present</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/deepmind.svg" alt="Google DeepMind logo"></div>
+          <div class="exp-company">Google DeepMind</div>
+          <div class="exp-role">Research Intern, Gemini</div>
+          <div class="exp-dates">2025</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/google.svg" alt="Google logo"></div>
+          <div class="exp-company">Google Research</div>
+          <div class="exp-role">Student Researcher, Machine Intelligence</div>
+          <div class="exp-dates">2023</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/meta.svg" alt="Meta logo"></div>
+          <div class="exp-company">Meta</div>
+          <div class="exp-role">NLP Research Intern, Reality Labs</div>
+          <div class="exp-dates">2022</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-logo"><img src="img/logos/amazon.svg" alt="Amazon logo"></div>
+          <div class="exp-company">Amazon</div>
+          <div class="exp-role">Applied Scientist Intern</div>
+          <div class="exp-dates">2021</div>
+        </div>
+      </div>
     </div>
   </section>
 
