@@ -327,6 +327,13 @@
       max-width: 140px;
       width: auto;
       object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.72;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    .exp-card:hover .exp-logo img {
+      filter: none;
+      opacity: 1;
     }
     .exp-company {
       font-weight: 700;
