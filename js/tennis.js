@@ -30,20 +30,33 @@
     serve(0, 0);
   }
 
-  // Player `h` hits the ball at time t0 toward a random spot in the opponent's half.
+  // Player `h` hits the ball at time t0. It lands in the opponent's half, bounces, and
+  // comes up into the receiver's racket a little further on.
   function serve(h, t0) {
     var hitter = players[h], rcv = players[1 - h];
-    var landX = rnd(rcv.lo + 10, rcv.hi - 10);
+    var hop = rnd(30, 60);                                  // distance the ball carries after the bounce
+    var landX = rcv.facing > 0 ? rnd(rcv.lo + 12 + hop, rcv.hi - 4) : rnd(rcv.lo + 4, rcv.hi - 12 - hop);
+    var hitX = landX - rcv.facing * hop;                    // ball keeps travelling toward the receiver
     shot = {
       hitter: h, t0: t0,
-      dur: rnd(1.9, 2.8),
-      x0: hitter.x + hitter.facing * 12, x1: landX,
-      apex: rnd(14, 34),
+      dur: rnd(2.0, 2.9),
+      x0: hitter.x + hitter.facing * 12, landX: landX, hitX: hitX,
+      apex: rnd(14, 34), apex2: rnd(6, 11), ub: 0.68,        // ub: fraction of the flight before the bounce
       miss: Math.random() < 0.12
     };
     hitter.hitAt = t0;
-    rcv.target = landX - rcv.facing * 12;       // stand so the racket meets the ball
-    hitter.target = hitter.home + rnd(-12, 12); // drift back toward the baseline
+    hitter.target = hitter.x;                               // hold position through the stroke
+    rcv.target = Math.max(rcv.lo, Math.min(rcv.hi, hitX - rcv.facing * 12)); // racket meets the ball
+  }
+
+  // Ball position at flight fraction u: a high arc down to the bounce, then a low hop up to the racket.
+  function ballAt(u) {
+    if (u < shot.ub) {
+      var v = u / shot.ub;
+      return { x: shot.x0 + (shot.landX - shot.x0) * v, y: ground - 2 - (12 * (1 - v) + shot.apex * Math.sin(Math.PI * v)) };
+    }
+    var w = (u - shot.ub) / (1 - shot.ub);
+    return { x: shot.landX + (shot.hitX - shot.landX) * w, y: ground - 2 - (12 * w + shot.apex2 * Math.sin(Math.PI * w)) };
   }
 
   function step(t, dt) {
@@ -58,6 +71,7 @@
     }
     var rcv = pending ? null : players[1 - shot.hitter];
     players.forEach(function (p) {
+      if (p !== rcv && t - p.hitAt > 0.9) p.target = p.home;   // recover toward the baseline after the stroke
       var d = (p.target || p.home) - p.x, dist = Math.abs(d), v;
       if (p === rcv) {                             // pace so you arrive as the ball does
         var remain = Math.max(0.25, shot.t0 + shot.dur - t);
@@ -124,10 +138,13 @@
     players.forEach(function (p) { p.kind === 'robot' ? robot(p, t) : human(p, t); });
 
     if (!pending) {
-      var bx = shot.x0 + (shot.x1 - shot.x0) * u, by = ground - 14 - shot.apex * Math.sin(Math.PI * u);
-      if (u > 1) { by = Math.min(ground - 2, by); bx += (shot.x1 - shot.x0) * 0.08 * (u - 1); } // missed ball rolls on
-      ctx.globalAlpha = u > 1 ? Math.max(0, 0.65 - (u - 1) * 1.4) : 0.65;
-      dot(bx, Math.min(by, ground - 2), 2.2, true);
+      var b = ballAt(Math.min(u, 1));
+      if (u > 1) { b.y = ground - 2; b.x += (shot.hitX - shot.landX) * 1.2 * (u - 1); } // missed ball rolls on
+      ctx.globalAlpha = u > 1 ? Math.max(0, 0.95 - (u - 1) * 2) : 0.95;
+      ctx.fillStyle = '#c9cf2a';                          // tennis-ball yellow, with a faint ink edge
+      dot(b.x, b.y, 2.4, true);
+      ctx.lineWidth = 0.7; ctx.globalAlpha *= 0.45; dot(b.x, b.y, 2.4, false);
+      ctx.fillStyle = ink;
     }
     ctx.globalAlpha = 1;
   }
