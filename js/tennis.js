@@ -12,7 +12,8 @@
   var rnd = function (a, b) { return a + Math.random() * (b - a); };
 
   // --- world state -------------------------------------------------------------------
-  var ground, players, shot, pauseUntil = 0;
+  var ground, players, shot, pending = false, pauseUntil = 0, nextHitter = 0;
+  var STROLL = 16, HURRY = 90;      // px/s: drifting back to the baseline, max pace to reach a ball
 
   function resize() {
     var dpr = window.devicePixelRatio || 1;
@@ -46,17 +47,25 @@
   }
 
   function step(t, dt) {
-    if (t < pauseUntil) return;
-    var u = (t - shot.t0) / shot.dur;
-    if (u >= 1 && !shot.miss) serve(1 - shot.hitter, t);
-    else if (u >= 1.45 && shot.miss) {            // ball rolled away; misser picks it up and serves
-      var m = players[1 - shot.hitter]; m.x = m.target = m.home;
-      pauseUntil = t + 0.9; serve(1 - shot.hitter, t + 0.9);
+    if (pending && t >= pauseUntil) { pending = false; serve(nextHitter, t); }
+    if (!pending) {
+      var u = (t - shot.t0) / shot.dur;
+      if (u >= 1 && !shot.miss) serve(1 - shot.hitter, t);
+      else if (u >= 1.45 && shot.miss) {          // ball rolled away; misser walks back, then serves
+        pending = true; nextHitter = 1 - shot.hitter; pauseUntil = t + 1.6;
+        players[nextHitter].target = players[nextHitter].home;
+      }
     }
+    var rcv = pending ? null : players[1 - shot.hitter];
     players.forEach(function (p) {
-      var d = (p.target || p.home) - p.x;
-      p.moving = Math.abs(d) > 1.5;
-      p.x += d * Math.min(1, dt * 3.2);
+      var d = (p.target || p.home) - p.x, dist = Math.abs(d), v;
+      if (p === rcv) {                             // pace so you arrive as the ball does
+        var remain = Math.max(0.25, shot.t0 + shot.dur - t);
+        v = Math.min(HURRY, dist / remain);
+      } else v = STROLL;
+      var move = Math.min(dist, v * dt);
+      p.x += Math.sign(d) * move;
+      p.moving = move > 0.02 && dist > 0.5 && v > 8;
     });
   }
 
@@ -114,7 +123,7 @@
     ctx.globalAlpha = 0.5;
     players.forEach(function (p) { p.kind === 'robot' ? robot(p, t) : human(p, t); });
 
-    if (t >= pauseUntil) {
+    if (!pending) {
       var bx = shot.x0 + (shot.x1 - shot.x0) * u, by = ground - 14 - shot.apex * Math.sin(Math.PI * u);
       if (u > 1) { by = Math.min(ground - 2, by); bx += (shot.x1 - shot.x0) * 0.08 * (u - 1); } // missed ball rolls on
       ctx.globalAlpha = u > 1 ? Math.max(0, 0.65 - (u - 1) * 1.4) : 0.65;
