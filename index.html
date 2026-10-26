@@ -70,7 +70,7 @@
     body {
       color: var(--text-color);
       font-size: clamp(15px, 2.2vw + 14px, 18px);
-      line-height: 1.5;
+      line-height: 1.4;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -79,10 +79,17 @@
 
     .hero {
       background: linear-gradient(135deg, #f3f7fc 0%, #dbe5f1 100%);
-      padding: 1rem 0;
+      padding: 0.25rem 0;
     }
     .hero-body {
-      padding: clamp(0.5rem, 2vw, 1rem) clamp(0.75rem, 3vw, 1.5rem);
+      padding: clamp(0.4rem, 1.5vw, 0.75rem) clamp(0.75rem, 3vw, 1.5rem);
+    }
+    .hero .title.is-2 {
+      margin-bottom: 0.5rem;
+    }
+    .hero .columns {
+      margin-top: 0;
+      margin-bottom: 0;
     }
     .hero .title.is-2 {
       font-size: clamp(1.5rem, 4vw + 1rem, 2rem);
@@ -94,7 +101,7 @@
       margin-bottom: 0.35rem;
     }
     .hero-photo {
-      max-width: 150px;
+      max-width: 120px;
       margin-left: auto;
       margin-right: 0;
     }
@@ -104,7 +111,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 0.15rem 0.5rem;
-      margin-top: 0.4rem;
+      margin-top: 0;
     }
     .social-icons a {
       padding: 0.2rem;
@@ -120,23 +127,23 @@
     }
 
     .section {
-      padding: 1.25rem 1.5rem 0.75rem;
+      padding: 0.75rem 1.5rem 0.25rem;
     }
     .section .title.is-size-4 {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
     .section .title.is-size-5 {
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.35rem;
     }
     .section.bio {
-      padding: 1.25rem 1.5rem 0.5rem;
+      padding: 0.9rem 1.5rem 0.25rem;
     }
     .section.bio .content {
       margin-bottom: 0;
     }
     .section.bio p,
     .section.bio .block {
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.4rem;
       max-width: 100%;
       overflow-wrap: break-word;
     }
@@ -158,10 +165,10 @@
 
     .table {
       background-color: transparent;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
     }
     .table td {
-      padding: 0.35rem 0.5rem;
+      padding: 0.2rem 0.5rem;
       vertical-align: middle;
       border: 0;
     }
@@ -177,7 +184,7 @@
     }
 
     .news-scroll-wrapper {
-      max-height: 14rem;
+      max-height: 11rem;
       overflow-y: auto;
       overflow-x: hidden;
       padding-right: 0.5rem;
@@ -204,12 +211,15 @@
 
     /* Publications */
     .section#publications .columns {
-      margin-bottom: 0.4rem;
-      padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .section#publications .column {
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
     }
     .section#publications .columns .column.is-3 img {
-      max-height: 115px;
+      max-height: 95px;
       max-width: 88%;
       width: auto;
       display: block;
@@ -296,7 +306,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.3rem 0.5rem;
+      padding: 0.15rem 0.5rem;
     }
     .exp-list img {
       height: 20px;
@@ -346,8 +356,8 @@
     }
 
     .site-footer {
-      font-size: 0.9rem;
-      padding: 1.25rem 1rem;
+      font-size: 0.85rem;
+      padding: 0.75rem 1rem;
     }
 
     @media screen and (max-width: 768px) {
@@ -377,7 +387,7 @@
         max-height: 11rem;
       }
       .section#publications .columns .column.is-3 img {
-        max-height: 100px;
+        max-height: 80px;
       }
     }
     @media screen and (max-width: 480px) {
@@ -648,7 +658,7 @@
         </div>
       </div>
 
-      <h3 class="title is-size-5 mt-5">Workshop Papers</h3>
+      <h3 class="title is-size-5 mt-4">Workshop Papers</h3>
 
       <div class="columns">
         <div class="column is-3">
