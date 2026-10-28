@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Korean, day by day</title>
+<meta name="description" content="A self-paced day-by-day Korean curriculum built on the 206 free lessons of How to Study Korean.">
+<style>
+:root{
+  --bg:#faf8f4;--card:#fff;--ink:#1d1b18;--muted:#6b665e;--line:#e6e1d8;
+  --accent:#c8373d;--accent-ink:#fff;--soft:#f3eee6;--ok:#2d8a5b;--warn:#b7791f;
+  --hangul:#4f6fb0;--review:#7a5bb3;--test:#b7791f;--today:#fff6e8;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#15161a;--card:#1e2026;--ink:#ecebe7;--muted:#9a978f;--line:#2e313a;--soft:#262932;--today:#2a2520;--accent:#e2555b}
+}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink)}
+a{color:var(--accent)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 80px}
+header{padding:56px 0 24px}
+header h1{font-size:2.4rem;margin:0 0 6px;letter-spacing:-.02em}
+header h1 .ko{color:var(--accent);font-weight:500}
+header p{margin:0;color:var(--muted);max-width:60ch}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:24px 0 10px}
+.controls label{display:flex;flex-direction:column;font-size:.8rem;color:var(--muted);gap:4px}
+.controls input,.controls select{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.controls .spacer{flex:1}
+button{font:inherit;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--ink);cursor:pointer}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0 28px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-size:1.4rem;letter-spacing:-.02em}
+.stat span{font-size:.78rem;color:var(--muted)}
+.bar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--ok);width:0}
+h2{font-size:1.15rem;margin:36px 0 12px;letter-spacing:-.01em}
+.how{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:.95rem}
+.how ol,.how ul{margin:8px 0 0;padding-left:20px}
+.how li{margin:4px 0}
+details.unit{border:1px solid var(--line);border-radius:14px;background:var(--card);margin:12px 0;overflow:hidden}
+details.unit>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+details.unit>summary::-webkit-details-marker{display:none}
+details.unit>summary .u{font-weight:700;font-size:1.05rem}
+details.unit>summary .m{color:var(--muted);font-size:.85rem}
+details.unit>summary .pct{margin-left:auto;font-size:.85rem;color:var(--muted);min-width:70px;text-align:right}
+details.unit>summary .bar{width:120px;margin:0}
+.days{border-top:1px solid var(--line)}
+.day{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line);position:relative}
+.day:last-child{border-bottom:0}
+.day.today{background:var(--today)}
+.day.today::before{content:"TODAY";position:absolute;right:14px;top:10px;font-size:.68rem;font-weight:700;letter-spacing:.08em;color:var(--accent)}
+.day.done{opacity:.55}
+.day.done .t{text-decoration:line-through}
+.chk{width:22px;height:22px;margin-top:3px;accent-color:var(--ok);cursor:pointer}
+.meta{font-size:.78rem;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.badge{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--soft);color:var(--muted)}
+.badge.hangul{background:color-mix(in srgb,var(--hangul) 15%,transparent);color:var(--hangul)}
+.badge.review{background:color-mix(in srgb,var(--review) 15%,transparent);color:var(--review)}
+.badge.test{background:color-mix(in srgb,var(--test) 18%,transparent);color:var(--test)}
+.t{font-weight:600;margin:2px 0 4px;font-size:1.02rem}
+.t a{color:inherit;text-decoration:none}
+.t a:hover{text-decoration:underline}
+.intro{color:var(--muted);font-size:.88rem;margin:0 0 6px}
+.secs{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.secs span{font-size:.75rem;background:var(--soft);border-radius:6px;padding:2px 7px;color:var(--ink)}
+.tasks{margin:0;padding-left:18px;font-size:.86rem;color:var(--ink)}
+.tasks li{margin:2px 0}
+.tasks a{color:inherit}
+.behind{color:var(--warn)}
+.ontrack{color:var(--ok)}
+.extras ul{columns:2;column-gap:28px;padding-left:18px;font-size:.92rem}
+@media (max-width:600px){.extras ul{columns:1}header h1{font-size:1.9rem}}
+footer{margin-top:50px;color:var(--muted);font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Korean, day by day <span class="ko">한국어</span></h1>
+  <p>A self-paced schedule through every free lesson on <a href="https://www.howtostudykorean.com/">How to Study Korean</a>: Hangul first, then 203 grammar lessons from Unit&nbsp;1 to Unit&nbsp;9, with review days built in. Progress is saved in this browser.</p>
+</header>
+
+<div class="controls">
+  <label>Start date <input type="date" id="start"></label>
+  <label>Study days per week
+    <select id="pace">
+      <option value="7">Every day</option>
+      <option value="6">6 (Mon to Sat)</option>
+      <option value="5" selected>5 (weekdays)</option>
+      <option value="4">4 (Mon, Tue, Thu, Fri)</option>
+      <option value="3">3 (Mon, Wed, Fri)</option>
+    </select></label>
+  <span class="spacer"></span>
+  <button id="jump" class="primary">Jump to today</button>
+  <button id="reset">Reset progress</button>
+</div>
+<div class="stats" id="stats"></div>
+
+<h2>How each day works</h2>
+<div class="how">
+  <ol>
+    <li><b>Read the lesson once</b> without stopping to memorise. HTSK lessons are long (about 4,000 words); the first pass is for shape, not detail.</li>
+    <li><b>Vocabulary into a deck.</b> Add the day's words to <a href="https://www.howtostudykorean.com/anki/">the HTSK Anki decks</a> or your own. Do your Anki reviews every day, including rest days. This is the ten minutes that matters most.</li>
+    <li><b>Second pass on the grammar</b>, then write five sentences of your own using the new pattern. Say them out loud.</li>
+    <li><b>Spaced review.</b> Each lesson day also points back at the vocab from three and seven lessons ago.</li>
+    <li><b>Mini-test after every block</b> of eight or nine lessons, a unit test after every 25, and one consolidation day to write and speak before moving on.</li>
+  </ol>
+  <p style="margin:12px 0 0;font-size:.88rem;color:var(--muted)">Lessons that are unusually long or vocab-heavy are split over two days. Lesson 134 (the Konglish guide, 400+ words) is a skim, not a memorisation task. If a day takes you well over its estimate, slow the pace instead of skipping: the later units assume the earlier ones are solid.</p>
+</div>
+
+<h2 id="plan-h">Your plan</h2>
+<div id="plan"></div>
+
+<h2>Extras worth using alongside</h2>
+<div class="how extras">
+  <ul>
+    <li><a href="https://www.howtostudykorean.com/anki/">Anki decks</a> for every unit's vocabulary</li>
+    <li><a href="https://www.howtostudykorean.com/simple-lists/">Simple Lists</a>: per-unit vocab as CSV</li>
+    <li><a href="https://www.howtostudykorean.com/workbooks/">Workbooks</a> with exercises per lesson (paid)</li>
+    <li><a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLOKW0N5CqSDNJF7rVaQCwpX">Sentence Practice</a> playlist for shadowing</li>
+    <li><a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLMLiZnUBQFJxvr2Bs4eMbI6">Dictation Practice</a> playlist for listening</li>
+    <li><a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLO_V0LFnP3_cdapJBcuG3-O">Analyzing Korean Signs</a>: reading in the wild</li>
+    <li><a href="https://www.howtostudykorean.com/unit0/197-2/">Pronunciation guide</a> and <a href="https://www.howtostudykorean.com/unit0/reading-quick-reference/">reading quick reference</a></li>
+    <li><a href="https://www.howtostudykorean.com/hanja-unit-1-lessons-1-20/">Hanja lessons</a>: start after Unit 3 if you want roots</li>
+    <li><a href="https://www.howtostudykorean.com/other-stuff/lesson-list/">Full lesson list</a> on HTSK</li>
+  </ul>
+</div>
+
+<footer>Lesson titles, summaries, section lists and word counts were pulled from howtostudykorean.com on 2026-10-27. All lesson content belongs to How to Study Korean; this page only schedules it.</footer>
+</div>
+
+<script>
+const UNIT = {0:'Hangul: learn to read',1:'Basic Korean Grammar',2:'Lower-Intermediate Korean Grammar',3:'Intermediate Korean Grammar',4:'Upper-Intermediate Korean Grammar',5:'Lower Advanced Korean Grammar',6:'Advanced Korean Grammar',7:'Upper Advanced Korean Grammar',8:'Near-Expert Korean Grammar',9:'Expert Korean Grammar (in progress on HTSK)'};
+const H = 'https://www.howtostudykorean.com/';
+const MINI = {
+ '1-8':H+'unit1/unit-1-lessons-1-8/lessons-1-8-mini-test/','9-16':H+'unit1/unit-1-lessons-9-16/lessons-9-16-mini-test/','17-25':H+'unit1/unit-1-lessons-17-25-2/lessons-17-25-mini-test/',
+ '26-33':H+'unit-2-lower-intermediate-korean-grammar/unit-2-lessons-26-33/lessons-26-33-mini-test/','34-41':H+'unit-2-lower-intermediate-korean-grammar/unit-2-lessons-34-41/lessons-34-41-mini-test/',
+ '51-58':H+'unit-3-intermediate-korean-grammar/unit-3-lessons-51-58/lesson-51-58-mini-test/','59-66':H+'unit-3-intermediate-korean-grammar/unit-3-lessons-59-66/lesson-59-66-mini-test/','67-75':H+'unit-3-intermediate-korean-grammar/lessons-67-75/lessons-67-75-mini-test/',
+ '76-83':H+'upper-intermediate-korean-grammar/unit-4-lessons-76-83/lessons-76-83-mini-test/','84-91':H+'upper-intermediate-korean-grammar/unit-4-lessons-84-91/lessons-84-91-mini-test/','92-100':H+'upper-intermediate-korean-grammar/unit-4-lessons-92-100/lessons-92-100-mini-test/',
+ '101-108':H+'unit-5/lessons-101-108/lessons-101-108-mini-test/','109-116':H+'unit-5/lessons-109-116/mini-test/','117-125':H+'unit-5/unit-5-lessons-117-125/lessons-117-125-mini-test/',
+ '126-133':H+'unit-6/lessons-126-133/lessons-126-133-mini-test/','134-141':H+'unit-6/lessons-134-141/mini-test/','142-150':H+'unit-6/lessons-142-150/mini-test/',
+ '151-158':H+'unit-7/lessons-151-158/mini-test/','159-166':H+'unit-7/lessons-159-166/mini-test/','167-175':H+'unit-7/lessons-167-175/lessons-167-175-mini-test/'
+};
+const UTEST = {1:H+'unit1/unit-1-test/',2:H+'unit-2-lower-intermediate-korean-grammar/unit-2-test/',3:H+'unit-3-intermediate-korean-grammar/unit-3-test/',4:H+'upper-intermediate-korean-grammar/unit-4-test/',5:H+'unit-5/test/',6:H+'unit-6/unit-6-test/',7:H+'unit-7/unit-7-test/',8:H+'unit-8/unit-8-test/'};
+const PACE_DAYS = {7:[0,1,2,3,4,5,6],6:[1,2,3,4,5,6],5:[1,2,3,4,5],4:[1,2,4,5],3:[1,3,5]};
+const STORE = 'htsk-plan';
+
+let state = JSON.parse(localStorage.getItem(STORE) || 'null') || {start: isoToday(), pace: '5', done: {}};
+function save(){ localStorage.setItem(STORE, JSON.stringify(state)); }
+function isoToday(){ const d=new Date(); return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-'); }
+function parseISO(s){ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); }
+function fmt(d){ return d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}); }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+const lessonLink = (l, label) => `<a href="${l.url}">${esc(label ?? ('Lesson '+l.n+': '+l.title))}</a>`;
+
+// Turn the lesson list into an ordered list of study days.
+function buildDays(lessons){
+  const byN = Object.fromEntries(lessons.filter(l=>l.unit>0).map(l=>[l.n,l]));
+  const days = [];
+  const mins = l => Math.round(l.words/180 + l.vocab*1.4 + 20);
+  const back = (n) => [n-3,n-7].filter(k=>byN[k]).map(k=>lessonLink(byN[k],'Lesson '+k)).join(' and ');
+  const reviewTask = n => back(n) ? `Quick vocab review: ${back(n)}` : null;
+
+  for (const l of lessons.filter(l=>l.unit===0)){
+    days.push({key:'H'+l.id, unit:0, type:'hangul', lesson:l, mins:45,
+      tasks:['Learn the letters in this lesson, writing each one ten times by hand','Read every example syllable aloud, then cover the romanisation and read again','Spend 10 minutes on the <a href="'+H+'unit0/197-2/">pronunciation guide</a> audio for these letters']});
+  }
+  days.push({key:'HP', unit:0, type:'hangul', title:'Hangul consolidation', url:H+'unit0/reading-quick-reference/', mins:45,
+    intro:'No new letters. Make reading automatic before grammar starts.',
+    tasks:['Work through the <a href="'+H+'unit0/reading-quick-reference/">reading quick reference</a> until nothing makes you pause','Learn the <a href="'+H+'unit0/letter-names/">letter names</a>','Read any Korean text you can find (menus, song titles, signs) for 15 minutes, speed over understanding']});
+
+  for (let u=1; u<=9; u++){
+    const s = 25*(u-1)+1;
+    const groups = u===9 ? [[s,s+7]] : [[s,s+7],[s+8,s+15],[s+16,s+24]];
+    let any=false;
+    for (const [a,b] of groups){
+      const inGroup = [];
+      for (let n=a; n<=b; n++){
+        const l = byN[n]; if(!l) continue; any=true; inGroup.push(l);
+        const heavy = l.n!==134 && (l.words>=6500 || l.vocab>=45);
+        if (l.n===134){
+          days.push({key:'L134', unit:u, type:'lesson', lesson:l, mins:60,
+            tasks:['Skim the three lists; do not add all 400 words to Anki','Pick the 25 Konglish words you have actually heard or would use and learn those', reviewTask(l.n)].filter(Boolean)});
+        } else if (heavy){
+          days.push({key:'L'+n+'a', unit:u, type:'lesson', lesson:l, part:'Part 1 of 2', mins:Math.round(mins(l)*0.55),
+            tasks:['Read the whole lesson once, no notes',`Add the ${l.vocab} new words to Anki`, reviewTask(l.n)].filter(Boolean)});
+          days.push({key:'L'+n+'b', unit:u, type:'lesson', lesson:l, part:'Part 2 of 2', mins:Math.round(mins(l)*0.55),
+            tasks:['Second pass: work through each grammar section slowly, with the example sentences','Write five sentences of your own for each major pattern and say them aloud','Do the workbook exercises if you have them']});
+        } else {
+          days.push({key:'L'+n, unit:u, type:'lesson', lesson:l, mins:mins(l),
+            tasks:['Read the whole lesson once, no notes',`Add the ${l.vocab} new words to Anki`,'Second pass on the grammar, then write five sentences of your own and say them aloud', reviewTask(l.n)].filter(Boolean)});
+        }
+      }
+      if (!inGroup.length) continue;
+      const range = `${a}-${inGroup[inGroup.length-1].n}`;
+      const miniUrl = MINI[range];
+      days.push({key:'R'+range, unit:u, type:'review', title:`Review: Lessons ${range.replace('-',' to ')}`, url:miniUrl, mins:60,
+        intro:'Nothing new today. Find out what did not stick.',
+        tasks:[miniUrl ? `Take the <a href="${miniUrl}">mini-test</a> without looking anything up, then mark it` : 'Reread the vocab lists of these lessons and quiz yourself; HTSK has no mini-test for this block yet',
+          'Re-drill every word from these lessons that you got wrong or hesitated on','Pick the three grammar patterns you found hardest and write three sentences with each']});
+    }
+    if (!any) continue;
+    if (UTEST[u]){
+      days.push({key:'T'+u, unit:u, type:'test', title:`Unit ${u} test`, url:UTEST[u], mins:90,
+        intro:'Treat this like an exam: closed book, timed, then mark it honestly.',
+        tasks:[`Take the <a href="${UTEST[u]}">Unit ${u} test</a>`,'For every mistake, reread that section of the lesson it came from','Note any lesson you scored badly on; revisit it before the next unit']});
+      days.push({key:'C'+u, unit:u, type:'test', title:`Unit ${u} consolidation`, mins:60,
+        intro:'Make the unit yours before moving on.',
+        tasks:['Write a ten-sentence diary entry or story that uses at least eight grammar patterns from this unit','Shadow one video from the <a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLOKW0N5CqSDNJF7rVaQCwpX">Sentence Practice</a> playlist, repeating each line until it is smooth','Clear your Anki backlog to zero']});
+    }
+  }
+  return days;
+}
+
+function schedule(days){
+  const allowed = new Set(PACE_DAYS[state.pace]);
+  let d = parseISO(state.start); d.setDate(d.getDate()-1);
+  for (const day of days){
+    do { d.setDate(d.getDate()+1); } while (!allowed.has(d.getDay()));
+    day.date = new Date(d);
+  }
+}
+
+function render(days){
+  const today = parseISO(isoToday());
+  const doneCount = days.filter(d=>state.done[d.key]).length;
+  const totalMin = days.reduce((s,d)=>s+d.mins,0);
+  const behind = days.filter(d=>d.date<today && !state.done[d.key]).length;
+  const todayDay = days.find(d=>d.date.getTime()===today.getTime());
+  const next = days.find(d=>d.date>=today && !state.done[d.key]);
+  const lessonsDone = new Set(days.filter(d=>d.lesson && state.done[d.key]).map(d=>d.lesson.id)).size;
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><b>${doneCount} / ${days.length}</b><span>study days done</span><div class="bar"><i style="width:${100*doneCount/days.length}%"></i></div></div>
+    <div class="stat"><b>${lessonsDone} / ${new Set(days.filter(d=>d.lesson).map(d=>d.lesson.id)).size}</b><span>lessons covered</span></div>
+    <div class="stat"><b>${fmt(days[days.length-1].date)}, ${days[days.length-1].date.getFullYear()}</b><span>finish date at this pace</span></div>
+    <div class="stat"><b>${Math.round(totalMin/60)} h</b><span>estimated total study time</span></div>
+    <div class="stat"><b class="${behind?'behind':'ontrack'}">${behind ? behind+' behind' : 'on track'}</b><span>${todayDay ? 'today: '+esc(dayTitle(todayDay)) : next ? 'rest day. next: '+fmt(next.date) : 'all done'}</span></div>`;
+
+  const units = [...new Set(days.map(d=>d.unit))];
+  const todayUnit = (todayDay || next || days[0]).unit;
+  document.getElementById('plan').innerHTML = units.map(u=>{
+    const ds = days.filter(d=>d.unit===u);
+    const done = ds.filter(d=>state.done[d.key]).length;
+    const ls = ds.filter(d=>d.lesson).map(d=>d.lesson);
+    const range = u===0 ? '3 lessons' : `Lessons ${ls[0].n} to ${ls[ls.length-1].n}`;
+    const vocab = [...new Map(ls.map(l=>[l.id,l])).values()].reduce((s,l)=>s+l.vocab,0);
+    return `<details class="unit" ${u===todayUnit?'open':''} id="unit-${u}">
+      <summary><span class="u">Unit ${u}: ${esc(UNIT[u])}</span><span class="m">${range} · ${ds.length} days · ${vocab} words · ${fmt(ds[0].date)} to ${fmt(ds[ds.length-1].date)}</span>
+        <span class="pct">${done}/${ds.length}</span><div class="bar"><i style="width:${100*done/ds.length}%"></i></div></summary>
+      <div class="days">${ds.map(d=>renderDay(d, days.indexOf(d)+1, d===todayDay)).join('')}</div></details>`;
+  }).join('');
+}
+
+function dayTitle(d){ return d.lesson ? `Lesson ${d.lesson.unit===0?'0.'+d.lesson.n:d.lesson.n}: ${d.lesson.title}${d.part?' ('+d.part+')':''}` : d.title; }
+
+function renderDay(d, idx, isToday){
+  const l = d.lesson;
+  const url = l ? l.url : d.url;
+  const title = url ? `<a href="${url}">${esc(dayTitle(d))}</a>` : esc(dayTitle(d));
+  const badge = {hangul:'hangul',review:'review',test:'test',lesson:''}[d.type];
+  const meta = [`Day ${idx}`, fmt(d.date), `~${d.mins} min`, l && d.type==='lesson' ? `${l.vocab} words` : null, l && d.type==='lesson' ? `${(l.words/1000).toFixed(1)}k words of text` : null].filter(Boolean);
+  return `<div class="day ${d.type} ${isToday?'today':''} ${state.done[d.key]?'done':''}" id="${d.key}">
+    <input type="checkbox" class="chk" data-key="${d.key}" ${state.done[d.key]?'checked':''} aria-label="Mark day ${idx} done">
+    <div>
+      <div class="meta">${badge?`<span class="badge ${badge}">${d.type}</span>`:''}${meta.map(m=>`<span>${m}</span>`).join('')}</div>
+      <div class="t">${title}</div>
+      ${(l?.intro || d.intro) ? `<p class="intro">${esc(l?.intro || d.intro)}</p>` : ''}
+      ${l?.sections?.length && d.part!=='Part 1 of 2' ? `<div class="secs">${l.sections.map(s=>`<span>${esc(s)}</span>`).join('')}</div>` : ''}
+      <ul class="tasks">${d.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
+    </div></div>`;
+}
+
+fetch('lessons.json').then(r=>r.json()).then(lessons=>{
+  lessons.sort((a,b)=>a.unit-b.unit || a.n-b.n);
+  const days = buildDays(lessons);
+  // self-check: every grammar lesson appears exactly once (or twice when split)
+  const seen = {}; days.filter(d=>d.lesson).forEach(d=>seen[d.lesson.id]=(seen[d.lesson.id]||0)+1);
+  console.assert(Object.keys(seen).length===lessons.length && Object.values(seen).every(c=>c<=2), 'lesson coverage broken', seen);
+
+  const startEl = document.getElementById('start'), paceEl = document.getElementById('pace');
+  startEl.value = state.start; paceEl.value = state.pace;
+  const redraw = () => { schedule(days); render(days); };
+  startEl.onchange = () => { if (startEl.value) { state.start = startEl.value; save(); redraw(); } };
+  paceEl.onchange = () => { state.pace = paceEl.value; save(); redraw(); };
+  document.getElementById('plan').addEventListener('change', e => {
+    if (!e.target.classList.contains('chk')) return;
+    if (e.target.checked) state.done[e.target.dataset.key] = true; else delete state.done[e.target.dataset.key];
+    save(); render(days);
+  });
+  document.getElementById('jump').onclick = () => {
+    const today = parseISO(isoToday());
+    const t = days.find(d=>d.date>=today && !state.done[d.key]) || days[days.length-1];
+    document.getElementById('unit-'+t.unit).open = true;
+    document.getElementById(t.key).scrollIntoView({behavior:'smooth', block:'center'});
+  };
+  document.getElementById('reset').onclick = () => {
+    if (confirm('Clear all completed-day checkmarks?')) { state.done = {}; save(); render(days); }
+  };
+  redraw();
+});
+</script>
+</body>
+</html>
