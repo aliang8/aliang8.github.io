@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Korean, day by day</title>
-<meta name="description" content="A self-paced day-by-day Korean curriculum built on the 206 free lessons of How to Study Korean.">
+<meta name="description" content="A self-paced day-by-day Korean curriculum."><meta name="robots" content="noindex,nofollow">
 <style>
 :root{
   --bg:#faf8f4;--card:#fff;--ink:#1d1b18;--muted:#6b665e;--line:#e6e1d8;
@@ -78,7 +78,7 @@ footer{margin-top:50px;color:var(--muted);font-size:.8rem}
 <div class="wrap">
 <header>
   <h1>Korean, day by day <span class="ko">한국어</span></h1>
-  <p>A self-paced schedule through every free lesson on <a href="https://www.howtostudykorean.com/">How to Study Korean</a>: Hangul first, then 203 grammar lessons from Unit&nbsp;1 to Unit&nbsp;9, with review days built in. Progress is saved in this browser.</p>
+  <p>A self-paced schedule through 206 lessons: Hangul first, then 203 grammar lessons from Unit&nbsp;1 to Unit&nbsp;9, with review days and tests built in. Every lesson is hosted here, re-typeset for reading. Progress is saved in this browser.</p>
 </header>
 
 <div class="controls">
@@ -100,8 +100,8 @@ footer{margin-top:50px;color:var(--muted);font-size:.8rem}
 <h2>How each day works</h2>
 <div class="how">
   <ol>
-    <li><b>Read the lesson once</b> without stopping to memorise. HTSK lessons are long (about 4,000 words); the first pass is for shape, not detail.</li>
-    <li><b>Vocabulary into a deck.</b> Add the day's words to <a href="https://www.howtostudykorean.com/anki/">the HTSK Anki decks</a> or your own. Do your Anki reviews every day, including rest days. This is the ten minutes that matters most.</li>
+    <li><b>Read the lesson once</b> without stopping to memorise. Lessons are long (about 4,000 words); the first pass is for shape, not detail.</li>
+    <li><b>Vocabulary into a deck.</b> Add the day's words to an Anki deck (tap a word on any lesson page to see its usage notes and examples). Do your Anki reviews every day, including rest days. This is the ten minutes that matters most.</li>
     <li><b>Second pass on the grammar</b>, then write five sentences of your own using the new pattern. Say them out loud.</li>
     <li><b>Spaced review.</b> Each lesson day also points back at the vocab from three and seven lessons ago.</li>
     <li><b>Mini-test after every block</b> of eight or nine lessons, a unit test after every 25, and one consolidation day to write and speak before moving on.</li>
@@ -112,37 +112,24 @@ footer{margin-top:50px;color:var(--muted);font-size:.8rem}
 <h2 id="plan-h">Your plan</h2>
 <div id="plan"></div>
 
-<h2>Extras worth using alongside</h2>
+<h2>Reference</h2>
 <div class="how extras">
   <ul>
-    <li><a href="https://www.howtostudykorean.com/anki/">Anki decks</a> for every unit's vocabulary</li>
-    <li><a href="https://www.howtostudykorean.com/simple-lists/">Simple Lists</a>: per-unit vocab as CSV</li>
-    <li><a href="https://www.howtostudykorean.com/workbooks/">Workbooks</a> with exercises per lesson (paid)</li>
-    <li><a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLOKW0N5CqSDNJF7rVaQCwpX">Sentence Practice</a> playlist for shadowing</li>
-    <li><a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLMLiZnUBQFJxvr2Bs4eMbI6">Dictation Practice</a> playlist for listening</li>
-    <li><a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLO_V0LFnP3_cdapJBcuG3-O">Analyzing Korean Signs</a>: reading in the wild</li>
-    <li><a href="https://www.howtostudykorean.com/unit0/197-2/">Pronunciation guide</a> and <a href="https://www.howtostudykorean.com/unit0/reading-quick-reference/">reading quick reference</a></li>
-    <li><a href="https://www.howtostudykorean.com/hanja-unit-1-lessons-1-20/">Hanja lessons</a>: start after Unit 3 if you want roots</li>
-    <li><a href="https://www.howtostudykorean.com/other-stuff/lesson-list/">Full lesson list</a> on HTSK</li>
+    <li><a href="ref/pronunciation.html">Pronunciation guide</a>: how letters change sound in context</li>
+    <li><a href="ref/letter-names.html">Names of the Korean letters</a></li>
+    <li><a href="ref/reading-reference.html">Reading quick reference</a>: every letter on one page</li>
+    <li><a href="lessons/0-1.html">Lesson 0.1</a>, the first page, if you just want to start reading</li>
   </ul>
 </div>
 
-<footer>Lesson titles, summaries, section lists and word counts were pulled from howtostudykorean.com on 2026-10-27. All lesson content belongs to How to Study Korean; this page only schedules it.</footer>
+<footer>Lesson material adapted from How to Study Korean for personal study. Snapshot taken 2026-10-27.</footer>
 </div>
 
 <script>
 const UNIT = {0:'Hangul: learn to read',1:'Basic Korean Grammar',2:'Lower-Intermediate Korean Grammar',3:'Intermediate Korean Grammar',4:'Upper-Intermediate Korean Grammar',5:'Lower Advanced Korean Grammar',6:'Advanced Korean Grammar',7:'Upper Advanced Korean Grammar',8:'Near-Expert Korean Grammar',9:'Expert Korean Grammar (in progress on HTSK)'};
-const H = 'https://www.howtostudykorean.com/';
-const MINI = {
- '1-8':H+'unit1/unit-1-lessons-1-8/lessons-1-8-mini-test/','9-16':H+'unit1/unit-1-lessons-9-16/lessons-9-16-mini-test/','17-25':H+'unit1/unit-1-lessons-17-25-2/lessons-17-25-mini-test/',
- '26-33':H+'unit-2-lower-intermediate-korean-grammar/unit-2-lessons-26-33/lessons-26-33-mini-test/','34-41':H+'unit-2-lower-intermediate-korean-grammar/unit-2-lessons-34-41/lessons-34-41-mini-test/',
- '51-58':H+'unit-3-intermediate-korean-grammar/unit-3-lessons-51-58/lesson-51-58-mini-test/','59-66':H+'unit-3-intermediate-korean-grammar/unit-3-lessons-59-66/lesson-59-66-mini-test/','67-75':H+'unit-3-intermediate-korean-grammar/lessons-67-75/lessons-67-75-mini-test/',
- '76-83':H+'upper-intermediate-korean-grammar/unit-4-lessons-76-83/lessons-76-83-mini-test/','84-91':H+'upper-intermediate-korean-grammar/unit-4-lessons-84-91/lessons-84-91-mini-test/','92-100':H+'upper-intermediate-korean-grammar/unit-4-lessons-92-100/lessons-92-100-mini-test/',
- '101-108':H+'unit-5/lessons-101-108/lessons-101-108-mini-test/','109-116':H+'unit-5/lessons-109-116/mini-test/','117-125':H+'unit-5/unit-5-lessons-117-125/lessons-117-125-mini-test/',
- '126-133':H+'unit-6/lessons-126-133/lessons-126-133-mini-test/','134-141':H+'unit-6/lessons-134-141/mini-test/','142-150':H+'unit-6/lessons-142-150/mini-test/',
- '151-158':H+'unit-7/lessons-151-158/mini-test/','159-166':H+'unit-7/lessons-159-166/mini-test/','167-175':H+'unit-7/lessons-167-175/lessons-167-175-mini-test/'
-};
-const UTEST = {1:H+'unit1/unit-1-test/',2:H+'unit-2-lower-intermediate-korean-grammar/unit-2-test/',3:H+'unit-3-intermediate-korean-grammar/unit-3-test/',4:H+'upper-intermediate-korean-grammar/unit-4-test/',5:H+'unit-5/test/',6:H+'unit-6/unit-6-test/',7:H+'unit-7/unit-7-test/',8:H+'unit-8/unit-8-test/'};
+const MINI = Object.fromEntries(['1-8','9-16','17-25','26-33','34-41','42-50','51-58','59-66','67-75','76-83','84-91','92-100','101-108','109-116','117-125','126-133','134-141','142-150','151-158','159-166','167-175','176-183','184-191','192-200'].map(r=>[r,`tests/mini-${r}.html`]));
+const UTEST = Object.fromEntries([1,2,3,4,5,6,7,8].map(u=>[u,`tests/unit-${u}.html`]));
+const REF = {pron:'ref/pronunciation.html', names:'ref/letter-names.html', read:'ref/reading-reference.html'};
 const PACE_DAYS = {7:[0,1,2,3,4,5,6],6:[1,2,3,4,5,6],5:[1,2,3,4,5],4:[1,2,4,5],3:[1,3,5]};
 const STORE = 'htsk-plan';
 
@@ -164,11 +151,11 @@ function buildDays(lessons){
 
   for (const l of lessons.filter(l=>l.unit===0)){
     days.push({key:'H'+l.id, unit:0, type:'hangul', lesson:l, mins:45,
-      tasks:['Learn the letters in this lesson, writing each one ten times by hand','Read every example syllable aloud, then cover the romanisation and read again','Spend 10 minutes on the <a href="'+H+'unit0/197-2/">pronunciation guide</a> audio for these letters']});
+      tasks:['Learn the letters in this lesson, writing each one ten times by hand','Read every example syllable aloud, then cover the romanisation and read again','Spend 10 minutes with the <a href="'+REF.pron+'">pronunciation guide</a> on these letters']});
   }
-  days.push({key:'HP', unit:0, type:'hangul', title:'Hangul consolidation', url:H+'unit0/reading-quick-reference/', mins:45,
+  days.push({key:'HP', unit:0, type:'hangul', title:'Hangul consolidation', url:REF.read, mins:45,
     intro:'No new letters. Make reading automatic before grammar starts.',
-    tasks:['Work through the <a href="'+H+'unit0/reading-quick-reference/">reading quick reference</a> until nothing makes you pause','Learn the <a href="'+H+'unit0/letter-names/">letter names</a>','Read any Korean text you can find (menus, song titles, signs) for 15 minutes, speed over understanding']});
+    tasks:['Work through the <a href="'+REF.read+'">reading quick reference</a> until nothing makes you pause','Learn the <a href="'+REF.names+'">letter names</a>','Read any Korean text you can find (menus, song titles, signs) for 15 minutes, speed over understanding']});
 
   for (let u=1; u<=9; u++){
     const s = 25*(u-1)+1;
@@ -197,7 +184,7 @@ function buildDays(lessons){
       const miniUrl = MINI[range];
       days.push({key:'R'+range, unit:u, type:'review', title:`Review: Lessons ${range.replace('-',' to ')}`, url:miniUrl, mins:60,
         intro:'Nothing new today. Find out what did not stick.',
-        tasks:[miniUrl ? `Take the <a href="${miniUrl}">mini-test</a> without looking anything up, then mark it` : 'Reread the vocab lists of these lessons and quiz yourself; HTSK has no mini-test for this block yet',
+        tasks:[miniUrl ? `Take the <a href="${miniUrl}">mini-test</a> without looking anything up, then mark it` : 'Reread the vocab lists of these lessons and quiz yourself; there is no mini-test for this block yet',
           'Re-drill every word from these lessons that you got wrong or hesitated on','Pick the three grammar patterns you found hardest and write three sentences with each']});
     }
     if (!any) continue;
@@ -207,7 +194,7 @@ function buildDays(lessons){
         tasks:[`Take the <a href="${UTEST[u]}">Unit ${u} test</a>`,'For every mistake, reread that section of the lesson it came from','Note any lesson you scored badly on; revisit it before the next unit']});
       days.push({key:'C'+u, unit:u, type:'test', title:`Unit ${u} consolidation`, mins:60,
         intro:'Make the unit yours before moving on.',
-        tasks:['Write a ten-sentence diary entry or story that uses at least eight grammar patterns from this unit','Shadow one video from the <a href="https://www.youtube.com/playlist?list=PLpkY2PdR9aLOKW0N5CqSDNJF7rVaQCwpX">Sentence Practice</a> playlist, repeating each line until it is smooth','Clear your Anki backlog to zero']});
+        tasks:['Write a ten-sentence diary entry or story that uses at least eight grammar patterns from this unit','Pick ten example sentences from this unit and read them aloud until each one is smooth, then record yourself saying them','Clear your Anki backlog to zero']});
     }
   }
   return days;

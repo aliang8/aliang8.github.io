@@ -1,0 +1,50 @@
+:root{
+  --bg:#faf8f4;--card:#fff;--ink:#1d1b18;--muted:#6b665e;--line:#e6e1d8;
+  --accent:#c8373d;--soft:#f3eee6;--ko:#1d1b18;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#15161a;--card:#1e2026;--ink:#ecebe7;--muted:#9a978f;--line:#2e313a;--soft:#262932;--accent:#e2555b}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink)}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+nav.top,nav.bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-size:.9rem}
+nav.bottom:not(:has(a)){display:none}
+nav.bottom{border-top:1px solid var(--line);margin-top:40px;padding-top:24px}
+nav a{text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:8px}
+nav a:hover{background:var(--soft);color:var(--ink)}
+nav .home{font-weight:600}
+nav .prev{margin-right:auto}nav .next{margin-left:auto}
+nav .off{flex:1}
+header{padding:16px 0 8px}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+header h1{font-size:2rem;line-height:1.2;letter-spacing:-.02em;margin:6px 0 10px}
+.meta{display:flex;gap:14px;font-size:.82rem;color:var(--muted)}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:20px 0 28px;font-size:.92rem}
+.toc ol{margin:0;padding-left:22px;columns:2;column-gap:24px}
+.toc li{margin:3px 0;break-inside:avoid}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--accent)}
+.lesson h2{font-size:1.45rem;letter-spacing:-.015em;margin:48px 0 14px;padding-top:14px;border-top:1px solid var(--line)}
+.lesson h3{font-size:1.15rem;margin:32px 0 10px}
+.lesson h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:26px 0 8px}
+.lesson p{margin:0 0 14px}
+.lesson img{max-width:100%;height:auto;display:block;margin:12px auto;border-radius:8px}
+.lesson table{border-collapse:collapse;width:100%;font-size:.95rem;margin:14px 0;display:block;overflow-x:auto}
+.lesson td,.lesson th{border:1px solid var(--line);padding:6px 10px;vertical-align:top}
+.lesson hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.lesson strong{font-weight:650}
+.lesson ul,.lesson ol{padding-left:24px}
+details.vocab{border-bottom:1px solid var(--line);padding:6px 0}
+details.vocab summary{cursor:pointer;list-style:none;display:flex;gap:10px;align-items:baseline;padding:4px 0}
+details.vocab summary::-webkit-details-marker{display:none}
+details.vocab summary::before{content:"+";color:var(--muted);font-weight:600;width:14px;flex:none}
+details.vocab[open] summary::before{content:"–"}
+details.vocab summary b{font-weight:600;font-size:1.05rem;color:var(--ko)}
+details.vocab>div{padding:8px 0 10px 24px;font-size:.93rem;color:var(--muted);background:var(--card);border-left:2px solid var(--line);margin:6px 0 4px 6px;padding-left:16px}
+details.vocab>div p{margin:0 0 10px}
+details.vocab>div strong{color:var(--ink)}
+footer{margin-top:40px;color:var(--muted);font-size:.78rem}
+@media (max-width:600px){.toc ol{columns:1}header h1{font-size:1.6rem}body{font-size:16px}}
