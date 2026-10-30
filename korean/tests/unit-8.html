@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Unit 8 Test · Korean</title>
 <link rel="stylesheet" href="../style.css"></head>
-<body><div class="wrap">
-<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T8">↑ Plan</a><span class="next off"></span></nav>
+<body data-unit="8" data-keys="T8"><div class="progress"><i></i></div><div class="wrap">
+<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T8">↑ Plan</a><label class="done"><input type="checkbox" id="done"> done</label><span class="next off"></span></nav>
 <header><div class="eyebrow">Unit test</div><h1>Unit 8 Test</h1></header>
 <nav class="toc"><ol><li><a href="#comprehension">Comprehension</a></li><li><a href="#grammar">Grammar</a></li><li><a href="#listening">Listening</a></li></ol></nav>
 <article class="lesson">
@@ -13,8 +13,8 @@
 <p>1 – Comprehension<br>
 2 – Grammar<br>
 3 – Listening</p>
-<h2 id="comprehension">Comprehension</h2>
-<p>1 – 2) Read the following conversation and answer questions 1 and 2.</p>
+<section class="sec sec-grammar"><div class="sechead"><h2 id="comprehension">Comprehension</h2>
+</div><p>1 – 2) Read the following conversation and answer questions 1 and 2.</p>
 <p>Person 1: 이렇게 힘들게 준비했는데 떨어졌다니 정말 아쉬워요<br>
 Person 2: 다시 보면 되지. 연습을 제대로 하면 잘 _________<br>
 Person 1: (Response)</p>
@@ -99,8 +99,8 @@ b) 수작<br>
 c) 성질<br>
 d) 욕심</p>
 
-<h2 id="grammar">Grammar</h2>
-<p>11. Which of the following grammatical principles fills in the blank the most appropriately?</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="grammar">Grammar</h2>
+</div><p>11. Which of the following grammatical principles fills in the blank the most appropriately?</p>
 <p>이 정도 성적이면 포기하기엔 아깝고, 계속 노력해야 __________.</p>
 <p>a) 할 듯 해요<br>
 b) 할 셈이다<br>
@@ -218,8 +218,8 @@ d) 이 문제는 어렵롭기 때문에 시간이 걸려요</p>
 
 
 
-<h2 id="listening">Listening</h2>
-<p>21)</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="listening">Listening</h2>
+</div><p>21)</p>
 <p>Listen to the file.</p>
 <p>아침에 화자의 머리가 왜 아팠나요?</p>
 <p>a) 아침에 너무 많이 먹어서 머리가 아팠어요<br>
@@ -300,12 +300,17 @@ d) 시간이 너무 많아서 숙제를 미뤘기 때문이에요</p>
 
 <p>And with that, you are finished Unit 8!</p>
 <p>Too difficult? You can always go back and review the Lessons in Unit 8.</p>
-	
+	</section>
 </article>
 <nav class="bottom"><span class="prev off"></span><span class="next off"></span></nav>
 <footer>Adapted from How to Study Korean for personal study.</footer>
 </div>
 <script>
-// remember scroll position per page, and ctrl/cmd+arrow for prev/next
 addEventListener('keydown',e=>{if(!(e.metaKey||e.ctrlKey))return;const a=e.key==='ArrowLeft'?document.querySelector('.top .prev'):e.key==='ArrowRight'?document.querySelector('.top .next'):null;if(a)location.href=a.href});
+const bar=document.querySelector('.progress i');addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+'%'},{passive:true});
+const keys=(document.body.dataset.keys||'').split(',').filter(Boolean),S='htsk-plan',box=document.getElementById('done');
+if(keys.length&&box){const d=new Date(),iso=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ let st=JSON.parse(localStorage.getItem(S)||'null')||{start:iso,pace:'5',done:{}};
+ box.checked=keys.every(k=>st.done[k]);
+ box.onchange=()=>{keys.forEach(k=>{if(box.checked)st.done[k]=true;else delete st.done[k]});localStorage.setItem(S,JSON.stringify(st))};}
 </script></body></html>

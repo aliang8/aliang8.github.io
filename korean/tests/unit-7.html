@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Unit 7 Test · Korean</title>
 <link rel="stylesheet" href="../style.css"></head>
-<body><div class="wrap">
-<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T7">↑ Plan</a><span class="next off"></span></nav>
+<body data-unit="7" data-keys="T7"><div class="progress"><i></i></div><div class="wrap">
+<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T7">↑ Plan</a><label class="done"><input type="checkbox" id="done"> done</label><span class="next off"></span></nav>
 <header><div class="eyebrow">Unit test</div><h1>Unit 7 Test</h1></header>
 <nav class="toc"><ol><li><a href="#1">Comprehension</a></li><li><a href="#2">Grammar</a></li><li><a href="#3">Listening</a></li></ol></nav>
 <article class="lesson">
@@ -14,8 +14,8 @@ There are three sections to this test.</p>
 2 – <a href="#2">Grammar</a><br>
 3 – <a href="#3">Listening</a></p>
 
-<h2 id="1">Comprehension</h2>
-<p>1 – 2) Read the following dialogue and answer the following questions.</p>
+<section class="sec sec-grammar"><div class="sechead"><h2 id="1">Comprehension</h2>
+</div><p>1 – 2) Read the following dialogue and answer the following questions.</p>
 <p>Person 1: 야, 너 땀을 ____________ 흘리는데 괜찮아?<br>
 Person 2: 응, 아까 잔디밭에서 축구 좀 했더니 이렇게 됐어.<br>
 Person 1: Response</p>
@@ -98,8 +98,8 @@ b) 참아야 된단 말이야<br>
 c) 참을락 말락 해<br>
 d) 참다 싶어</p>
 
-<h2 id="2">Grammar</h2>
-<p>11) Fill in the blank with the appropriate word and grammatical principle combination:</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="2">Grammar</h2>
+</div><p>11) Fill in the blank with the appropriate word and grammatical principle combination:</p>
 <p>일찍 __________________ 버스를 거의 놓칠 뻔 했어요</p>
 <p>a) 일어났으니 말이지<br>
 b) 일어나느냐<br>
@@ -224,8 +224,8 @@ c) 제 작품이 아직 완벽지 않아서 더 작업을 해야 돼요<br>
 d) 그는 감기 때문에 오늘 하루 회사에 결근지 못했어요</p>
 
 
-<h2 id="3">Listening</h2>
-<p>21)</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="3">Listening</h2>
+</div><p>21)</p>
 <p>Listen to the conversation.</p>
 <ol>
 <li>Person 1</li>
@@ -334,12 +334,17 @@ Person 2: Response.</p>
 <p>And with that, you are finished Unit 7!</p>
 <p>Too difficult? You can always go back and review the Lessons in Unit 7.</p>
 <p>If you’re ready, you can start checking out Unit 8. You could jump directly to the first set of lessons in Unit 8, or go directly to Lesson 176.</p>
-	
+	</section>
 </article>
 <nav class="bottom"><span class="prev off"></span><span class="next off"></span></nav>
 <footer>Adapted from How to Study Korean for personal study.</footer>
 </div>
 <script>
-// remember scroll position per page, and ctrl/cmd+arrow for prev/next
 addEventListener('keydown',e=>{if(!(e.metaKey||e.ctrlKey))return;const a=e.key==='ArrowLeft'?document.querySelector('.top .prev'):e.key==='ArrowRight'?document.querySelector('.top .next'):null;if(a)location.href=a.href});
+const bar=document.querySelector('.progress i');addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+'%'},{passive:true});
+const keys=(document.body.dataset.keys||'').split(',').filter(Boolean),S='htsk-plan',box=document.getElementById('done');
+if(keys.length&&box){const d=new Date(),iso=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ let st=JSON.parse(localStorage.getItem(S)||'null')||{start:iso,pace:'5',done:{}};
+ box.checked=keys.every(k=>st.done[k]);
+ box.onchange=()=>{keys.forEach(k=>{if(box.checked)st.done[k]=true;else delete st.done[k]});localStorage.setItem(S,JSON.stringify(st))};}
 </script></body></html>

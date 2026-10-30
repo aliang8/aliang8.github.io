@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Unit 5 Test · Korean</title>
 <link rel="stylesheet" href="../style.css"></head>
-<body><div class="wrap">
-<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T5">↑ Plan</a><span class="next off"></span></nav>
+<body data-unit="5" data-keys="T5"><div class="progress"><i></i></div><div class="wrap">
+<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T5">↑ Plan</a><label class="done"><input type="checkbox" id="done"> done</label><span class="next off"></span></nav>
 <header><div class="eyebrow">Unit test</div><h1>Unit 5 Test</h1></header>
 <nav class="toc"><ol><li><a href="#comprehension">Comprehension</a></li><li><a href="#gram">Grammar</a></li><li><a href="#list">Listening</a></li><li><a href="#aud">Audio Transcripts</a></li></ol></nav>
 <article class="lesson">
@@ -21,8 +21,8 @@
 
 
 
-<h2 id="comprehension">Comprehension</h2>
-<p>1 – 2) Read the following dialogue and answer the following questions.</p>
+<section class="sec sec-grammar"><div class="sechead"><h2 id="comprehension">Comprehension</h2>
+</div><p>1 – 2) Read the following dialogue and answer the following questions.</p>
 <p>Person 1: 엄마가 집에 언제 올 거야?<br>
 Person 2: 지금 __________ 약 10 분 있다 도착할 거야</p>
 
@@ -106,8 +106,8 @@ d) A girl on the rebound</p>
 
 
 
-<h2 id="gram">Grammar</h2>
-<p>11) Which of the following grammatical principles could replace the underlined section below?</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="gram">Grammar</h2>
+</div><p>11) Which of the following grammatical principles could replace the underlined section below?</p>
 <p>치매를 오랫동안 연구해서 우리는 지금 치매가 얼마나 심각한 병인지 알아요</p>
 <p>a) 연구해 보니까<br>
 b) 아직 연구하므로<br>
@@ -186,9 +186,9 @@ d) 이 웹사이트가 한국어문법을 배우기 좋은 웹사이트이라고
 
 
 
-<h2 id="list">Listening</h2>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="list">Listening</h2>
 
-<p>21)</p>
+</div><p>21)</p>
 <p>Listen to the file:</p>
 <p>Which of the following most accurately describes the thought of the teacher:</p>
 <p>a) He doesn’t want to be flattered by students<br>
@@ -239,8 +239,8 @@ d) The woman’s mother</p>
 
 
 
-<h2 id="aud">Audio Transcripts</h2>
-<p>21) 학생들이 저에게 아첨을 하든지 말든지 저를 피하는 것보다 나아요</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="aud">Audio Transcripts</h2>
+</div><p>21) 학생들이 저에게 아첨을 하든지 말든지 저를 피하는 것보다 나아요</p>
 <p>22) 길에 눈이 왜 이렇게 없어요? 어제는 눈이 너무 쌓여 있었는데 지금은 아예 없어요. 다 녹았나 봐요</p>
 <p>23) 트림하지 마라니까! 밥을 먹으면서 트림하면 너무 더러워!</p>
 <p>24) Man: 중국어를 배우는 게 어렵지 않아요?<br>
@@ -280,12 +280,17 @@ Man: 이미 부산에 가시는 길이에요</p>
 <p>And with that, you are finished Unit 5!<br>
 Was the test too difficult? Feel free to ask us any questions or go back to and of the Lessons in Unit 5 to review something.</p>
 
-	
+	</section>
 </article>
 <nav class="bottom"><span class="prev off"></span><span class="next off"></span></nav>
 <footer>Adapted from How to Study Korean for personal study.</footer>
 </div>
 <script>
-// remember scroll position per page, and ctrl/cmd+arrow for prev/next
 addEventListener('keydown',e=>{if(!(e.metaKey||e.ctrlKey))return;const a=e.key==='ArrowLeft'?document.querySelector('.top .prev'):e.key==='ArrowRight'?document.querySelector('.top .next'):null;if(a)location.href=a.href});
+const bar=document.querySelector('.progress i');addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+'%'},{passive:true});
+const keys=(document.body.dataset.keys||'').split(',').filter(Boolean),S='htsk-plan',box=document.getElementById('done');
+if(keys.length&&box){const d=new Date(),iso=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ let st=JSON.parse(localStorage.getItem(S)||'null')||{start:iso,pace:'5',done:{}};
+ box.checked=keys.every(k=>st.done[k]);
+ box.onchange=()=>{keys.forEach(k=>{if(box.checked)st.done[k]=true;else delete st.done[k]});localStorage.setItem(S,JSON.stringify(st))};}
 </script></body></html>

@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Unit 3 Test · Korean</title>
 <link rel="stylesheet" href="../style.css"></head>
-<body><div class="wrap">
-<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T3">↑ Plan</a><span class="next off"></span></nav>
+<body data-unit="3" data-keys="T3"><div class="progress"><i></i></div><div class="wrap">
+<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T3">↑ Plan</a><label class="done"><input type="checkbox" id="done"> done</label><span class="next off"></span></nav>
 <header><div class="eyebrow">Unit test</div><h1>Unit 3 Test</h1></header>
 <nav class="toc"><ol><li><a href="#comp">Comprehension</a></li><li><a href="#gram">Grammar</a></li><li><a href="#list">Listening</a></li><li><a href="#aud">Audio Transcripts</a></li><li><a href="#an">Answers</a></li></ol></nav>
 <article class="lesson">
@@ -25,9 +25,9 @@
 
 
 
-<h2 id="comp">Comprehension</h2>
+<section class="sec sec-grammar"><div class="sechead"><h2 id="comp">Comprehension</h2>
 
-<p>1 – 3) Read the following dialogue and answer the following two questions:</p>
+</div><p>1 – 3) Read the following dialogue and answer the following two questions:</p>
 <p>Person 1: 엄마는 방을 청소하라고 했어<br>
 Person 2: 아빠, 엄마가 나를 왜 자꾸 시켜? 너무 싫어.<br>
 Person 1: 엄마가 하루 종일 일해서 그냥 해.</p>
@@ -100,8 +100,8 @@ c) leave the room<br>
 d) enter the room</p>
 
 
-<h2 id="gram">Grammar</h2>
-<p>11) Choose the incorrect sentence:</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="gram">Grammar</h2>
+</div><p>11) Choose the incorrect sentence:</p>
 <p>a) 선생님! 내일 뵙어요!<br>
 b) 선생님! 연세가 어떻게 돼요?<br>
 c) 할아버지는 너한테 빨리 하라고 하셨어<br>
@@ -171,8 +171,8 @@ c) 밥을 사 줄게요<br>
 d) 밥을 살래요?</p>
 
 
-<h2 id="list">Listening</h2>
-<p>21) Listen to the file.</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="list">Listening</h2>
+</div><p>21) Listen to the file.</p>
 <p>Why isn’t the girl studying?</p>
 <p>a) she doesn’t understand<br>
 b) she doesn’t like her teacher<br>
@@ -213,8 +213,8 @@ d) to leave the room</p>
 
 
 
-<h2 id="aud">Audio Transcripts</h2>
-<p> 21)</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="aud">Audio Transcripts</h2>
+</div><p> 21)</p>
 <p>Man: 공부를 왜 안 해요?<br>
 Woman: 어느 대학교에 가는 지 별로 신경 안 써서 공부를 안 해도 돼요.</p>
 <p>22)</p>
@@ -236,8 +236,8 @@ Woman: 몰라요. 그냥 추측했어요</p>
 
 
 
-<h2 id="an">Answers</h2>
-<p>1) C<br>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="an">Answers</h2>
+</div><p>1) C<br>
 2) D<br>
 3) C<br>
 4) A<br>
@@ -266,12 +266,17 @@ Woman: 몰라요. 그냥 추측했어요</p>
 <p>And with that, you are finished Unit 3!<br>
 Was the test too difficult? Feel free to go back to the Lessons in Unit 3 to review something.</p>
 
-	
+	</section>
 </article>
 <nav class="bottom"><span class="prev off"></span><span class="next off"></span></nav>
 <footer>Adapted from How to Study Korean for personal study.</footer>
 </div>
 <script>
-// remember scroll position per page, and ctrl/cmd+arrow for prev/next
 addEventListener('keydown',e=>{if(!(e.metaKey||e.ctrlKey))return;const a=e.key==='ArrowLeft'?document.querySelector('.top .prev'):e.key==='ArrowRight'?document.querySelector('.top .next'):null;if(a)location.href=a.href});
+const bar=document.querySelector('.progress i');addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+'%'},{passive:true});
+const keys=(document.body.dataset.keys||'').split(',').filter(Boolean),S='htsk-plan',box=document.getElementById('done');
+if(keys.length&&box){const d=new Date(),iso=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ let st=JSON.parse(localStorage.getItem(S)||'null')||{start:iso,pace:'5',done:{}};
+ box.checked=keys.every(k=>st.done[k]);
+ box.onchange=()=>{keys.forEach(k=>{if(box.checked)st.done[k]=true;else delete st.done[k]});localStorage.setItem(S,JSON.stringify(st))};}
 </script></body></html>

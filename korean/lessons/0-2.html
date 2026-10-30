@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>More Basic Korean Letters · Korean</title>
 <link rel="stylesheet" href="../style.css"></head>
-<body><div class="wrap">
-<nav class="top"><a class="prev" href="0-1.html">← Lesson 0.1</a><a class="home" href="../index.html#L0-2">↑ Plan</a><a class="next" href="0-3.html">Lesson 0.3 →</a></nav>
+<body data-unit="0" data-keys="H0-2"><div class="progress"><i></i></div><div class="wrap">
+<nav class="top"><a class="prev" href="0-1.html">← Lesson 0.1</a><a class="home" href="../index.html#L0-2">↑ Plan</a><label class="done"><input type="checkbox" id="done"> done</label><a class="next" href="0-3.html">Lesson 0.3 →</a></nav>
 <header><div class="eyebrow">Unit 0: Hangul · Lesson 0.2</div><h1>More Basic Korean Letters</h1></header>
 
 <article class="lesson">
@@ -17,19 +17,13 @@ In the previous lesson, you learned that Korean syllables are always written in 
 <p>This means that Number 1 is always a consonant (as well as Number 3, if there is one). But does that mean that every syllable <em>must</em> start with a consonant?</p>
 <p>The answer: Sort of.</p>
 <p>When the letter ‘ㅇ’ is placed at Number 1 in the syllable it is silent, and the first sound that is made is the vowel in the Number 2 position. Some examples:</p>
-<p>안 = an<br>
-운 = un<br>
-온 = on<br>
-업 = eob</p>
+<div class="ex"><div class="pair"><div class="ko">안</div><div class="en">an</div></div><div class="pair"><div class="ko">운</div><div class="en">un</div></div><div class="pair"><div class="ko">온</div><div class="en">on</div></div><div class="pair"><div class="ko">업</div><div class="en">eob</div></div></div>
 
 <p>Using this silent letter, we are able to follow the rule that you learned earlier “Number 2 is ALWAYS a vowel”</p>
 <p>What makes the letter ‘o’ slightly more tricky is that it makes another sound when placed as Number 3. When placed as Number 3, it has the sound of  ‘ng’ as in “walkiNG”. Some examples:</p>
-<p>강 = kang<br>
-방 = bang<br>
-깅 = king<br>
-공 = kong</p>
+<div class="ex"><div class="pair"><div class="ko">강</div><div class="en">kang</div></div><div class="pair"><div class="ko">방</div><div class="en">bang</div></div><div class="pair"><div class="ko">깅</div><div class="en">king</div></div><div class="pair"><div class="ko">공</div><div class="en">kong</div></div></div>
 <p>The letter ㅇ can be placed as both Number 1 and 3:</p>
-<p>앙 = ang</p>
+<div class="ex"><div class="pair"><div class="ko">앙</div><div class="en">ang</div></div></div>
 <p>In addition to that letter, there are some more letters that need to be learned. Luckily, each of the following letters is very similar in appearance and sound to the letters you have already learned. Unfortunately, this usually adds to the confusion for English speakers, because it is very hard to distinguish between two different letters.</p>
 <p>I’ll present them in sets:<br>
 ㄱ set<br>
@@ -53,14 +47,8 @@ In the previous lesson, you learned that Korean syllables are always written in 
 ㅆ        is a new letter. It is two ㅅ’s placed side by side. It sounds very similar to the original ‘ㅅ’ but it is more forced at the beginning of the pronunciation. It is Romanized as ‘ss’</p>
 <p>As I said earlier, in one way, those new letters are very simple, because they are just building on the letters in which you already know. On the other hand, they add confusion because the new letters sound very similar to the previous ones.</p>
 <p>All of the new letters can form syllables just like the letters you learned in Lesson 1. For example:</p>
-<p>ㄸ = dd<br>
-ㅏ = a<br>
-ㅇ = ng<br>
-ㅏ is vertically aligned, so if we make a syllable we would write: 땅 (ddang)</p>
-<p>ㅌ = t<br>
-ㅗ = o<br>
-ㅇ = ng<br>
-ㅗ is horizontally aligned, so if we make a syllable we would write: 통</p>
+<div class="ex"><div class="pair"><div class="ko">ㄸ</div><div class="en">dd</div></div><div class="pair"><div class="ko">ㅏ</div><div class="en">a</div></div><div class="pair"><div class="ko">ㅇ</div><div class="en">ng</div></div></div><p>ㅏ is vertically aligned, so if we make a syllable we would write: 땅 (ddang)</p>
+<div class="ex"><div class="pair"><div class="ko">ㅌ</div><div class="en">t</div></div><div class="pair"><div class="ko">ㅗ</div><div class="en">o</div></div><div class="pair"><div class="ko">ㅇ</div><div class="en">ng</div></div></div><p>ㅗ is horizontally aligned, so if we make a syllable we would write: 통</p>
 <p>The following table, just like the tables presented in the previous lesson will show you how to match up the letters you learned in this lesson to form syllables.<br>
 This first table shows you all of these new letters (plus the letters from Lesson 1) without the use of a final consonant.</p>
 <p>Again, while it is important to familiarize yourself with construction patterns of these syllables, you do not need to memorize any of them. All of the following can be found in words.<br>
@@ -465,6 +453,11 @@ Round 1 | Round 2 | Round 3</p>
 <footer>Adapted from How to Study Korean for personal study.</footer>
 </div>
 <script>
-// remember scroll position per page, and ctrl/cmd+arrow for prev/next
 addEventListener('keydown',e=>{if(!(e.metaKey||e.ctrlKey))return;const a=e.key==='ArrowLeft'?document.querySelector('.top .prev'):e.key==='ArrowRight'?document.querySelector('.top .next'):null;if(a)location.href=a.href});
+const bar=document.querySelector('.progress i');addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+'%'},{passive:true});
+const keys=(document.body.dataset.keys||'').split(',').filter(Boolean),S='htsk-plan',box=document.getElementById('done');
+if(keys.length&&box){const d=new Date(),iso=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ let st=JSON.parse(localStorage.getItem(S)||'null')||{start:iso,pace:'5',done:{}};
+ box.checked=keys.every(k=>st.done[k]);
+ box.onchange=()=>{keys.forEach(k=>{if(box.checked)st.done[k]=true;else delete st.done[k]});localStorage.setItem(S,JSON.stringify(st))};}
 </script></body></html>

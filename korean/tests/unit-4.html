@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Unit 4 Test · Korean</title>
 <link rel="stylesheet" href="../style.css"></head>
-<body><div class="wrap">
-<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T4">↑ Plan</a><span class="next off"></span></nav>
+<body data-unit="4" data-keys="T4"><div class="progress"><i></i></div><div class="wrap">
+<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T4">↑ Plan</a><label class="done"><input type="checkbox" id="done"> done</label><span class="next off"></span></nav>
 <header><div class="eyebrow">Unit test</div><h1>Unit 4 Test</h1></header>
 <nav class="toc"><ol><li><a href="#4test1">Comprehension</a></li><li><a href="#4test2">Grammar</a></li><li><a href="#4test3">Listening</a></li><li><a href="#4test4">Audio Transcripts</a></li><li><a href="#answers">Answers</a></li></ol></nav>
 <article class="lesson">
@@ -23,8 +23,8 @@
 
 
 
-<h2 id="4test1">Comprehension</h2>
-<p>1 – 2) Read the following dialogue and answer the following questions.</p>
+<section class="sec sec-grammar"><div class="sechead"><h2 id="4test1">Comprehension</h2>
+</div><p>1 – 2) Read the following dialogue and answer the following questions.</p>
 <p>Person 1: 어제 선배님이랑 같이 있었는데 도서관에서 책을 읽다가 낯선 사람이 남의 지갑을 훔치는 것을 목격했어요<br>
 Person 2: 진짜요? 경비아저씨나 경찰한테 신고했어요?<br>
 Person 1: _________________________</p>
@@ -119,8 +119,8 @@ d) that’s a stupid question</p>
 
 
 
-<h2 id="4test2">Grammar</h2>
-<p>11) Which of the following does not fit with the other three sentences?</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="4test2">Grammar</h2>
+</div><p>11) Which of the following does not fit with the other three sentences?</p>
 <p>a)    비가 왔군<br>
 b)    비가 왔구나<br>
 c)    비가 왔네<br>
@@ -196,8 +196,8 @@ c)    이도록 해<br>
 d)    뿐이야</p>
 
 
-<h2 id="4test3">Listening</h2>
-<p> 21)</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="4test3">Listening</h2>
+</div><p> 21)</p>
 <p>Listen to the file:</p>
 <p>What is the reason the girl wants to go to Europe?</p>
 <p>a)    To learn English<br>
@@ -241,8 +241,8 @@ b) The bedroom is better to sleep in because it is dark<br>
 c) The bedroom is too dark<br>
 d) The bedroom is too bright</p>
 
-<h2 id="4test4">Audio Transcripts</h2>
-<p>21) 내가 유럽에 가고 싶은 이유는 관광을 위한 게 아니라 유럽문화를 배우고 싶기 때문이야</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="4test4">Audio Transcripts</h2>
+</div><p>21) 내가 유럽에 가고 싶은 이유는 관광을 위한 게 아니라 유럽문화를 배우고 싶기 때문이야</p>
 
 
 <p>22)</p>
@@ -270,8 +270,8 @@ Person 1:  방이 너무 좋지? 어두우니까</p>
 
 
 <p id="4test5">.</p>
-<h2 id="answers">Answers</h2>
-<p>1) a<br>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="answers">Answers</h2>
+</div><p>1) a<br>
 2) c<br>
 3) b<br>
 4) a<br>
@@ -298,12 +298,17 @@ Person 1:  방이 너무 좋지? 어두우니까</p>
 25) b</p>
 
 <p>Want to head straight to our next lesson? Check out Lesson 101 in Unit 5. Or, you could always check out the lessons from Lessons 101 – 108.</p>
-	
+	</section>
 </article>
 <nav class="bottom"><span class="prev off"></span><span class="next off"></span></nav>
 <footer>Adapted from How to Study Korean for personal study.</footer>
 </div>
 <script>
-// remember scroll position per page, and ctrl/cmd+arrow for prev/next
 addEventListener('keydown',e=>{if(!(e.metaKey||e.ctrlKey))return;const a=e.key==='ArrowLeft'?document.querySelector('.top .prev'):e.key==='ArrowRight'?document.querySelector('.top .next'):null;if(a)location.href=a.href});
+const bar=document.querySelector('.progress i');addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+'%'},{passive:true});
+const keys=(document.body.dataset.keys||'').split(',').filter(Boolean),S='htsk-plan',box=document.getElementById('done');
+if(keys.length&&box){const d=new Date(),iso=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ let st=JSON.parse(localStorage.getItem(S)||'null')||{start:iso,pace:'5',done:{}};
+ box.checked=keys.every(k=>st.done[k]);
+ box.onchange=()=>{keys.forEach(k=>{if(box.checked)st.done[k]=true;else delete st.done[k]});localStorage.setItem(S,JSON.stringify(st))};}
 </script></body></html>

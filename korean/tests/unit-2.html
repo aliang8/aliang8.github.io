@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Unit 2 Test · Korean</title>
 <link rel="stylesheet" href="../style.css"></head>
-<body><div class="wrap">
-<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T2">↑ Plan</a><span class="next off"></span></nav>
+<body data-unit="2" data-keys="T2"><div class="progress"><i></i></div><div class="wrap">
+<nav class="top"><span class="prev off"></span><a class="home" href="../index.html#T2">↑ Plan</a><label class="done"><input type="checkbox" id="done"> done</label><span class="next off"></span></nav>
 <header><div class="eyebrow">Unit test</div><h1>Unit 2 Test</h1></header>
 <nav class="toc"><ol><li><a href="#comp">Comprehension</a></li><li><a href="#gram">Grammar</a></li><li><a href="#list">Listening</a></li><li><a href="#aud">Audio Transcripts</a></li><li><a href="#answers">Answers</a></li></ol></nav>
 <article class="lesson">
@@ -24,9 +24,9 @@
 
 
 
-<h2 id="comp">Comprehension</h2>
+<section class="sec sec-grammar"><div class="sechead"><h2 id="comp">Comprehension</h2>
 
-<p>1 – 2) Read the Korean sentence and answer the question after it:<br>
+</div><p>1 – 2) Read the Korean sentence and answer the question after it:<br>
 1) 제가 한국어를 잘 말할 수 없어서 저의 여자 친구의 아버지랑 어머니를 만나는 것은 조금 불편해요</p>
 <p>Why wouldn’t you want to go to your girlfriend’s house?</p>
 <p>a) because you can speak Korean, and it is awkward<br>
@@ -100,8 +100,8 @@ d) studying harder</p>
 
 
 
-<h2 id="gram">Grammar</h2>
-<p>11) Which of the following is incorrect:</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="gram">Grammar</h2>
+</div><p>11) Which of the following is incorrect:</p>
 <p>a) 제가 한국에 산 지 2년 됐어요<br>
 b) 그녀가 언제 올 것을 몰라요<br>
 c) 아빠가 어디 가신지 몰라요<br>
@@ -168,8 +168,8 @@ c) 혹시 안 바쁘면 저를 도와 주세요<br>
 d) 만약 병원에 가야 돼었어요</p>
 
 
-<h2 id="list">Listening</h2>
-<p><b></b>21)</p>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="list">Listening</h2>
+</div><p><b></b>21)</p>
 <p>Listen to the file</p>
 <p>Why can’t the girl attend university?</p>
 <p>a) she hasn’t written the exam<br>
@@ -210,8 +210,8 @@ c) ten minutes from now<br>
 d) she has no plans of leaving</p>
 
 
-<h2 id="aud">Audio Transcripts</h2>
-<p>21)<br>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="aud">Audio Transcripts</h2>
+</div><p>21)<br>
 제가 시험을 아직 안 봐서 그 대학교에 갈 수 없어요</p>
 <p>22)<br>
 남: 한국어를 왜 배우고 있어요?<br>
@@ -225,8 +225,8 @@ d) she has no plans of leaving</p>
 <p>25) 남: 지금 갈래요?<br>
 여: 아니요. 저는 아직 일을 많이 해야 되어서 지금 갈 수 없어요. 먼저 가고 제가 10분 후에 갈 거예요.</p>
 
-<h2 id="answers">Answers</h2>
-<p>1) b<br>
+</section><section class="sec sec-grammar"><div class="sechead"><h2 id="answers">Answers</h2>
+</div><p>1) b<br>
 2) a<br>
 3) c<br>
 4) c<br>
@@ -255,12 +255,17 @@ d) she has no plans of leaving</p>
 <p>And with that, you are finished Unit 2!<br>
 Was the test too difficult? Feel free to ask us any questions or go back to and of the Lessons in Unit 2 to review something.</p>
 <p>All done with Unit 2? You can move on to Unit 3 or also go directly to Lesson 51.</p>
-	
+	</section>
 </article>
 <nav class="bottom"><span class="prev off"></span><span class="next off"></span></nav>
 <footer>Adapted from How to Study Korean for personal study.</footer>
 </div>
 <script>
-// remember scroll position per page, and ctrl/cmd+arrow for prev/next
 addEventListener('keydown',e=>{if(!(e.metaKey||e.ctrlKey))return;const a=e.key==='ArrowLeft'?document.querySelector('.top .prev'):e.key==='ArrowRight'?document.querySelector('.top .next'):null;if(a)location.href=a.href});
+const bar=document.querySelector('.progress i');addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(100*h.scrollTop/(h.scrollHeight-h.clientHeight))+'%'},{passive:true});
+const keys=(document.body.dataset.keys||'').split(',').filter(Boolean),S='htsk-plan',box=document.getElementById('done');
+if(keys.length&&box){const d=new Date(),iso=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ let st=JSON.parse(localStorage.getItem(S)||'null')||{start:iso,pace:'5',done:{}};
+ box.checked=keys.every(k=>st.done[k]);
+ box.onchange=()=>{keys.forEach(k=>{if(box.checked)st.done[k]=true;else delete st.done[k]});localStorage.setItem(S,JSON.stringify(st))};}
 </script></body></html>
