@@ -60,7 +60,7 @@ def main():
     import build_reports_index; build_reports_index.main()   # the hub (reports/hub/, gated) + its public redirect follow every publish
 
 
-def vault(report_dir, slug, password=None):
+def vault(report_dir, slug, password=None, out_dir=None):
     """Encrypt report_dir into reports/<slug>/ (pages + referenced assets) behind the slug's passphrase."""
     src = os.path.abspath(report_dir)
     pw = load_passwords()
@@ -98,7 +98,7 @@ def vault(report_dir, slug, password=None):
     if missing:
         sys.exit(f"pages reference {len(missing)} missing files, e.g. {sorted(missing)[:5]}")
 
-    out = os.path.join(SITE, "reports", slug)
+    out = out_dir or os.path.join(SITE, "reports", slug)
     if os.path.isdir(out):
         shutil.rmtree(out)
     os.makedirs(out)
@@ -137,7 +137,7 @@ def vault(report_dir, slug, password=None):
                 "index": enc(json.dumps(index).encode())}
     json.dump(manifest, open(os.path.join(out, "manifest.json"), "w"), indent=1)
     shutil.copy(GATE, os.path.join(out, "index.html"))
-    print(f"{slug}: {len(pages)} pages, {len(assets)} assets, {total[0] / 1e6:.1f} MB -> reports/{slug}/")
+    print(f"{slug}: {len(pages)} pages, {len(assets)} assets, {total[0] / 1e6:.1f} MB -> {os.path.relpath(out, SITE)}/")
 
 
 if __name__ == "__main__":
