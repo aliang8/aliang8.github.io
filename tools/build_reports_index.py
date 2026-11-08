@@ -15,6 +15,8 @@ PROJECTS = [
      "boost_results", "active", "#0173B2"),
     ("wm_value", "WM value", "World-model value learning on the YAM stations: Max's LTX-2.5 world-action model scores imagined futures and the robot executes the best plan.",
      "wm_value", "active", "#6A3FB5"),
+    ("astra-harnesses", "Astra harnesses", "GPT-6 Astra as a robot policy on the YAM stations: astra-TRI, Astranomy, ASPIRE and the Astra-WAM design, with the cost of each harness measured on hardware.",
+     "astra_harnesses", "active", "#0173B2"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
      "oopsie_dataset", "static", "#029E73"),
 ]
