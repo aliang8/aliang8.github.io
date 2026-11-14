@@ -54,23 +54,30 @@ def main():
     ap.add_argument("slug")
     ap.add_argument("--prefix", default="r")
     ap.add_argument("--password", help="set this slug's password (default: a generated passphrase)")
+    ap.add_argument("--kind", choices=["projects", "reports"], help="site folder: projects/ (weekly logs) or reports/ (single pages); remembered per slug")
     a = ap.parse_args()
     slug = f"{a.prefix}-{secrets.token_hex(3)}" if a.slug == "new" else a.slug
-    vault(a.report_dir, slug, a.password)
+    vault(a.report_dir, slug, a.password, kind=a.kind)
     import build_reports_index; build_reports_index.main()   # the hub (reports/hub/, gated) + its public redirect follow every publish
 
 
-def vault(report_dir, slug, password=None, out_dir=None):
-    """Encrypt report_dir into reports/<slug>/ (pages + referenced assets) behind the slug's passphrase."""
+def kind_of(slug):
+    """projects/ for the weekly-log projects, reports/ for single-page reports (stored per slug in the password file)."""
+    return load_passwords().get(slug, {}).get("kind", "reports")
+
+def vault(report_dir, slug, password=None, out_dir=None, kind=None):
+    """Encrypt report_dir into <kind>/<slug>/ (pages + referenced assets) behind the slug's passphrase."""
     src = os.path.abspath(report_dir)
     pw = load_passwords()
     if slug not in pw:
-        pw[slug] = {"password": password or new_password(), "report_dir": src}
+        pw[slug] = {"password": password or new_password(), "report_dir": src, "kind": kind or "reports"}
         save_passwords(pw)
-    elif password and password != pw[slug]["password"]:
-        pw[slug]["password"] = password
-        save_passwords(pw)
-    password = pw[slug]["password"]
+    else:
+        changed = False
+        if password and password != pw[slug]["password"]: pw[slug]["password"] = password; changed = True
+        if kind and kind != pw[slug].get("kind"): pw[slug]["kind"] = kind; changed = True
+        if changed: save_passwords(pw)
+    password = pw[slug]["password"]; kind = pw[slug].get("kind", "reports")
 
     pages = sorted(f[:-5] for f in os.listdir(src) if f.endswith(".html"))
     if "index" not in pages:
@@ -98,7 +105,7 @@ def vault(report_dir, slug, password=None, out_dir=None):
     if missing:
         sys.exit(f"pages reference {len(missing)} missing files, e.g. {sorted(missing)[:5]}")
 
-    out = out_dir or os.path.join(SITE, "reports", slug)
+    out = out_dir or os.path.join(SITE, kind, slug)
     if os.path.isdir(out):
         shutil.rmtree(out)
     os.makedirs(out)

@@ -7,22 +7,26 @@ import datetime, glob, html, json, os, re
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPORTS = os.path.expanduser("~/Documents/reports")
 HUB_SRC = os.path.expanduser("~/Documents/reports/_hub")   # staging for the hub page before it is vaulted
-# slug -> (title, tagline, local dir, status, colour)
+# slug -> (title, tagline, local dir, status, colour); projects/ = weekly logs, reports/ = single pages
 PROJECTS = [
-    ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
-     "policy_customization", "active", "#c64b2f"),
     ("boost", "BOOST", "Online RL on top of a frozen generative policy: a steering head, a demo-anchored residual and a critic that picks one of K candidates.",
      "boost_results", "active", "#0173B2"),
-    ("wm_value", "WM value", "World-model value learning on the YAM stations: Max's LTX-2.5 world-action model scores imagined futures and the robot executes the best plan.",
-     "wm_value", "active", "#6A3FB5"),
-    ("astra-harnesses", "Astra harnesses", "GPT-6 Astra as a robot policy on the YAM stations: astra-TRI, Astranomy, ASPIRE and the Astra-WAM design, with the cost of each harness measured on hardware.",
-     "astra_harnesses", "active", "#0173B2"),
+    ("metadata", "Metadata-conditioned pretraining", "Pretrain pi05 on every YAM dataset at once by telling the model what kind of episode it is looking at, instead of filtering.",
+     "oopsie_corpus", "active", "#DE8F05"),
+]
+REPORTS_LIST = [
+    ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
+     "astra_harnesses", "report", "#0173B2"),
+    ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
+     "policy_customization", "report", "#c64b2f"),
+    ("wm_value", "WM value", "World-model value learning on the YAM stations: a world-action model scores imagined futures and the robot executes the best plan.",
+     "wm_value", "report", "#6A3FB5"),
     ("real2sim2real", "Real2Sim2Real", "Evaluate and improve GPT-6 Astra harnesses and YAM policies in a simulator that fails where the robot fails: landscape, design choices and a master plan.",
-     "real2sim2real", "active", "#029E73"),
+     "real2sim2real", "report", "#029E73"),
     ("corl26-tricks", "CoRL 2026 tricks", "Post-training ideas from CoRL 2026 as single knobs on BOOST and DICE, ablated on robosuite weak bases.",
      "corl26_tricks", "report", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
-     "oopsie_dataset", "static", "#029E73"),
+     "oopsie_dataset", "report", "#029E73"),
 ]
 esc = html.escape
 
@@ -37,12 +41,15 @@ def weeks_of(local):
     return out
 
 def built(slug):
-    f = os.path.join(SITE, "reports", slug, "manifest.json")
+    import build_report_vault
+    f = os.path.join(SITE, build_report_vault.kind_of(slug), slug, "manifest.json")
     return json.load(open(f)).get("built", "") if os.path.exists(f) else ""
 
 def fmt(d): return d.strftime("%b %d").replace(" 0", " ")
 
 def card(slug, title, tag, local, status, color):
+    import build_report_vault
+    kind = build_report_vault.kind_of(slug)
     wk = weeks_of(local); b = built(slug)
     today = datetime.date.today(); this_mon = today - datetime.timedelta(days=today.weekday())
     span = [this_mon - datetime.timedelta(weeks=i) for i in range(SPAN_WEEKS - 1, -1, -1)]   # shared window, oldest first
@@ -58,7 +65,7 @@ def card(slug, title, tag, local, status, color):
     upd = f"updated {b[:10]}" if b else "not published"
     strip = f"<div class=\"strip\">{''.join(bars)}</div><div class=\"axis\"><span>{fmt(span[0])}</span><span>this week</span></div>" if wk else "<div class=\"strip empty\">no weekly log</div>"
     return f"""
-<a class="card" href="https://aliang8.github.io/reports/{slug}/" target="_top" style="--c:{color}">
+<a class="card" href="https://aliang8.github.io/{kind}/{slug}/" target="_top" style="--c:{color}">
   <div class="top"><span class="chip {status}">{status}</span><span class="upd">{esc(upd)}</span></div>
   <h2>{esc(title)}</h2>
   <p>{esc(tag)}</p>
@@ -86,6 +93,7 @@ h1 { font-size:clamp(44px, 7vw, 72px); font-weight:400; line-height:1; margin:10
 .chip { text-transform:uppercase; letter-spacing:.08em; font-weight:600; padding:2px 8px; border-radius:3px; border:1px solid var(--rule); }
 .chip.active { color:#0b7a4b; border-color:#b9dfc9; background:#eaf6ef; } .chip.static { color:var(--soft); }
 .chip.report { color:#6A3FB5; border-color:#d7cbea; background:#f3eefb; }
+h2.group { font: 600 13px/1 var(--sans, sans-serif); letter-spacing:.08em; text-transform:uppercase; color:#8a8378; margin:28px 0 10px; }
 .chip.closed { color:#b3261e; border-color:#efc4bf; background:#fbeceb; }
 .card h2 { font-size:30px; font-weight:500; margin:12px 0 4px; }
 .card p { margin:0 0 18px; color:#3e3e39; font-size:16.5px; min-height:3em; }
@@ -110,7 +118,7 @@ def main():
     today = datetime.date.today(); this_mon = today - datetime.timedelta(days=today.weekday())
     first = min([m for p in PROJECTS for m in weeks_of(p[3])] + [this_mon])
     SPAN_WEEKS = max(6, (this_mon - first).days // 7 + 2)   # from the first logged week (plus one of lead-in) to this week
-    cards = [card(*p) for p in PROJECTS]
+    cards = [card(*p) for p in PROJECTS]; rcards = [card(*p) for p in REPORTS_LIST]
     allw = [weeks_of(p[3]) for p in PROJECTS]
     nk = sum(k for w in allw for k, _ in w.values()); nw = len({m for w in allw for m in w})
     doc = f"""<!doctype html>
@@ -120,10 +128,13 @@ def main():
 <style>{CSS}</style></head>
 <body><main class="page">
   <div class="eyebrow">Research logs</div>
-  <h1>Reports</h1>
-  <p class="lead">Weekly research logs for ongoing projects (overview, then the key findings of each week) and single-page reports for one-off work.</p>
-  <div class="totals"><b>{len(PROJECTS)}</b> projects · <b>{nk}</b> key findings over <b>{nw}</b> weeks · bars = entries per week (colour = key findings, grey = the rest) · rebuilt {datetime.datetime.now():%Y-%m-%d %H:%M}</div>
+  <h1>Projects &amp; reports</h1>
+  <p class="lead">Projects are weekly research logs (overview, then the key findings of each week). Reports are single pages.</p>
+  <div class="totals"><b>{len(PROJECTS)}</b> projects · <b>{nk}</b> key findings over <b>{nw}</b> weeks · <b>{len(REPORTS_LIST)}</b> reports · rebuilt {datetime.datetime.now():%Y-%m-%d %H:%M}</div>
+  <h2 class="group">Projects</h2>
   <div class="grid">{''.join(cards)}</div>
+  <h2 class="group">Reports</h2>
+  <div class="grid">{''.join(rcards)}</div>
   <footer><span>Reports are shared by direct link; each has its own password.</span><a href="https://aliang8.github.io/" target="_top">aliang8.github.io</a></footer>
 </main></body></html>
 """
@@ -134,7 +145,11 @@ def main():
     open(os.path.join(SITE, "reports", "index.html"), "w").write(
         '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=hub/">'
         '<title>Reports</title><a href="hub/">Reports</a>\n')
-    print(f"reports/hub/: {len(PROJECTS)} projects, {nk} key findings, {nw} weeks")
+    os.makedirs(os.path.join(SITE, "projects"), exist_ok=True)
+    open(os.path.join(SITE, "projects", "index.html"), "w").write(
+        '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=../reports/hub/">'
+        '<title>Projects</title><a href="../reports/hub/">Projects</a>\n')
+    print(f"reports/hub/: {len(PROJECTS)} projects, {nk} key findings, {nw} weeks; {len(REPORTS_LIST)} reports")
 
 if __name__ == "__main__":
     main()
