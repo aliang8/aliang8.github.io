@@ -17,6 +17,8 @@ PROJECTS = [
      "wm_value", "active", "#6A3FB5"),
     ("astra-harnesses", "Astra harnesses", "GPT-6 Astra as a robot policy on the YAM stations: astra-TRI, Astranomy, ASPIRE and the Astra-WAM design, with the cost of each harness measured on hardware.",
      "astra_harnesses", "active", "#0173B2"),
+    ("real2sim2real", "Real2Sim2Real", "Evaluate and improve GPT-6 Astra harnesses and YAM policies in a simulator that fails where the robot fails: landscape, design choices and a master plan.",
+     "real2sim2real", "active", "#029E73"),
     ("corl26-tricks", "CoRL 2026 tricks", "Post-training ideas from CoRL 2026 as single knobs on BOOST and DICE, ablated on robosuite weak bases.",
      "corl26_tricks", "report", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
