@@ -19,7 +19,7 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GATE = os.path.join(SITE, "tools", "report_gate.html")
 PW_FILE = os.path.expanduser("~/Documents/reports/.vault_passwords.json")
 ITERS = 600_000
-MEDIA_EXT = (".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".mp4", ".webm", ".pdf", ".js")
+MEDIA_EXT = (".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".mp4", ".webm", ".pdf", ".js", ".glb", ".bin")
 QUOTED = re.compile(r"""(['"])([^'"<>\s]+)\1""")
 
 
