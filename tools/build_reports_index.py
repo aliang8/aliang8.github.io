@@ -18,7 +18,7 @@ PROJECTS = [
     ("astra-harnesses", "Astra harnesses", "GPT-6 Astra as a robot policy on the YAM stations: astra-TRI, Astranomy, ASPIRE and the Astra-WAM design, with the cost of each harness measured on hardware.",
      "astra_harnesses", "active", "#0173B2"),
     ("corl26-tricks", "CoRL 2026 tricks", "Post-training ideas from CoRL 2026 as single knobs on BOOST and DICE, ablated on robosuite weak bases.",
-     "corl26_tricks", "active", "#6A3FB5"),
+     "corl26_tricks", "report", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
      "oopsie_dataset", "static", "#029E73"),
 ]
@@ -52,7 +52,7 @@ def card(slug, title, tag, local, status, color):
         tip = f"{fmt(m)}: {k} key finding{'s' if k != 1 else ''}" + (f", {a} more" if a else "") if tot else f"{fmt(m)}: no entries"
         bars.append(f"<div class=\"wk\" title=\"{esc(tip)}\"><div class=\"extra\" style=\"height:{h(a)}px\"></div><div class=\"key\" style=\"height:{h(k)}px;background:{color}\"></div></div>")
     nk = sum(k for k, _ in wk.values()); na = sum(a for _, a in wk.values())
-    meta = (f"{len(wk)} week{'s' if len(wk) != 1 else ''} logged · <b>{nk}</b> key finding{'s' if nk != 1 else ''}" + (f" · {na} more entries" if na else "")) if wk else "static report"
+    meta = (f"{len(wk)} week{'s' if len(wk) != 1 else ''} logged · <b>{nk}</b> key finding{'s' if nk != 1 else ''}" + (f" · {na} more entries" if na else "")) if wk else "single-page report"
     upd = f"updated {b[:10]}" if b else "not published"
     strip = f"<div class=\"strip\">{''.join(bars)}</div><div class=\"axis\"><span>{fmt(span[0])}</span><span>this week</span></div>" if wk else "<div class=\"strip empty\">no weekly log</div>"
     return f"""
@@ -83,6 +83,7 @@ h1 { font-size:clamp(44px, 7vw, 72px); font-weight:400; line-height:1; margin:10
 .top { display:flex; justify-content:space-between; align-items:center; font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:11.5px; color:var(--soft); }
 .chip { text-transform:uppercase; letter-spacing:.08em; font-weight:600; padding:2px 8px; border-radius:3px; border:1px solid var(--rule); }
 .chip.active { color:#0b7a4b; border-color:#b9dfc9; background:#eaf6ef; } .chip.static { color:var(--soft); }
+.chip.report { color:#6A3FB5; border-color:#d7cbea; background:#f3eefb; }
 .chip.closed { color:#b3261e; border-color:#efc4bf; background:#fbeceb; }
 .card h2 { font-size:30px; font-weight:500; margin:12px 0 4px; }
 .card p { margin:0 0 18px; color:#3e3e39; font-size:16.5px; min-height:3em; }
@@ -118,7 +119,7 @@ def main():
 <body><main class="page">
   <div class="eyebrow">Research logs</div>
   <h1>Reports</h1>
-  <p class="lead">One weekly research log per project: an overview page, then the key findings of each week with their plots and clips.</p>
+  <p class="lead">Weekly research logs for ongoing projects (overview, then the key findings of each week) and single-page reports for one-off work.</p>
   <div class="totals"><b>{len(PROJECTS)}</b> projects · <b>{nk}</b> key findings over <b>{nw}</b> weeks · bars = entries per week (colour = key findings, grey = the rest) · rebuilt {datetime.datetime.now():%Y-%m-%d %H:%M}</div>
   <div class="grid">{''.join(cards)}</div>
   <footer><span>Reports are shared by direct link; each has its own password.</span><a href="https://aliang8.github.io/" target="_top">aliang8.github.io</a></footer>
