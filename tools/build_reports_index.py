@@ -21,6 +21,8 @@ REPORTS_LIST = [
      "policy_customization", "report", "#c64b2f"),
     ("wm_value", "WM value", "World-model value learning on the YAM stations: a world-action model scores imagined futures and the robot executes the best plan.",
      "wm_value", "report", "#6A3FB5"),
+    ("in-context-sim-pretraining", "In-context sim pretraining", "Pretrain a demo-conditioned policy on millions of simulated pseudo-tasks, then few-shot a new real YAM task from two demos: landscape, diversity engine, design choices and a first experiment.",
+     "in_context_sim_pretraining", "report", "#CC78BC"),
     ("real2sim2real", "Real2Sim2Real", "Evaluate and improve GPT-6 Astra harnesses and YAM policies in a simulator that fails where the robot fails: landscape, design choices and a master plan.",
      "real2sim2real", "report", "#029E73"),
     ("corl26-tricks", "CoRL 2026 tricks", "Post-training ideas from CoRL 2026 as single knobs on BOOST and DICE, ablated on robosuite weak bases.",
