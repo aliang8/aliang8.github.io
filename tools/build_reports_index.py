@@ -13,6 +13,8 @@ PROJECTS = [
      "boost_results", "active", "#0173B2"),
     ("metadata", "Metadata-conditioned pretraining", "Pretrain pi05 on every YAM dataset at once by telling the model what kind of episode it is looking at, instead of filtering.",
      "oopsie_corpus", "active", "#DE8F05"),
+    ("real2sim2real", "Real2Sim2Real", "One or two real teleop demos to a policy on the real YAM: a raiden-sim twin, an Astra-written expert, parallel sim data and RL, a distilled pi05 student, with as little human expert time as possible.",
+     "real2sim2real", "active", "#029E73"),
 ]
 REPORTS_LIST = [
     ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
@@ -23,8 +25,6 @@ REPORTS_LIST = [
      "wm_value", "report", "#6A3FB5"),
     ("in-context-sim-pretraining", "In-context sim pretraining", "Pretrain a demo-conditioned policy on millions of simulated pseudo-tasks, then few-shot a new real YAM task from two demos: landscape, diversity engine, design choices and a first experiment.",
      "in_context_sim_pretraining", "report", "#CC78BC"),
-    ("real2sim2real", "Real2Sim2Real", "Evaluate and improve GPT-6 Astra harnesses and YAM policies in a simulator that fails where the robot fails: landscape, design choices and a master plan.",
-     "real2sim2real", "report", "#029E73"),
     ("corl26-tricks", "CoRL 2026 tricks", "Post-training ideas from CoRL 2026 as single knobs on BOOST and DICE, ablated on robosuite weak bases.",
      "corl26_tricks", "report", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
