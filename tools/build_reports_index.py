@@ -17,14 +17,14 @@ PROJECTS = [
      "real2sim2real", "active", "#029E73"),
     ("raiden", "Raiden", "TRI's bimanual YAM stations end to end: calibrated teleop recording and upload, a hub that serves and scores policies, and a simulated station that runs the same software for sim2real and agent benchmarks.",
      "raiden", "active", "#D55E00"),
+    ("wm_value", "WM value", "World-model value learning on the YAM stations: a world-action model scores imagined futures and the robot executes the best plan.",
+     "wm_value", "active", "#6A3FB5"),
 ]
 REPORTS_LIST = [
     ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
      "astra_harnesses", "report", "#0173B2"),
     ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
      "policy_customization", "report", "#c64b2f"),
-    ("wm_value", "WM value", "World-model value learning on the YAM stations: a world-action model scores imagined futures and the robot executes the best plan.",
-     "wm_value", "report", "#6A3FB5"),
     ("in-context-sim-pretraining", "In-context sim pretraining", "Pretrain a demo-conditioned policy on millions of simulated pseudo-tasks, then few-shot a new real YAM task from two demos: landscape, diversity engine, design choices and a first experiment.",
      "in_context_sim_pretraining", "report", "#CC78BC"),
     ("corl26-tricks", "CoRL 2026 tricks", "Post-training ideas from CoRL 2026 as single knobs on BOOST and DICE, ablated on robosuite weak bases.",
@@ -39,7 +39,7 @@ def weeks_of(local):
     out = {}
     for f in glob.glob(os.path.join(REPORTS, local, "20??-??-??.html")):
         s = open(f).read(); mon = datetime.date.fromisoformat(os.path.basename(f)[:10])
-        key = s.count("<article class=\"entry\"")
+        key = s.count("<article class=\"entry\"") or s.count("class=\"ref finding\"")   # findings-style week pages (wm_value) carry no entry rail
         also = re.search(r"Also this week \((\d+)\)", s)
         out[mon] = (key, int(also.group(1)) if also else 0)
     return out
