@@ -15,6 +15,8 @@ PROJECTS = [
      "oopsie_corpus", "active", "#DE8F05"),
     ("real2sim2real", "Real2Sim2Real", "One or two real teleop demos to a policy on the real YAM: a raiden-sim twin, an Astra-written expert, parallel sim data and RL, a distilled pi05 student, with as little human expert time as possible.",
      "real2sim2real", "active", "#029E73"),
+    ("raiden", "Raiden", "TRI's bimanual YAM stations end to end: calibrated teleop recording and upload, a hub that serves and scores policies, and a simulated station that runs the same software for sim2real and agent benchmarks.",
+     "raiden", "active", "#D55E00"),
 ]
 REPORTS_LIST = [
     ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
