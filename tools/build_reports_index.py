@@ -11,6 +11,8 @@ HUB_SRC = os.path.expanduser("~/Documents/reports/_hub")   # staging for the hub
 PROJECTS = [
     ("boost", "BOOST", "Online RL on top of a frozen generative policy: a steering head, a demo-anchored residual and a critic that picks one of K candidates.",
      "boost_results", "active", "#0173B2"),
+    ("boost_study", "BOOST study", "An RLPD-style empirical study of improving frozen, noise-parameterized policies with RL: steering, residual and best-of-K methods on four tasks from matched bases.",
+     "boost_study", "active", "#0E7E33"),
     ("metadata", "Metadata-conditioned pretraining", "Pretrain pi05 on every YAM dataset at once by telling the model what kind of episode it is looking at, instead of filtering.",
      "oopsie_corpus", "active", "#DE8F05"),
     ("real2sim2real", "Real2Sim2Real", "One or two real teleop demos to a policy on the real YAM: a raiden-sim twin, an Astra-written expert, parallel sim data and RL, a distilled pi05 student, with as little human expert time as possible.",
