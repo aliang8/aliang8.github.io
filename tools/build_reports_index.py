@@ -19,6 +19,8 @@ PROJECTS = [
      "real2sim2real", "active", "#029E73"),
     ("raiden", "Raiden", "TRI's bimanual YAM stations end to end: calibrated teleop recording and upload, a hub that serves and scores policies, and a simulated station that runs the same software for sim2real and agent benchmarks.",
      "raiden", "active", "#D55E00"),
+    ("long-context-vla", "Long-context VLA", "Zheyuan Hu's in-context robot policy on our YAM stations and in the simulated twin: serving, the dashboard family, zero-shot and demo-in-context sweeps.",
+     "long_context_vla", "active", "#CC78BC"),
     ("wm_value", "WM value", "World-model value learning on the YAM stations: a world-action model scores imagined futures and the robot executes the best plan.",
      "wm_value", "active", "#6A3FB5"),
 ]
@@ -33,8 +35,6 @@ REPORTS_LIST = [
      "corl26_tricks", "report", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
      "oopsie_dataset", "report", "#029E73"),
-    ("long-context-vla", "Long-context VLA", "Zheyuan Hu's in-context robot policy on our YAM stations and in the simulated twin: the family, the fast serving tier, the zero-shot sweep.",
-     "long_context_vla", "report", "#CC78BC"),
 ]
 esc = html.escape
 

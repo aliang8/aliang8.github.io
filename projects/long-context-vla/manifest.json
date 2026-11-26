@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "compression": "gzip",
+ "built": "2026-11-26 00:35",
+ "cipher": "AES-GCM",
+ "kdf": {
+  "name": "PBKDF2",
+  "hash": "SHA-256",
+  "iterations": 600000,
+  "salt": "elkOwSy+sYhAyPz6ZZUMUg=="
+ },
+ "index": "m_125.enc"
+}
