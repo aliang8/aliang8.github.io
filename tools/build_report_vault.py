@@ -82,10 +82,9 @@ def vault(report_dir, slug, password=None, out_dir=None, kind=None):
     pages = sorted(f[:-5] for f in os.listdir(src) if f.endswith(".html"))
     if "index" not in pages:
         sys.exit(f"{src} has no index.html")
-    assets, missing = {}, set()   # literal ref as written (the gate matches it verbatim) -> resolved file path
+    assets, missing = set(), set()
     # Self-contained HTML artifacts in a subdirectory (e.g. artifacts/x.html, shown in an <iframe>) are assets too, decrypted on
     # demand like media; they are scanned for their own media (clips) in turn. Top-level *.html stay pages.
-    # Refs resolve relative to the file that contains them (an artifact's "../data/x.png" is <src>/data/x.png).
     def is_asset(ref):
         return ref.lower().endswith(MEDIA_EXT) or (ref.lower().endswith(".html") and "/" in ref)
     queue = [os.path.join(src, p + ".html") for p in pages]
@@ -95,12 +94,12 @@ def vault(report_dir, slug, password=None, out_dir=None, kind=None):
         for _, ref in QUOTED.findall(open(fpath).read()):
             if re.match(r"^[a-z]+:|^#|^/", ref) or not is_asset(ref):
                 continue
-            path = os.path.normpath(os.path.join(os.path.dirname(fpath), ref))
+            path = os.path.normpath(os.path.join(src, ref))
             if not path.startswith(src + os.sep):
                 continue
             if not os.path.isfile(path):
                 missing.add(ref); continue
-            assets[ref] = path
+            assets.add(ref)
             if ref.lower().endswith(".html") and path not in seen_html:
                 seen_html.add(path); queue.append(path)
     if missing:
@@ -138,7 +137,7 @@ def vault(report_dir, slug, password=None, out_dir=None, kind=None):
             index["pages"][item] = enc(open(os.path.join(src, item + ".html"), "rb").read())
         else:
             mime = mimetypes.guess_type(item)[0] or "application/octet-stream"
-            index["media"][item] = {"file": enc(open(assets[item], "rb").read()), "mime": mime}
+            index["media"][item] = {"file": enc(open(os.path.join(src, item), "rb").read()), "mime": mime}
     built = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     manifest = {"version": 3, "compression": "gzip", "built": built, "cipher": "AES-GCM",
                 "kdf": {"name": "PBKDF2", "hash": "SHA-256", "iterations": ITERS, "salt": base64.b64encode(salt).decode()},
