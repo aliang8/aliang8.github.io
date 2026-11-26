@@ -33,6 +33,8 @@ REPORTS_LIST = [
      "corl26_tricks", "report", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
      "oopsie_dataset", "report", "#029E73"),
+    ("long-context-vla", "Long-context VLA", "Zheyuan Hu's in-context robot policy on our YAM stations and in the simulated twin: the family, the fast serving tier, the zero-shot sweep.",
+     "long_context_vla", "report", "#CC78BC"),
 ]
 esc = html.escape
 
