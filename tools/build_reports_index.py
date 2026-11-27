@@ -35,6 +35,8 @@ REPORTS_LIST = [
      "corl26_tricks", "report", "#6A3FB5"),
     ("oopsie", "Oopsie dataset", "Viewer and audit of the failure-recovery dataset: cleaned episodes and per-lab galleries.",
      "oopsie_dataset", "report", "#029E73"),
+    ("agent-harnesses", "Agent harnesses", "How to run agent loops, harnesses and autoresearch for multi-week experiment campaigns: what the field does, what wins, and the harness we should build.",
+     "agent_harnesses", "report", "#56B4E9"),
 ]
 esc = html.escape
 
