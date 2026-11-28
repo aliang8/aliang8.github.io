@@ -9,6 +9,8 @@ REPORTS = os.path.expanduser("~/Documents/reports")
 HUB_SRC = os.path.expanduser("~/Documents/reports/_hub")   # staging for the hub page before it is vaulted
 # slug -> (title, tagline, local dir, status, colour); projects/ = weekly logs, reports/ = single pages
 PROJECTS = [
+    ("comfort-zone", "Comfort zone", "Energy-guided RL inside a video world model (RSS 2027 with Yiru Wu): an energy model keeps residual RL where the world model is reliable.",
+     "comfort_zone", "active", "#029E73"),
     ("boost", "BOOST", "Online RL on top of a frozen generative policy: a steering head, a demo-anchored residual and a critic that picks one of K candidates.",
      "boost_results", "active", "#0173B2"),
     ("boost_study", "BOOST study", "An RLPD-style empirical study of improving frozen, noise-parameterized policies with RL: steering, residual and best-of-K methods on four tasks from matched bases.",
@@ -25,8 +27,6 @@ PROJECTS = [
      "wm_value", "active", "#6A3FB5"),
 ]
 REPORTS_LIST = [
-    ("comfort-zone", "Comfort zone", "Energy-guided RL inside a video world model (RSS 2027 draft with Yiru Wu): an energy model keeps residual RL where the world model is reliable.",
-     "comfort_zone", "report", "#029E73"),
     ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
      "astra_harnesses", "report", "#0173B2"),
     ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
