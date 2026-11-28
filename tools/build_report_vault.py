@@ -143,7 +143,10 @@ def vault(report_dir, slug, password=None, out_dir=None, kind=None):
                 "kdf": {"name": "PBKDF2", "hash": "SHA-256", "iterations": ITERS, "salt": base64.b64encode(salt).decode()},
                 "index": enc(json.dumps(index).encode())}
     json.dump(manifest, open(os.path.join(out, "manifest.json"), "w"), indent=1)
-    shutil.copy(GATE, os.path.join(out, "index.html"))
+    m = re.search(r"<title>([^<]*)</title>", open(os.path.join(src, "index.html"), encoding="utf-8").read())
+    title = (m.group(1).strip() if m else slug) or slug   # the gate's tab shows the report's own title, not "Private report"
+    gate = open(GATE, encoding="utf-8").read().replace("<title>Private report</title>", f"<title>{title}</title>", 1)
+    open(os.path.join(out, "index.html"), "w", encoding="utf-8").write(gate)
     print(f"{slug}: {len(pages)} pages, {len(assets)} assets, {total[0] / 1e6:.1f} MB -> {os.path.relpath(out, SITE)}/")
 
 
