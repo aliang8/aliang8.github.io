@@ -28,7 +28,7 @@ REPORTS_LIST = [
     ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
      "astra_harnesses", "report", "#0173B2"),
     ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
-     "policy_customization", "report", "#c64b2f"),
+     "policy_customization", "archived", "#c64b2f"),
     ("in-context-sim-pretraining", "In-context sim pretraining", "Pretrain a demo-conditioned policy on millions of simulated pseudo-tasks, then few-shot a new real YAM task from two demos: landscape, diversity engine, design choices and a first experiment.",
      "in_context_sim_pretraining", "report", "#CC78BC"),
     ("corl26-tricks", "CoRL 2026 tricks", "Post-training ideas from CoRL 2026 as single knobs on BOOST and DICE, ablated on robosuite weak bases.",
@@ -104,6 +104,7 @@ h1 { font-size:clamp(44px, 7vw, 72px); font-weight:400; line-height:1; margin:10
 .chip.active { color:#0b7a4b; border-color:#b9dfc9; background:#eaf6ef; } .chip.static { color:var(--soft); }
 .chip.report { color:#6A3FB5; border-color:#d7cbea; background:#f3eefb; }
 h2.group { font: 600 13px/1 var(--sans, sans-serif); letter-spacing:.08em; text-transform:uppercase; color:#8a8378; margin:28px 0 10px; }
+.chip.archived { color:var(--soft); border-color:var(--rule); background:transparent; }
 .chip.closed { color:#b3261e; border-color:#efc4bf; background:#fbeceb; }
 .card h2 { font-size:30px; font-weight:500; margin:12px 0 4px; }
 .card p { margin:0 0 18px; color:#3e3e39; font-size:16.5px; min-height:3em; }
@@ -128,7 +129,8 @@ def main():
     today = datetime.date.today(); this_mon = today - datetime.timedelta(days=today.weekday())
     first = min([m for p in PROJECTS for m in weeks_of(p[3])] + [this_mon])
     SPAN_WEEKS = max(6, (this_mon - first).days // 7 + 2)   # from the first logged week (plus one of lead-in) to this week
-    cards = [card(*p) for p in PROJECTS]; rcards = [card(*p) for p in REPORTS_LIST]
+    cards = [card(*p) for p in PROJECTS]
+    rcards = [card(*p) for p in REPORTS_LIST if p[4] != "archived"]; acards = [card(*p) for p in REPORTS_LIST if p[4] == "archived"]
     allw = [weeks_of(p[3]) for p in PROJECTS]
     nk = sum(k for w in allw for k, _ in w.values()); nw = len({m for w in allw for m in w})
     doc = f"""<!doctype html>
@@ -140,11 +142,12 @@ def main():
   <div class="eyebrow">Research logs</div>
   <h1>Projects &amp; reports</h1>
   <p class="lead">Projects are weekly research logs (overview, then the key findings of each week). Reports are single pages.</p>
-  <div class="totals"><b>{len(PROJECTS)}</b> projects · <b>{nk}</b> key findings over <b>{nw}</b> weeks · <b>{len(REPORTS_LIST)}</b> reports · rebuilt {datetime.datetime.now():%Y-%m-%d %H:%M}</div>
+  <div class="totals"><b>{len(PROJECTS)}</b> projects · <b>{nk}</b> key findings over <b>{nw}</b> weeks · <b>{len(rcards)}</b> reports · rebuilt {datetime.datetime.now():%Y-%m-%d %H:%M}</div>
   <h2 class="group">Projects</h2>
   <div class="grid">{''.join(cards)}</div>
   <h2 class="group">Reports</h2>
   <div class="grid">{''.join(rcards)}</div>
+  {('<h2 class="group">Archive</h2><div class="grid">' + ''.join(acards) + '</div>') if acards else ''}
   <footer><span>Reports are shared by direct link; each has its own password.</span><a href="https://aliang8.github.io/" target="_top">aliang8.github.io</a></footer>
 </main></body></html>
 """
