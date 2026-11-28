@@ -45,7 +45,7 @@
     <p id="status" role="status" aria-live="polite"></p>
   </div>
 </section>
-<iframe id="app" title="Report"></iframe>
+<iframe id="app" title="Report" allow="fullscreen" allowfullscreen></iframe>
 <button id="lockbtn" type="button" title="Forget the password on this device">Lock</button>
 <script>
 // Client-side vault (same scheme as /diy): PBKDF2-SHA256 (600k) -> AES-256-GCM; every entry is IV || ciphertext
@@ -57,7 +57,7 @@ const $ = (id) => document.getElementById(id);
 const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
 const STORE = 'report.pass:' + location.pathname;          // legacy: a remembered password (migrated to the key cache)
 const KEYDB = 'report-vault', KEYSTORE = 'keys';
-let manifest = null, key = null, index = null, pageCache = {};
+let manifest = null, key = null, index = null, pageCache = {}, pageTitle = {};
 
 async function loadManifest() {
   if (manifest) return manifest;
@@ -197,8 +197,10 @@ async function showPage(target, push) {
       eager.forEach((p, i) => { html = html.split("'" + p + "'").join("'" + urls[i] + "'").split('"' + p + '"').join('"' + urls[i] + '"'); });
     }
     pageCache[name] = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+    const t = /<title>([^<]*)<\/title>/i.exec(html); if (t) pageTitle[name] = t[1].trim();   // tab shows the page title once unlocked
   }
   const frame = $('app'), url = pageCache[name] + (anchor ? '#' + anchor : '');
+  if (pageTitle[name]) document.title = pageTitle[name];
   if (anchor) frame.onload = () => {   // open any collapsed section holding the anchor, then scroll to it
     const el = frame.contentDocument.getElementById(anchor);
     if (!el) return;
