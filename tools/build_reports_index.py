@@ -25,6 +25,8 @@ PROJECTS = [
      "wm_value", "active", "#6A3FB5"),
 ]
 REPORTS_LIST = [
+    ("comfort-zone", "Comfort zone", "Energy-guided RL inside a video world model (RSS 2027 draft with Yiru Wu): an energy model keeps residual RL where the world model is reliable.",
+     "comfort_zone", "report", "#029E73"),
     ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
      "astra_harnesses", "report", "#0173B2"),
     ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
