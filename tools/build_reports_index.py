@@ -25,6 +25,8 @@ PROJECTS = [
      "wm_value", "active", "#6A3FB5"),
 ]
 REPORTS_LIST = [
+    ("metabc-rss27", "MetaBC paper", "The RSS 2027 draft on pretraining robot policies with suboptimal data by conditioning on episode metadata: results, draft status, edits.",
+     "metabc_rss27", "report", "#0E7E33"),
     ("astra-harnesses", "Astra harnesses", "Four ways of putting GPT-6 Astra in charge of a robot arm, and what each one costs.",
      "astra_harnesses", "report", "#0173B2"),
     ("policy-customization", "TAILOR", "Few-shot customization of generalist robot policies: elicit a behaviour the base never shows, then consolidate it into the weights.",
